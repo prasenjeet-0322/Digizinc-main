@@ -51,132 +51,102 @@ const services = [
   {
     slug: "branding-identity",
     title: "Branding & Identity",
+    footerTitle: "Branding",
     icon: Palette,
     short: "Crafting distinct identities that resonate with your audience and define your market presence.",
     detail:
       "We build comprehensive brand systems including logo design, color theory, and verbal identity that ensure your brand stands out in a crowded marketplace. Every element is crafted to communicate your core values with precision and flair.",
-    bullets: [
-      "Visual Identity Systems",
-      "Brand Strategy & Positioning",
-      "Voice & Tone Guidelines",
-    ],
+    bullets: ["Visual Identity Systems", "Brand Strategy & Positioning", "Voice & Tone Guidelines"],
   },
   {
     slug: "website-design-development",
     title: "Website Design & Development",
+    footerTitle: "Web Design",
     icon: Laptop,
     short: "High-performance digital homes built for speed, conversion, and premium user experience.",
     detail:
       "From custom landing pages to complex enterprise platforms, we develop responsive, SEO-ready websites that turn visitors into loyal customers. Our development process prioritizes clean code and lightning-fast performance.",
-    bullets: [
-      "Responsive Web Design",
-      "Custom CMS Integration",
-      "Performance Optimization",
-    ],
+    bullets: ["Responsive Web Design", "Custom CMS Integration", "Performance Optimization"],
   },
   {
     slug: "content-creation-storytelling",
     title: "Content Creation & Storytelling",
+    footerTitle: "Content",
     icon: MessageSquare,
     short: "Narratives that captivate and convert through strategic content across all digital touchpoints.",
     detail:
       "We turn your brand's mission into compelling stories that build authority and community engagement. Through high-value blogs, social narratives, and email sequences, we keep your audience coming back for more.",
-    bullets: [
-      "Editorial Strategy",
-      "Social Media Content",
-      "Copywriting & Scripting",
-    ],
+    bullets: ["Editorial Strategy", "Social Media Content", "Copywriting & Scripting"],
   },
   {
     slug: "print-packaging",
     title: "Print & Packaging",
+    footerTitle: "Print & Packaging",
     icon: Box,
     short: "Tangible brand experiences through premium packaging design and high-quality print collateral.",
     detail:
       "We bring your brand into the physical world with sustainable packaging solutions and stunning print materials. From the unboxing experience to the feel of the cardstock, every detail matters.",
-    bullets: [
-      "Product Packaging Design",
-      "Stationery & Collateral",
-      "Premium Print Finishing",
-    ],
+    bullets: ["Product Packaging Design", "Stationery & Collateral", "Premium Print Finishing"],
   },
   {
     slug: "advertising-marketing",
     title: "Advertising & Marketing",
+    footerTitle: "Advertising",
     icon: Megaphone,
     short: "Omnichannel campaigns engineered to scale your pipeline and maximize return on ad spend.",
     detail:
       "We combine data-driven strategy with creative excellence to run profitable campaigns across Google, Meta, and LinkedIn. Our approach ensures every dollar spent is an investment in measurable growth.",
-    bullets: [
-      "Paid Search & Social",
-      "Ad Creative Strategy",
-      "Analytics & Attribution",
-    ],
+    bullets: ["Paid Search & Social", "Ad Creative Strategy", "Analytics & Attribution"],
   },
   {
     slug: "ui-ux-digital-experience",
     title: "UI/UX & Digital Experience",
+    footerTitle: "UI/UX",
     icon: Layers3,
     short: "Intuitive interfaces designed to solve complex problems and provide seamless user journeys.",
     detail:
       "We focus on user-centric design principles to create interactive prototypes and final products that delight users and drive results. Our designs bridge the gap between technical complexity and effortless usability.",
-    bullets: [
-      "User Research & Testing",
-      "Interactive Prototyping",
-      "Design System Management",
-    ],
+    bullets: ["User Research & Testing", "Interactive Prototyping", "Design System Management"],
   },
   {
     slug: "motion-video-production",
     title: "Motion & Video Production",
+    footerTitle: "Motion",
     icon: Video,
     short: "Dynamic visual storytelling through professional video production and high-impact motion graphics.",
     detail:
       "From cinematic brand films to social-first video ads, we bring your message to life with professional production and engaging animation. We capture attention in seconds and hold it with quality.",
-    bullets: [
-      "Commercial Video Production",
-      "2D/3D Motion Graphics",
-      "Social Video Optimization",
-    ],
+    bullets: ["Commercial Video Production", "2D/3D Motion Graphics", "Social Video Optimization"],
   },
   {
     slug: "illustration-custom-artwork",
     title: "Illustration & Custom Artwork",
+    footerTitle: "Illustration",
     icon: PenTool,
     short: "Unique visual assets and bespoke illustrations that give your brand a one-of-a-kind personality.",
     detail:
       "Our artists create custom icons, illustrations, and digital art that differentiate your brand from the cookie-cutter competitors. We add a human touch to your digital presence through mastery of craft.",
-    bullets: [
-      "Custom Iconography",
-      "Digital Illustration",
-      "Character Design",
-    ],
+    bullets: ["Custom Iconography", "Digital Illustration", "Character Design"],
   },
   {
     slug: "experiential-interactive-design",
     title: "Experiential & Interactive Design",
+    footerTitle: "Interactive",
     icon: Sparkles,
     short: "Immersive digital and physical experiences that bridge the gap between brands and their audiences.",
     detail:
       "We design interactive installations, AR/VR experiences, and digital activations that leave a lasting impression. We create moments of wonder that turn passive observers into active participants.",
-    bullets: [
-      "Interactive Installations",
-      "AR/VR Filters & Apps",
-      "Event Digital Strategy",
-    ],
+    bullets: ["Interactive Installations", "AR/VR Filters & Apps", "Event Digital Strategy"],
   },
   {
     slug: "photography-visual-content",
     title: "Photography & Visual Content",
+    footerTitle: "Photography",
     icon: Camera,
     short: "Premium commercial photography and visual assets tailored for modern marketing channels.",
     detail:
       "High-end product, lifestyle, and corporate photography that elevates your brand's aesthetic. We capture the essence of your brand in every frame, ensuring your visuals are as premium as your offering.",
-    bullets: [
-      "Product Photography",
-      "Corporate & Headshots",
-      "Lifestyle Shoots",
-    ],
+    bullets: ["Product Photography", "Corporate & Headshots", "Lifestyle Shoots"],
   },
 ];
 
@@ -1379,8 +1349,8 @@ function Footer() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Service Links</p>
           <div className="mt-4 space-y-2 text-sm">
             {services.map((service) => (
-              <Link key={service.slug} to={`/services/${service.slug}`} className="block">
-                {service.title}
+              <Link key={service.slug} to={`/services/${service.slug}`} className="block transition hover:text-[#D4AF37]">
+                {service.footerTitle}
               </Link>
             ))}
           </div>
