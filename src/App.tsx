@@ -716,14 +716,7 @@ function HeroSection() {
               View Our Work
             </Link>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.12em] text-zinc-300">
-            <span className="text-zinc-400">Trusted by</span>
-            <span>Vantage</span>
-            <span>Nexa</span>
-            <span>Monarch</span>
-            <span>Apex</span>
-            <span>Northline</span>
-          </div>
+
         </motion.div>
         <motion.div
           id="enquiry"
