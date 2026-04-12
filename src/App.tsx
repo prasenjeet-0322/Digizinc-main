@@ -1314,15 +1314,19 @@ function ContactPage() {
               <Phone size={16} className="text-[#B3001B]" />
               +1 (555) 241-8890
             </p>
-            <p className="flex items-center gap-2">
-              <MapPin size={16} className="text-[#B3001B]" />
-              880 Market Street, San Francisco, CA
+            <p className="flex items-start gap-2">
+              <MapPin size={16} className="mt-1 shrink-0 text-[#B3001B]" />
+              <span>
+                H. No. 1-98/9/3/32T, Plot No. 50, 4th Floor,<br />
+                Sai Dham Building, Madhapur, Hyderabad,<br />
+                Telangana, 500081, India
+              </span>
             </p>
           </div>
           <div className="mt-8 h-72 overflow-hidden border border-zinc-200">
             <iframe
               title="Agency Location"
-              src="https://www.google.com/maps?q=Market+Street+San+Francisco&output=embed"
+              src="https://www.google.com/maps?q=H.+No.+1-98%2F9%2F3%2F32T,+Plot+No.+50,+Sai+Dham+Building,+Madhapur,+Hyderabad&output=embed"
               className="h-full w-full"
               loading="lazy"
             />
@@ -1377,7 +1381,7 @@ function Footer() {
           <div className="mt-4 space-y-2 text-sm">
             <p>hello@digizinc.com</p>
             <p>+1 (555) 241-8890</p>
-            <p>San Francisco, CA</p>
+            <p>Hyderabad, India</p>
           </div>
           <div className="mt-5 flex gap-3 text-[#D4AF37]">
             <a href="https://instagram.com" aria-label="Instagram" className="inline-flex h-8 w-8 items-center justify-center border border-[#D4AF37]/60 text-xs font-semibold">
