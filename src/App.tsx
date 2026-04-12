@@ -1312,7 +1312,7 @@ function ContactPage() {
             </p>
             <p className="flex items-center gap-2">
               <Phone size={16} className="text-[#B3001B]" />
-              +1 (555) 241-8890
+              +91 97015 63362
             </p>
             <p className="flex items-start gap-2">
               <MapPin size={16} className="mt-1 shrink-0 text-[#B3001B]" />
@@ -1380,7 +1380,7 @@ function Footer() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white">Contact</p>
           <div className="mt-4 space-y-2 text-sm">
             <p>hello@digizinc.com</p>
-            <p>+1 (555) 241-8890</p>
+            <p>+91 97015 63362</p>
             <p>Hyderabad, India</p>
           </div>
           <div className="mt-5 flex gap-3 text-[#D4AF37]">
