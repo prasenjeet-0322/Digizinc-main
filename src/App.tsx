@@ -737,7 +737,7 @@ function LogoMarquee() {
   return (
     <div className="flex overflow-hidden bg-zinc-950 border-y border-white/5 py-10">
       <div className="flex shrink-0 items-center border-r border-white/10 px-8">
-        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#B3001B]">Trusted By</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white">Trusted By</span>
       </div>
       <div className="flex overflow-hidden relative">
         <div className="flex animate-marquee whitespace-nowrap">
