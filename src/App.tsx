@@ -735,19 +735,21 @@ function HeroSection() {
 function LogoMarquee() {
   const logos = ["Vantage", "Nexa", "Monarch", "Apex", "Northline", "Solaris"];
   return (
-    <div className="relative flex overflow-hidden bg-zinc-950 py-8">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-          <span
-            key={i}
-            className="mx-8 font-['Playfair_Display'] text-2xl font-bold uppercase tracking-widest text-[#D4AF37]/40 transition hover:text-[#D4AF37]"
-          >
-            {logo}
-          </span>
-        ))}
+    <div className="flex overflow-hidden bg-zinc-950 border-y border-white/5 py-10">
+      <div className="flex shrink-0 items-center border-r border-white/10 px-8">
+        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#B3001B]">Trusted By</span>
       </div>
-      <div className="absolute top-0 flex h-full w-full items-center justify-center bg-transparent pointer-events-none">
-         <span className="bg-zinc-950 px-6 text-[10px] font-bold uppercase tracking-[0.3em] text-[#B3001B] z-10">Trusted By</span>
+      <div className="flex overflow-hidden relative">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+            <span
+              key={i}
+              className="mx-12 font-['Playfair_Display'] text-2xl font-bold uppercase tracking-widest text-[#D4AF37]/50 transition hover:text-[#D4AF37]"
+            >
+              {logo}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
