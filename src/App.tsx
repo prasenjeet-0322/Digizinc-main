@@ -732,10 +732,32 @@ function HeroSection() {
   );
 }
 
+function LogoMarquee() {
+  const logos = ["Vantage", "Nexa", "Monarch", "Apex", "Northline", "Solaris"];
+  return (
+    <div className="relative flex overflow-hidden bg-zinc-950 py-8">
+      <div className="flex animate-marquee whitespace-nowrap">
+        {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+          <span
+            key={i}
+            className="mx-8 font-['Playfair_Display'] text-2xl font-bold uppercase tracking-widest text-[#D4AF37]/40 transition hover:text-[#D4AF37]"
+          >
+            {logo}
+          </span>
+        ))}
+      </div>
+      <div className="absolute top-0 flex h-full w-full items-center justify-center bg-transparent pointer-events-none">
+         <span className="bg-zinc-950 px-6 text-[10px] font-bold uppercase tracking-[0.3em] text-[#B3001B] z-10">Trusted By</span>
+      </div>
+    </div>
+  );
+}
+
 function LandingPage() {
   return (
     <>
       <HeroSection />
+      <LogoMarquee />
 
       <main>
         <section id="about" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
