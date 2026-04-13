@@ -1100,7 +1100,7 @@ function AboutPage() {
                   className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="mt-6 font-['Playfair_Display'] text-xl font-bold text-zinc-950">{member.name}</h3>
+              <h3 className="mt-6 font-['Poppins'] text-xl font-bold text-zinc-950">{member.name}</h3>
               <p className="text-xs font-bold uppercase tracking-widest text-[#B3001B]">{member.role}</p>
             </div>
           ))}
