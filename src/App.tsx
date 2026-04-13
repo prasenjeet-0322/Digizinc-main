@@ -1026,8 +1026,8 @@ function AboutPage() {
           </div>
           <div className="relative aspect-square">
             <img 
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" 
-              alt="Digizinc office" 
+              src="/about-image.jpg" 
+              alt="ReliGo Billboard" 
               className="h-full w-full object-cover shadow-2xl"
             />
           </div>
