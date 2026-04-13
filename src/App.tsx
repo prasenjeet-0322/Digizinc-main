@@ -169,8 +169,7 @@ const projects = [
     result: "180 qualified leads in 8 weeks",
     detail: "We implemented a full-funnel lead generation system focusing on high-intent creative hooks and a simplified inquiry process. By auditing their existing CRM integration, we ensured no lead was left behind.",
     bullets: ["Meta Ads Performance", "Landing Page Optimization", "Lead Scoring Logic"],
-    image:
-      "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
+    image: "/portfolio-vantage.jpg",
   },
   {
     slug: "monarch-residences",
@@ -1026,8 +1025,8 @@ function AboutPage() {
           </div>
           <div className="relative aspect-square">
             <img 
-              src="/about-image.jpg" 
-              alt="ReliGo Billboard" 
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" 
+              alt="Digizinc office" 
               className="h-full w-full object-cover shadow-2xl"
             />
           </div>
