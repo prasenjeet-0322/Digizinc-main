@@ -171,10 +171,10 @@ const projects = [
     bullets: ["Meta Ads Performance", "Landing Page Optimization", "Lead Scoring Logic"],
     image: "/portfolio-vantage.jpg",
     gallery: [
-      "/vantage-gallery-1.jpg",
-      "/vantage-gallery-2.jpg",
+      "/vantage-gallery-1.png",
+      "/vantage-gallery-2.png",
       "/vantage-gallery-3.png",
-      "/vantage-gallery-4.jpg",
+      "/vantage-gallery-4.png",
       "/vantage-gallery-5.jpg",
     ],
   },
