@@ -1190,6 +1190,26 @@ function ProjectDetailPage() {
               <p className="mt-2 font-bold text-emerald-900">{project.after}</p>
             </div>
           </div>
+
+          <div className="mt-16">
+            <h2 className="font-['Playfair_Display'] text-2xl font-bold text-zinc-900">Project Gallery</h2>
+            <div className="mt-8 columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="group relative overflow-hidden bg-zinc-100 transition-all hover:shadow-2xl">
+                  <div className="flex h-full w-full items-center justify-center border border-zinc-200 bg-zinc-50/50 p-4 transition-colors group-hover:bg-zinc-100">
+                    <img 
+                      src={`https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`} 
+                      alt={`Gallery placeholder ${i}`} 
+                      className="h-auto w-full object-contain opacity-20 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-40">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">Media Container {i}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
         <aside className="space-y-8">
           <div className="border border-[#D4AF37]/30 bg-white p-8 shadow-lg">
