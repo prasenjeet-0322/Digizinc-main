@@ -876,7 +876,7 @@ function LandingPage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Work</p>
-                <h2 className="mt-3 max-w-2xl font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">Case studies built on before-and-after outcomes.</h2>
+                <h2 className="mt-3 max-w-2xl font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">Results built on before-and-after outcomes.</h2>
               </div>
               <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-semibold text-[#B3001B] transition hover:text-[#7a0012]">
                 View All Projects
@@ -904,7 +904,6 @@ function LandingPage() {
                       {project.company}
                     </h3>
                     <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-white">
-                      View Case Study
                       <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
