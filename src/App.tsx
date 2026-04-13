@@ -903,9 +903,7 @@ function LandingPage() {
                     <h3 className="mt-1 font-['Playfair_Display'] text-2xl font-bold text-white">
                       {project.company}
                     </h3>
-                    <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-white">
-                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                    </div>
+                    {/* Arrow removed as requested */}
                   </div>
                 </Link>
               ))}
