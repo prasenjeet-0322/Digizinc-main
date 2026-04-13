@@ -429,10 +429,10 @@ const navItems = [
 
 const team = [
   {
-    name: "Aryan Malhotra",
+    name: "Bhargava Raj",
     role: "Founder & CEO",
     bio: "Visionary strategist with 12+ years in scaling digital ecosystems for premium brands.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+    image: "/bhargava-raj.png",
   },
   {
     name: "Sanya Gupta",
