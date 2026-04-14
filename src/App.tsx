@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
+  ArrowUpRight,
   BarChart3,
   Box,
   Briefcase,
@@ -31,6 +32,9 @@ import {
   ShieldCheck,
   ShoppingCart,
   Sparkles,
+  Target,
+  Droplets,
+  Lightbulb,
   Video,
   X,
 } from "lucide-react";
@@ -347,7 +351,7 @@ function CarouselReviews() {
                   </div>
                 ))}
               </div>
-              <p className="max-w-3xl font-['Playfair_Display'] text-lg leading-relaxed text-zinc-200 md:text-2xl md:leading-relaxed select-none">
+              <p className="max-w-3xl font-['Inter'] text-lg leading-relaxed text-zinc-200 md:text-2xl md:leading-relaxed select-none">
                 "{testimonials[index].content}"
               </p>
               <div className="mt-8 flex flex-col items-center gap-2">
@@ -378,9 +382,8 @@ function CarouselReviews() {
               setDirection(i > index ? 1 : -1);
               setIndex(i);
             }}
-            className={`h-1 transition-all duration-300 ${
-              i === index ? "w-8 bg-[#D4AF37]" : "w-4 bg-white/20"
-            }`}
+            className={`h-1 transition-all duration-300 ${i === index ? "w-8 bg-[#D4AF37]" : "w-4 bg-white/20"
+              }`}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
@@ -519,7 +522,7 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   }, [target]);
 
   return (
-    <span className="font-['Playfair_Display'] text-3xl font-bold text-[#B3001B] md:text-4xl">
+    <span className="font-['Inter'] text-3xl font-bold text-[#B3001B] md:text-4xl">
       {value}
       {suffix}
     </span>
@@ -557,9 +560,8 @@ function EnquiryForm({ compact = false }: { compact?: boolean }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`space-y-4 border border-white/20 bg-white p-5 text-left shadow-2xl shadow-black/30 backdrop-blur-sm ${
-        compact ? "" : "md:p-6"
-      }`}
+      className={`space-y-4 border border-white/20 bg-white p-5 text-left shadow-2xl shadow-black/30 backdrop-blur-sm ${compact ? "" : "md:p-6"
+        }`}
       aria-label="Lead enquiry form"
     >
       <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Get Free Audit</p>
@@ -618,18 +620,19 @@ function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-black/10 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between px-4 md:px-6">
-          <Link to="/" className="font-['Playfair_Display'] text-2xl font-bold tracking-tight text-[#B3001B]">
+      <header className="sticky top-0 z-50 w-full bg-white border-b border-black/5 md:fixed md:top-6 md:left-1/2 md:w-[95%] md:max-w-6xl md:-translate-x-1/2 md:bg-transparent md:border-none">
+        <div className="flex h-16 items-center justify-between bg-white px-4 transition-all duration-300 md:rounded-full md:border md:border-black/5 md:px-10 md:shadow-sm">
+          <Link to="/" className="font-['Inter'] text-2xl font-bold tracking-tight text-[#B3001B]">
             {brand}
           </Link>
-          <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+          <nav className="hidden items-center gap-8 text-sm font-semibold tracking-wide md:flex">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `transition hover:text-[#B3001B] ${isActive ? "text-[#B3001B]" : "text-zinc-700"}`
+                  `relative transition-colors duration-200 hover:text-[#B3001B] ${isActive ? "text-[#B3001B]" : "text-zinc-700"
+                  } after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#B3001B] after:transition-all after:duration-300 hover:after:w-full`
                 }
               >
                 {item.label}
@@ -637,7 +640,7 @@ function Header() {
             ))}
             <button
               onClick={() => scrollLink("enquiry")}
-              className="inline-flex h-10 items-center bg-[#B3001B] px-4 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-[#920015]"
+              className="inline-flex h-10 items-center rounded-full bg-[#B3001B] px-6 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#920015] hover:shadow-md hover:shadow-red-900/20 active:scale-95"
             >
               Get Free Audit
             </button>
@@ -647,7 +650,7 @@ function Header() {
             className="inline-flex items-center justify-center text-[#B3001B] md:hidden"
             aria-label="Open menu"
           >
-            <Menu size={32} />
+            <Menu size={28} />
           </button>
         </div>
       </header>
@@ -663,7 +666,7 @@ function Header() {
             style={{ backgroundColor: "#ffffff" }}
           >
             <div className="flex h-18 items-center justify-between px-4 border-b border-black/5">
-              <span className="font-['Playfair_Display'] text-2xl font-bold text-[#B3001B]">{brand}</span>
+              <span className="font-['Inter'] text-2xl font-bold text-[#B3001B]">{brand}</span>
               <button onClick={() => setOpen(false)} className="p-2 text-zinc-900">
                 <X size={32} />
               </button>
@@ -679,7 +682,7 @@ function Header() {
                   <NavLink
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="font-['Playfair_Display'] text-4xl font-bold text-zinc-900 transition hover:text-[#B3001B]"
+                    className="font-['Inter'] text-4xl font-bold text-zinc-900 transition hover:text-[#B3001B]"
                   >
                     {item.label}
                   </NavLink>
@@ -709,7 +712,7 @@ function Header() {
 function HeroSection() {
   return (
     <section
-      className="relative overflow-hidden bg-black text-white"
+      className="relative overflow-hidden rounded-b-[8px] bg-black text-white md:rounded-b-[64px]"
       style={{
         backgroundImage:
           "linear-gradient(95deg, rgba(20,0,0,0.88) 12%, rgba(20,0,0,0.64) 48%, rgba(20,0,0,0.72) 100%), url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1900&q=80')",
@@ -718,109 +721,119 @@ function HeroSection() {
       }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(179,0,27,0.55),transparent_48%),radial-gradient(circle_at_80%_80%,rgba(212,175,55,0.28),transparent_42%)]" />
-      <div className="relative mx-auto grid min-h-[calc(100vh-72px)] max-w-6xl items-center gap-12 px-4 py-14 md:grid-cols-[1.05fr_0.95fr] md:px-6 md:py-16">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <p className="mb-4 inline-flex items-center gap-2 border border-[#D4AF37]/50 px-3 py-1 text-xs uppercase tracking-[0.18em] text-[#D4AF37]">
-            <ShieldCheck size={14} />
-            Premium Growth Partner
-          </p>
-          <h1 className="font-['Playfair_Display'] text-4xl font-bold leading-tight md:text-6xl">
-            We Build Brands That Dominate Their Market.
+      <div className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-4xl flex-col items-center justify-center px-4 pt-32 pb-16 text-center md:px-6 md:pt-40 md:pb-20">
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="flex flex-col items-center">
+          <h1 className="font-['Inter'] text-4xl font-bold leading-tight md:text-7xl">
+            We Build AI-Powered Designs that Delivers.
           </h1>
-          <p className="mt-5 max-w-xl text-base text-zinc-200 md:text-lg">
+          <p className="mt-6 max-w-2xl text-base text-zinc-200 md:text-xl md:leading-relaxed">
             Digizinc helps ambitious brands scale revenue through performance marketing, bold creative, and precision strategy.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Link to="/contact" className="inline-flex h-11 items-center bg-[#B3001B] px-5 text-sm font-semibold text-white transition hover:bg-[#920015]">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link to="/contact" className="inline-flex h-12 items-center bg-[#B3001B] px-8 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#920015]">
               Get Free Consultation
             </Link>
             <Link
               to="/portfolio"
-              className="inline-flex h-11 items-center border border-white/60 px-5 text-sm font-semibold text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
+              className="inline-flex h-12 items-center border border-white/60 px-8 text-sm font-bold uppercase tracking-widest text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
             >
               View Our Work
             </Link>
           </div>
-
-        </motion.div>
-        <motion.div
-          id="enquiry"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mx-auto w-full max-w-lg"
-        >
-          <EnquiryForm compact />
         </motion.div>
       </div>
     </section>
   );
 }
 
-function LogoMarquee() {
-  const logos = ["Vantage", "Nexa", "Monarch", "Apex", "Northline", "Solaris"];
-  return (
-    <div className="flex overflow-hidden bg-zinc-950 border-y border-white/5 py-10">
-      <div className="flex shrink-0 items-center border-r border-white/10 px-8">
-        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white">Trusted By</span>
-      </div>
-      <div className="flex overflow-hidden relative">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-            <span
-              key={i}
-              className="mx-12 font-['Playfair_Display'] text-2xl font-bold uppercase tracking-widest text-[#D4AF37]/50 transition hover:text-[#D4AF37]"
-            >
-              {logo}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+
 
 function LandingPage() {
+  const [activeIndustry, setActiveIndustry] = useState('education');
+
+  const industryInfo: Record<string, any> = {
+    'real-estate': {
+      title: 'LUXURY',
+      highlight: 'SPACES.',
+      desc: 'Elevating property value through immersive digital experiences and high-end visual storytelling that captivates investors.',
+      stats: [{ val: '15%', label: 'YIELD INCREASE' }, { val: '45+', label: 'PROJECTS' }],
+      img: '/industry_tech.png'
+    },
+    'education': {
+      title: 'ENLIGHTENED',
+      highlight: 'BRANDING.',
+      desc: 'Modernizing the pursuit of knowledge. We build platforms and identities for educational institutions that value both tradition and evolution.',
+      stats: [{ val: '24%', label: 'ENROLLMENT UP' }, { val: '120+', label: 'GLOBAL REACH' }],
+      img: '/industry_education.png'
+    },
+    'ecommerce': {
+      title: 'CONVERSION',
+      highlight: 'ENGINE.',
+      desc: 'Engineering high-velocity digital storefronts that blend aesthetic excellence with forensic optimization for maximum ROI.',
+      stats: [{ val: '300%', label: 'ROI BOOST' }, { val: '2M+', label: 'SHOPPERS' }],
+      img: '/industry_tech.png'
+    },
+    'healthcare': {
+      title: 'DIGITAL',
+      highlight: 'TRUST.',
+      desc: 'Bridging the gap between patient care and digital innovation through secure, human-centered design for modern medical leaders.',
+      stats: [{ val: '40%', label: 'GROWTH' }, { val: '15+', label: 'AWARDS' }],
+      img: '/industry_education.png'
+    },
+    'it-saas': {
+      title: 'SCALABLE',
+      highlight: 'SYSTEMS.',
+      desc: 'Fueling hyperscale growth for SaaS and Tech through aggressive brand positioning and precision-engineered digital products.',
+      stats: [{ val: '10X', label: 'FASTER SCALE' }, { val: '500k+', label: 'USERS' }],
+      img: '/industry_tech.png'
+    },
+    'corporate': {
+      title: 'MARKET',
+      highlight: 'AUTHORITY.',
+      desc: 'Establishing market dominance for professional services through sophisticated brand systems and strategic digital dominance.',
+      stats: [{ val: '50%', label: 'EFFICIENCY' }, { val: '100+', label: 'PARTNERS' }],
+      img: '/industry_education.png'
+    }
+  };
+
   return (
     <>
       <HeroSection />
-      <LogoMarquee />
 
       <main>
-        <section id="about" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+        <section id="about" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.7 }}
-            className="grid gap-10 md:grid-cols-[1.2fr_0.8fr]"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">About Us</p>
-              <h2 className="mt-3 font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">
-                We scale brands with discipline, speed, and premium execution.
-              </h2>
-              <p className="mt-4 max-w-2xl text-zinc-700">
-                For over a decade, we have helped founders and enterprise teams break growth plateaus. Our mission is simple: turn marketing into a predictable revenue engine through elite strategy and relentless optimization.
-              </p>
-              <p className="mt-4 max-w-2xl text-zinc-700">
-                You get one accountable team, one growth roadmap, and one standard: measurable outcomes.
-              </p>
-            </div>
-            <div className="space-y-8 border-l-2 border-[#D4AF37] pl-6">
-              <div>
-                <Counter target={120} suffix="+" />
-                <p className="mt-2 text-sm uppercase tracking-[0.12em] text-zinc-500">Brands Scaled</p>
+            <div className="grid items-center gap-12 md:grid-cols-2">
+              <div className="space-y-8">
+                <h2 className="font-['Bebas Neue'] text-4xl font-bold tracking-tight text-zinc-900 md:text-5xl lg:text-5.5xl leading-[1.1]">
+                  ABOUT US
+                </h2>
+                <p className="max-w-xl text-lg leading-relaxed text-zinc-600">
+                  We're not your typical design agency. Founded in 2014, we're a collective of designers, developers, and strategists who believe great digital experiences should be beautiful, functional, and human-centered. From startups to global brands, we help ambitious businesses stand out.
+                </p>
+                <Link
+                  to="/about"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-black px-8 py-3 text-base font-bold text-black transition-all hover:bg-black hover:text-white md:inline-flex md:border-none md:px-0 md:py-0 md:hover:bg-transparent md:hover:text-[#B3001B]"
+                >
+                  Know More About Us
+                  <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
-              <div>
-                <Counter target={5} suffix="M+" />
-                <p className="mt-2 text-sm uppercase tracking-[0.12em] text-zinc-500">Reach Generated</p>
-              </div>
-              <div>
-                <Counter target={94} suffix="%" />
-                <p className="mt-2 text-sm uppercase tracking-[0.12em] text-zinc-500">Client Retention Rate</p>
+              <div className="relative">
+                <img
+                  src="/about-office.png"
+                  alt="Creative team workspace"
+                  className="w-full h-auto rounded-[2rem] object-cover shadow-2xl"
+                />
               </div>
             </div>
+
+
           </motion.div>
         </section>
 
@@ -828,8 +841,8 @@ function LandingPage() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">Services</p>
-                <h2 className="mt-3 max-w-2xl font-['Playfair_Display'] text-3xl font-bold md:text-4xl">Focused capabilities that drive pipeline and revenue.</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]"></p>
+                <h2 className="mt-3 max-w-2xl font-['Inter'] text-3xl font-bold md:text-4xl">OUR EXPERTISE.</h2>
               </div>
               <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37] transition hover:text-[#c39b1f]">
                 View All Services
@@ -837,21 +850,76 @@ function LandingPage() {
               </Link>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              {services.slice(0, 4).map((service, index) => (
+              {[
+                {
+                  title: "Video\nProduction",
+                  slug: "video-production",
+                  bgClass: "bg-white",
+                  textClass: "text-zinc-950",
+                  btnBgClass: "bg-black",
+                  btnIconClass: "text-white",
+                  btnTextClass: "text-zinc-950",
+                  image: "/service_video.png",
+                },
+                {
+                  title: "Pay-per-click\nadvertising",
+                  slug: "advertising-marketing",
+                  bgClass: "bg-[#18181A]",
+                  textClass: "text-white",
+                  btnBgClass: "bg-white",
+                  btnIconClass: "text-black",
+                  btnTextClass: "text-white",
+                  image: "/service_ppc.png",
+                },
+                {
+                  title: "Social Media\nMarketing",
+                  slug: "content-creation-storytelling",
+                  bgClass: "bg-[#18181A]",
+                  textClass: "text-white",
+                  btnBgClass: "bg-white",
+                  btnIconClass: "text-black",
+                  btnTextClass: "text-white",
+                  image: "/service_social.png",
+                },
+                {
+                  title: "Search engine\noptimization",
+                  slug: "search-engine-optimization",
+                  bgClass: "bg-white",
+                  textClass: "text-zinc-950",
+                  btnBgClass: "bg-black",
+                  btnIconClass: "text-white",
+                  btnTextClass: "text-zinc-950",
+                  image: "/service_seo.png",
+                },
+              ].map((card, index) => (
                 <motion.article
-                  key={service.slug}
+                  key={card.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ delay: index * 0.08, duration: 0.55 }}
-                  className="border border-white/10 bg-white/5 p-6 transition hover:border-[#D4AF37]/70 hover:bg-white/10"
+                  className={`relative flex h-[200px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform hover:-translate-y-1 md:h-[220px] md:p-8 ${card.bgClass}`}
                 >
-                  <service.icon size={20} className="text-[#D4AF37]" />
-                  <h3 className="mt-4 text-xl font-semibold">{service.title}</h3>
-                  <p className="mt-3 text-sm text-zinc-300">{service.short}</p>
-                  <Link to={`/services/${service.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
-                    Learn More
-                    <ChevronRight size={16} />
+                  <h3 className={`whitespace-pre-line text-xl font-bold leading-tight tracking-tight md:text-2xl ${card.textClass}`}>
+                    {card.title}
+                  </h3>
+
+                  <div className="absolute -bottom-4 -right-4 w-44 md:-bottom-6 md:-right-6 md:w-56 lg:w-60">
+                    <img
+                      src={card.image}
+                      alt=""
+                      className="h-full w-full object-contain mix-blend-normal"
+                    />
+                  </div>
+
+                  <Link
+                    to={`/services/${card.slug}`}
+                    className={`group relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest ${card.btnTextClass}`}
+                  >
+                    <span className={`flex h-10 w-10 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${card.btnBgClass}`}>
+                      <ArrowUpRight size={18} className={card.btnIconClass} />
+                    </span>
+                    <span className="hidden md:inline">LEARN MORE</span>
                   </Link>
                 </motion.article>
               ))}
@@ -859,16 +927,151 @@ function LandingPage() {
           </div>
         </section>
 
-        <section id="industries" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Industries We Serve</p>
-          <h2 className="mt-3 font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">Tailored strategies for every industry.</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {industries.map((industry) => (
-              <div key={industry.label} className="flex items-center gap-3 border border-zinc-200 px-4 py-4 text-zinc-800 transition hover:border-[#B3001B] hover:text-[#B3001B]">
-                <industry.icon size={18} />
-                <span className="font-medium">{industry.label}</span>
+        <section id="industries" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+          <div className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Industries We Serve</p>
+            <h2 className="mt-3 font-['Inter'] text-3xl font-bold text-zinc-950 md:text-5xl">Tailored strategies for every industry.</h2>
+          </div>
+
+          {/* Desktop View: List + Detail */}
+          <div className="hidden lg:grid lg:grid-cols-[1fr_2fr] lg:gap-8">
+            <div className="flex flex-col gap-2">
+              {[
+                { label: "Real Estate", icon: Building2, id: 'real-estate' },
+                { label: "Education", icon: GraduationCap, id: 'education' },
+                { label: "E-commerce", icon: ShoppingCart, id: 'ecommerce' },
+                { label: "Healthcare", icon: HeartPulse, id: 'healthcare' },
+                { label: "IT & SaaS", icon: Monitor, id: 'it-saas' },
+                { label: "Corporate Services", icon: Briefcase, id: 'corporate' },
+              ].map((industry) => (
+                <button
+                  key={industry.id}
+                  onClick={() => setActiveIndustry(industry.id)}
+                  onMouseEnter={() => setActiveIndustry(industry.id)}
+                  className={`flex items-center justify-between border-b border-zinc-100 px-4 py-6 text-left transition-all duration-300 ${
+                    activeIndustry === industry.id 
+                    ? "border-[#B3001B] bg-zinc-50 text-[#B3001B]" 
+                    : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-950"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-lg font-bold tracking-tight">{industry.label}</span>
+                  </div>
+                  <ArrowUpRight 
+                    size={20} 
+                    className={`transition-transform duration-300 ${activeIndustry === industry.id ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"}`} 
+                  />
+                </button>
+              ))}
+            </div>
+
+            <div className="relative min-h-[500px] overflow-hidden rounded-3xl bg-[#111111] p-12 text-white">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndustry}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative z-10 grid h-full gap-8 md:grid-cols-2"
+                >
+                  <div className="flex flex-col justify-center">
+                    <p className="text-lg leading-relaxed text-zinc-400">
+                      {industryInfo[activeIndustry].desc}
+                    </p>
+                    <div className="mt-10 flex gap-12">
+                      {industryInfo[activeIndustry].stats.map((stat, i) => (
+                        <div key={i}>
+                          <p className="text-3xl font-bold text-[#D4AF37]">{stat.val}</p>
+                          <p className="mt-1 text-xs font-bold uppercase tracking-widest text-zinc-500">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="relative flex items-center justify-center">
+                    <div className="relative h-80 w-80">
+                      <div className="absolute inset-0 bg-[#B3001B]/20 blur-[100px]" />
+                      <img 
+                        src={industryInfo[activeIndustry].img} 
+                        alt="" 
+                        className="relative z-10 h-full w-full object-contain filter drop-shadow-[0_0_30px_rgba(179,0,27,0.3)]"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+              <div className="absolute inset-0 opacity-10">
+                <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]" />
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="lg:hidden">
+            <div className="relative overflow-hidden rounded-3xl bg-[#111111] px-6 py-10 text-white">
+              <motion.div
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(_, info) => {
+                  const industries_list = ['real-estate', 'education', 'ecommerce', 'healthcare', 'it-saas', 'corporate'];
+                  const currentIndex = industries_list.indexOf(activeIndustry);
+                  if (info.offset.x < -50 && currentIndex < industries_list.length - 1) {
+                    setActiveIndustry(industries_list[currentIndex + 1]);
+                  } else if (info.offset.x > 50 && currentIndex > 0) {
+                    setActiveIndustry(industries_list[currentIndex - 1]);
+                  }
+                }}
+                className="relative z-10 flex flex-col items-center text-center focus:outline-none"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeIndustry}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    className="flex flex-col items-center"
+                  >
+                    <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight">
+                      {activeIndustry.replace('-', ' ')}
+                    </h3>
+                    <p className="mb-8 text-sm leading-relaxed text-zinc-400">
+                      {industryInfo[activeIndustry].desc}
+                    </p>
+                    <div className="mb-8 flex justify-center gap-8">
+                      {industryInfo[activeIndustry].stats.map((stat, i) => (
+                        <div key={i}>
+                          <p className="text-2xl font-bold text-[#D4AF37]">{stat.val}</p>
+                          <p className="mt-0.5 text-[10px] font-bold uppercase tracking-widest text-zinc-500">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="relative h-48 w-48">
+                      <div className="absolute inset-0 bg-[#B3001B]/20 blur-[60px]" />
+                      <img 
+                        src={industryInfo[activeIndustry].img} 
+                        alt="" 
+                        className="relative z-10 h-full w-full object-contain"
+                      />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
+              <div className="absolute inset-0 opacity-5">
+                <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
+              </div>
+            </div>
+
+            {/* Progress Bar Moved Outside */}
+            <div className="mt-6 px-4">
+              <div className="relative h-[2px] w-full bg-zinc-200 overflow-hidden rounded-full">
+                <motion.div 
+                  initial={false}
+                  animate={{ width: `${((['real-estate', 'education', 'ecommerce', 'healthcare', 'it-saas', 'corporate'].indexOf(activeIndustry) + 1) / 6) * 100}%` }}
+                  className="h-full bg-[#B3001B]"
+                />
+              </div>
+              <p className="mt-3 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">Swipe to Explore</p>
+            </div>
           </div>
         </section>
 
@@ -878,7 +1081,7 @@ function LandingPage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Work</p>
-                <h2 className="mt-3 max-w-2xl font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">Results built on before-and-after outcomes.</h2>
+                <h2 className="mt-3 max-w-2xl font-['Inter'] text-3xl font-bold text-zinc-950 md:text-4xl">Results built on before-and-after outcomes.</h2>
               </div>
               <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-semibold text-[#B3001B] transition hover:text-[#7a0012]">
                 View All Projects
@@ -902,7 +1105,7 @@ function LandingPage() {
                     <p className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">
                       {project.industry}
                     </p>
-                    <h3 className="mt-1 font-['Playfair_Display'] text-2xl font-bold text-white">
+                    <h3 className="mt-1 font-['Inter'] text-2xl font-bold text-white">
                       {project.company}
                     </h3>
                     {/* Arrow removed as requested */}
@@ -917,7 +1120,7 @@ function LandingPage() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">Voice of Authority</p>
-              <h2 className="mt-4 font-['Playfair_Display'] text-3xl font-bold md:text-5xl">Success heard from the industry.</h2>
+              <h2 className="mt-4 font-['Inter'] text-3xl font-bold md:text-5xl">Success heard from the industry.</h2>
             </div>
             <CarouselReviews />
           </div>
@@ -927,7 +1130,7 @@ function LandingPage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Blog</p>
-              <h2 className="mt-3 font-['Playfair_Display'] text-3xl font-bold text-zinc-950 md:text-4xl">Insights for teams that want to scale faster.</h2>
+              <h2 className="mt-3 font-['Inter'] text-3xl font-bold text-zinc-950 md:text-4xl">Insights for teams that want to scale faster.</h2>
             </div>
             <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-[#B3001B] transition hover:text-[#7a0012]">
               View All Posts
@@ -960,7 +1163,7 @@ function LandingPage() {
             <div className="border border-[#D4AF37]/60 p-8 md:flex md:items-center md:justify-between md:gap-8 md:p-10">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">Ready to Scale Your Brand?</p>
-                <h2 className="mt-3 font-['Playfair_Display'] text-3xl font-bold md:text-4xl">Let&apos;s build something powerful together.</h2>
+                <h2 className="mt-3 font-['Inter'] text-3xl font-bold md:text-4xl">Let&apos;s build something powerful together.</h2>
                 <p className="mt-3 max-w-xl text-sm text-red-100">Book a strategy call with our lead team and receive a personalized growth roadmap.</p>
               </div>
               <a href="#enquiry" className="mt-6 inline-flex h-11 items-center bg-[#D4AF37] px-5 text-sm font-semibold text-black transition hover:bg-[#c39b1f] md:mt-0">
@@ -978,7 +1181,7 @@ function ServicesPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-18">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Our Services</p>
-      <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Solutions tailored for exponential brand growth.</h1>
+      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Solutions tailored for exponential brand growth.</h1>
       <p className="mt-5 max-w-2xl text-lg text-zinc-700">From digital-first identities to tangible physical experiences, Digizinc provides a comprehensive ecosystem of creative and strategic capabilities.</p>
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
@@ -1012,7 +1215,7 @@ function AboutPage() {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Our Story</p>
-            <h1 className="mt-4 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-6xl">
+            <h1 className="mt-4 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-6xl">
               We build the future of premium brands.
             </h1>
             <p className="mt-8 text-lg leading-relaxed text-zinc-600">
@@ -1023,9 +1226,9 @@ function AboutPage() {
             </p>
           </div>
           <div className="relative aspect-square">
-            <img 
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" 
-              alt="Digizinc office" 
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+              alt="Digizinc office"
               className="h-full w-full object-cover shadow-2xl"
             />
           </div>
@@ -1036,13 +1239,13 @@ function AboutPage() {
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#D4AF37]">The Mission</h2>
+              <h2 className="font-['Inter'] text-3xl font-bold text-[#D4AF37]">The Mission</h2>
               <p className="mt-4 text-xl leading-relaxed text-zinc-300">
                 To bridge the gap between human emotion and digital performance, empowering brands to speak with conviction and scale with certainty.
               </p>
             </div>
             <div>
-              <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#D4AF37]">The Vision</h2>
+              <h2 className="font-['Inter'] text-3xl font-bold text-[#D4AF37]">The Vision</h2>
               <p className="mt-4 text-xl leading-relaxed text-zinc-300">
                 To become the global gold standard for agencies that blend cinematic creative with forensic data analysis.
               </p>
@@ -1055,7 +1258,7 @@ function AboutPage() {
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Methodology</p>
-            <h2 className="mt-4 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Our Proven Process.</h2>
+            <h2 className="mt-4 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Our Proven Process.</h2>
           </div>
           <div className="mt-16 grid gap-6 md:grid-cols-5">
             {[
@@ -1074,7 +1277,7 @@ function AboutPage() {
                     {p.icon}
                   </div>
                   <span className="mt-4 text-xs font-bold uppercase tracking-widest text-[#B3001B]">{p.step}</span>
-                  <h3 className="mt-2 font-['Playfair_Display'] text-xl font-bold text-zinc-900">{p.title}</h3>
+                  <h3 className="mt-2 font-['Inter'] text-xl font-bold text-zinc-900">{p.title}</h3>
                   <p className="mt-3 text-sm text-zinc-600 px-2">{p.desc}</p>
                 </div>
               </div>
@@ -1086,19 +1289,19 @@ function AboutPage() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">The Team</p>
-          <h2 className="mt-4 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Meet the Strategists.</h2>
+          <h2 className="mt-4 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Meet the Strategists.</h2>
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <div key={member.name} className="group flex flex-col items-center text-center">
               <div className="overflow-hidden shadow-lg">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
+                <img
+                  src={member.image}
+                  alt={member.name}
                   className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="mt-6 font-['Poppins'] text-xl font-bold text-zinc-950">{member.name}</h3>
+              <h3 className="mt-6 font-['Inter'] text-xl font-bold text-zinc-950">{member.name}</h3>
               <p className="text-xs font-bold uppercase tracking-widest text-[#B3001B]">{member.role}</p>
             </div>
           ))}
@@ -1107,12 +1310,12 @@ function AboutPage() {
 
       <section className="bg-zinc-50 py-20">
         <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Ready to write your growth story?</h2>
+          <h2 className="font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Ready to write your growth story?</h2>
           <p className="mt-6 text-lg text-zinc-600">
             Join the ranks of premium brands that scale with Digizinc. Let's discuss your targets.
           </p>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="mt-10 inline-flex h-14 items-center bg-[#B3001B] px-10 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#920015]"
           >
             Start Your Audit
@@ -1130,7 +1333,7 @@ function ServiceDetailPage() {
   if (!service) {
     return (
       <main className="mx-auto max-w-6xl px-4 py-20 md:px-6">
-        <h1 className="font-['Playfair_Display'] text-4xl font-bold">Service not found.</h1>
+        <h1 className="font-['Inter'] text-4xl font-bold">Service not found.</h1>
         <Link to="/services" className="mt-4 inline-block text-[#B3001B]">
           Back to Services
         </Link>
@@ -1141,7 +1344,7 @@ function ServiceDetailPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 md:px-6 md:py-18">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Service Detail</p>
-      <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">{service.title}</h1>
+      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">{service.title}</h1>
       <p className="mt-5 text-zinc-700">{service.detail}</p>
       <ul className="mt-8 space-y-3 text-zinc-800">
         {service.bullets.map((bullet) => (
@@ -1151,7 +1354,7 @@ function ServiceDetailPage() {
         ))}
       </ul>
       <div className="mt-10 border border-zinc-200 p-6">
-        <h2 className="font-['Playfair_Display'] text-2xl font-bold text-zinc-950">Need this for your brand?</h2>
+        <h2 className="font-['Inter'] text-2xl font-bold text-zinc-950">Need this for your brand?</h2>
         <p className="mt-3 text-sm text-zinc-700">Book a consultation and get a custom plan in 48 hours.</p>
         <Link to="/#enquiry" className="mt-5 inline-flex h-10 items-center bg-[#B3001B] px-4 text-sm font-semibold text-white">
           Get Free Consultation
@@ -1168,7 +1371,7 @@ function ProjectDetailPage() {
   if (!project) {
     return (
       <main className="mx-auto max-w-6xl px-4 py-20 md:px-6">
-        <h1 className="font-['Playfair_Display'] text-4xl font-bold">Project not found.</h1>
+        <h1 className="font-['Inter'] text-4xl font-bold">Project not found.</h1>
         <Link to="/portfolio" className="mt-4 inline-block text-[#B3001B]">
           Back to Portfolio
         </Link>
@@ -1181,10 +1384,10 @@ function ProjectDetailPage() {
       <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
         <section>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">{project.industry}</p>
-          <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">{project.company}</h1>
+          <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">{project.company}</h1>
           <img src={project.image} alt={project.company} className="mt-8 h-80 w-full object-cover shadow-xl md:h-[450px]" />
           <div className="mt-10">
-            <h2 className="font-['Playfair_Display'] text-2xl font-bold text-zinc-900">Project Overview</h2>
+            <h2 className="font-['Inter'] text-2xl font-bold text-zinc-900">Project Overview</h2>
             <p className="mt-4 text-lg leading-relaxed text-zinc-700">{project.detail}</p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -1199,14 +1402,14 @@ function ProjectDetailPage() {
           </div>
 
           <div className="mt-16">
-            <h2 className="font-['Playfair_Display'] text-2xl font-bold text-zinc-900">Project Gallery</h2>
+            <h2 className="font-['Inter'] text-2xl font-bold text-zinc-900">Project Gallery</h2>
             <div className="mt-8 columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
               {(project.gallery || [1, 2, 3, 4, 5, 6]).map((item, i) => (
                 <div key={i} className="group relative overflow-hidden bg-zinc-100 transition-all hover:shadow-2xl">
                   <div className="flex h-full w-full items-center justify-center border border-zinc-200 bg-zinc-50/50 p-4 transition-colors group-hover:bg-zinc-100">
-                    <img 
-                      src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`} 
-                      alt={`Gallery media ${i}`} 
+                    <img
+                      src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`}
+                      alt={`Gallery media ${i}`}
                       className="h-auto w-full object-contain transition duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -1218,7 +1421,7 @@ function ProjectDetailPage() {
         <aside className="space-y-8">
           <div className="border border-[#D4AF37]/30 bg-white p-8 shadow-lg">
             <p className="text-xs font-bold uppercase tracking-widest text-[#B3001B]">Measurable Result</p>
-            <p className="mt-4 font-['Playfair_Display'] text-3xl font-bold text-[#B3001B]">{project.result}</p>
+            <p className="mt-4 font-['Inter'] text-3xl font-bold text-[#B3001B]">{project.result}</p>
           </div>
           <div className="bg-zinc-900 p-8 text-white">
             <h3 className="text-lg font-bold">Key Deliverables</h3>
@@ -1232,7 +1435,7 @@ function ProjectDetailPage() {
             </ul>
           </div>
           <div className="border border-zinc-200 p-8">
-            <h3 className="font-['Playfair_Display'] text-xl font-bold">Scale Your Brand</h3>
+            <h3 className="font-['Inter'] text-xl font-bold">Scale Your Brand</h3>
             <p className="mt-3 text-sm text-zinc-600">Get similar results for your business. Book a discovery call today.</p>
             <Link to="/contact" className="mt-6 inline-flex h-11 items-center justify-center bg-[#B3001B] px-6 text-sm font-semibold text-white transition hover:bg-[#920015]">
               Start Your Project
@@ -1248,7 +1451,7 @@ function PortfolioPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-18">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Portfolio</p>
-      <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Results that prove our approach.</h1>
+      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Results that prove our approach.</h1>
       <div className="mt-10 space-y-8">
         {projects.map((project) => (
           <Link
@@ -1292,7 +1495,7 @@ function BlogPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-18">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Blog</p>
-      <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Marketing intelligence from the field.</h1>
+      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Marketing intelligence from the field.</h1>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {posts.map((post) => (
           <article key={post.slug} className="border border-zinc-200 p-5">
@@ -1318,7 +1521,7 @@ function BlogSinglePage() {
   if (!post) {
     return (
       <main className="mx-auto max-w-6xl px-4 py-20 md:px-6">
-        <h1 className="font-['Playfair_Display'] text-4xl font-bold">Post not found.</h1>
+        <h1 className="font-['Inter'] text-4xl font-bold">Post not found.</h1>
         <Link to="/blog" className="mt-4 inline-block text-[#B3001B]">
           Back to Blog
         </Link>
@@ -1329,7 +1532,7 @@ function BlogSinglePage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 md:px-6 md:py-18">
       <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">{post.category}</p>
-      <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">{post.title}</h1>
+      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">{post.title}</h1>
       <p className="mt-3 text-sm uppercase tracking-[0.12em] text-zinc-500">{post.date}</p>
       <article className="mt-8 border-l-2 border-[#D4AF37] pl-5 text-lg leading-relaxed text-zinc-800">{post.content}</article>
     </main>
@@ -1342,7 +1545,7 @@ function ContactPage() {
       <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
         <section>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Contact</p>
-          <h1 className="mt-3 font-['Playfair_Display'] text-4xl font-bold text-zinc-950 md:text-5xl">Let&apos;s discuss your growth targets.</h1>
+          <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Let&apos;s discuss your growth targets.</h1>
           <p className="mt-4 text-zinc-700">Share your goals and we will map the highest-impact opportunities for your brand.</p>
           <div className="mt-8 space-y-4 text-sm text-zinc-700">
             <p className="flex items-center gap-2">
@@ -1384,7 +1587,7 @@ function Footer() {
     <footer className="bg-zinc-950 py-12 text-zinc-300">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-4 md:px-6">
         <div>
-          <p className="font-['Playfair_Display'] text-2xl font-bold text-white">{brand}</p>
+          <p className="font-['Inter'] text-2xl font-bold text-white">{brand}</p>
           <p className="mt-3 text-sm">Premium marketing systems for brands that want market authority and real growth.</p>
           <Link to="/#enquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
             Book Your Strategy Call
