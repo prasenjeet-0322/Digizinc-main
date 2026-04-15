@@ -355,7 +355,14 @@ function CarouselReviews() {
                 "{testimonials[index].content}"
               </p>
               <div className="mt-8 flex flex-col items-center gap-2">
-                <img src={testimonials[index].image} alt={testimonials[index].name} className="h-14 w-14 rounded-full object-cover grayscale" />
+                <img 
+                  src={testimonials[index].image} 
+                  alt={testimonials[index].name} 
+                  width={56}
+                  height={56}
+                  loading="lazy"
+                  className="h-14 w-14 rounded-full object-cover grayscale" 
+                />
                 <div className="text-center">
                   <p className="font-bold text-white tracking-wide">{testimonials[index].name}</p>
                   <p className="text-[10px] text-[#D4AF37] uppercase tracking-[0.2em] font-semibold">{testimonials[index].role}</p>
@@ -828,7 +835,10 @@ function LandingPage() {
                 <img
                   src="/about-office.png"
                   alt="Creative team workspace"
-                  className="w-full h-auto rounded-[2rem] object-cover shadow-2xl"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  className="w-full h-auto aspect-video rounded-[2rem] object-cover shadow-2xl"
                 />
               </div>
             </div>
@@ -909,6 +919,9 @@ function LandingPage() {
                       <img
                         src={cardImages[service.slug] || cardImages['branding-identity']}
                         alt=""
+                        width={256}
+                        height={256}
+                        loading="lazy"
                         className="h-full w-full object-contain mix-blend-normal"
                       />
                     </div>
@@ -1011,6 +1024,9 @@ function LandingPage() {
                       <img 
                         src={industryInfo[activeIndustry].img} 
                         alt="" 
+                        width={400}
+                        height={400}
+                        loading="lazy"
                         className="absolute inset-0 h-full w-full object-contain md:object-cover md:p-4"
                       />
                     </div>
@@ -1066,6 +1082,9 @@ function LandingPage() {
                       <img 
                         src={industryInfo[activeIndustry].img} 
                         alt="" 
+                        width={400}
+                        height={256}
+                        loading="lazy"
                         className="h-full w-full object-cover"
                       />
                     </div>
@@ -1114,6 +1133,8 @@ function LandingPage() {
                   <img
                     src={project.image}
                     alt={project.company}
+                    width={400}
+                    height={300}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-40"
                     loading="lazy"
                   />
@@ -1246,6 +1267,9 @@ function ServicesPage() {
                   <img
                     src={cardImages[service.slug] || cardImages['branding-identity']}
                     alt=""
+                    width={320}
+                    height={320}
+                    loading="lazy"
                     className="h-full w-full object-contain mix-blend-normal"
                   />
                 </div>
@@ -1293,6 +1317,9 @@ function AboutPage() {
             <img
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
               alt="Digizinc office"
+              width={600}
+              height={600}
+              loading="lazy"
               className="h-full w-full object-cover shadow-2xl"
             />
           </div>
@@ -1362,6 +1389,9 @@ function AboutPage() {
                 <img
                   src={member.image}
                   alt={member.name}
+                  width={300}
+                  height={400}
+                  loading="lazy"
                   className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
@@ -1449,7 +1479,14 @@ function ProjectDetailPage() {
         <section>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">{project.industry}</p>
           <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">{project.company}</h1>
-          <img src={project.image} alt={project.company} className="mt-8 h-80 w-full object-cover shadow-xl md:h-[450px]" />
+          <img 
+            src={project.image} 
+            alt={project.company} 
+            width={800}
+            height={450}
+            loading="lazy"
+            className="mt-8 h-80 w-full object-cover shadow-xl md:h-[450px]" 
+          />
           <div className="mt-10">
             <h2 className="font-['Inter'] text-2xl font-bold text-zinc-900">Project Overview</h2>
             <p className="mt-4 text-lg leading-relaxed text-zinc-700">{project.detail}</p>
@@ -1502,6 +1539,9 @@ function ProjectDetailPage() {
                 <img
                   src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`}
                   alt={`Gallery media ${i}`}
+                  width={400}
+                  height={300}
+                  loading="lazy"
                   className="h-auto w-full object-contain transition duration-500 group-hover:scale-105 md:object-cover md:shadow-xl"
                 />
               </div>
@@ -1529,6 +1569,8 @@ function PortfolioPage() {
               <img
                 src={project.image}
                 alt={project.company}
+                width={600}
+                height={400}
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
               />
