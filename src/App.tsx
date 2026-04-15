@@ -559,6 +559,7 @@ function EnquiryForm({ compact = false }: { compact?: boolean }) {
 
   return (
     <form
+      id="enquiry"
       onSubmit={handleSubmit}
       className={`space-y-4 border border-white/20 bg-white p-5 text-left shadow-2xl shadow-black/30 backdrop-blur-sm ${compact ? "" : "md:p-6"
         }`}
@@ -639,7 +640,7 @@ function Header() {
               </NavLink>
             ))}
             <button
-              onClick={() => scrollLink("enquiry")}
+              onClick={() => navigate("/contact#enquiry")}
               className="inline-flex h-10 items-center rounded-full bg-[#B3001B] px-6 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#920015] hover:shadow-md hover:shadow-red-900/20 active:scale-95"
             >
               Get Free Audit
@@ -694,8 +695,7 @@ function Header() {
                 transition={{ delay: 0.5 }}
                 onClick={() => {
                   setOpen(false);
-                  const node = document.getElementById("enquiry");
-                  if (node) node.scrollIntoView({ behavior: "smooth" });
+                  navigate("/contact#enquiry");
                 }}
                 className="mt-6 inline-flex h-14 items-center bg-[#B3001B] px-10 text-sm font-bold uppercase tracking-widest text-white"
               >
@@ -720,7 +720,7 @@ function HeroSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(179,0,27,0.55),transparent_48%),radial-gradient(circle_at_80%_80%,rgba(212,175,55,0.28),transparent_42%)]" />
+
       <div className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-4xl flex-col items-center justify-center px-4 pt-32 pb-16 text-center md:px-6 md:pt-40 md:pb-20">
         <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="flex flex-col items-center">
           <h1 className="font-['Inter'] text-4xl font-bold leading-tight md:text-7xl">
@@ -837,92 +837,110 @@ function LandingPage() {
           </motion.div>
         </section>
 
-        <section id="services" className="bg-zinc-950 py-16 text-white md:py-20">
+        <section id="services" className="bg-zinc-950 py-16 text-white md:py-24">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]"></p>
-                <h2 className="mt-3 max-w-2xl font-['Inter'] text-3xl font-bold md:text-4xl">OUR EXPERTISE.</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">Our Expertise</p>
+                <h2 className="mt-3 max-w-2xl font-['Inter'] text-3xl font-bold md:text-5xl">SOLUTIONS THAT SCALE.</h2>
               </div>
-              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37] transition hover:text-[#c39b1f]">
-                View All Services
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              {[
-                {
-                  title: "Video\nProduction",
-                  slug: "video-production",
-                  bgClass: "bg-white",
-                  textClass: "text-zinc-950",
-                  btnBgClass: "bg-black",
-                  btnIconClass: "text-white",
-                  btnTextClass: "text-zinc-950",
-                  image: "/service_video.png",
-                },
-                {
-                  title: "Pay-per-click\nadvertising",
-                  slug: "advertising-marketing",
-                  bgClass: "bg-[#18181A]",
-                  textClass: "text-white",
-                  btnBgClass: "bg-white",
-                  btnIconClass: "text-black",
-                  btnTextClass: "text-white",
-                  image: "/service_ppc.png",
-                },
-                {
-                  title: "Social Media\nMarketing",
-                  slug: "content-creation-storytelling",
-                  bgClass: "bg-[#18181A]",
-                  textClass: "text-white",
-                  btnBgClass: "bg-white",
-                  btnIconClass: "text-black",
-                  btnTextClass: "text-white",
-                  image: "/service_social.png",
-                },
-                {
-                  title: "Search engine\noptimization",
-                  slug: "search-engine-optimization",
-                  bgClass: "bg-white",
-                  textClass: "text-zinc-950",
-                  btnBgClass: "bg-black",
-                  btnIconClass: "text-white",
-                  btnTextClass: "text-zinc-950",
-                  image: "/service_seo.png",
-                },
-              ].map((card, index) => (
-                <motion.article
-                  key={card.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: index * 0.08, duration: 0.55 }}
-                  className={`relative flex h-[200px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform hover:-translate-y-1 md:h-[220px] md:p-8 ${card.bgClass}`}
+              <div className="hidden items-center gap-4 md:flex">
+                <button
+                  onClick={() => {
+                    const carousel = document.getElementById('services-carousel');
+                    if (carousel) carousel.scrollBy({ left: -400, behavior: 'smooth' });
+                  }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-white/20"
                 >
-                  <h3 className={`whitespace-pre-line text-xl font-bold leading-tight tracking-tight md:text-2xl ${card.textClass}`}>
-                    {card.title}
-                  </h3>
+                  <ChevronLeft size={24} className="text-[#D4AF37]" />
+                </button>
+                <button
+                  onClick={() => {
+                    const carousel = document.getElementById('services-carousel');
+                    if (carousel) carousel.scrollBy({ left: 400, behavior: 'smooth' });
+                  }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:bg-white/20"
+                >
+                  <ChevronRight size={24} className="text-[#D4AF37]" />
+                </button>
+              </div>
+            </div>
 
-                  <div className="absolute -bottom-4 -right-4 w-44 md:-bottom-6 md:-right-6 md:w-56 lg:w-60">
-                    <img
-                      src={card.image}
-                      alt=""
-                      className="h-full w-full object-contain mix-blend-normal"
-                    />
-                  </div>
+            <div
+              id="services-carousel"
+              className="mt-12 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide no-scrollbar"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              onScroll={(e) => {
+                const target = e.currentTarget;
+                const progress = (target.scrollLeft / (target.scrollWidth - target.clientWidth)) * 100;
+                const bar = document.getElementById('services-progress-bar');
+                if (bar) bar.style.width = `${progress}%`;
+              }}
+            >
+              {services.map((service, index) => {
+                const isLight = index % 2 === 0;
+                const cardImages: Record<string, string> = {
+                  'video-production': '/service_video.png',
+                  'motion-video-production': '/service_video.png',
+                  'advertising-marketing': '/service_ppc.png',
+                  'content-creation-storytelling': '/service_social.png',
+                  'search-engine-optimization': '/service_seo.png',
+                  'branding-identity': 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80',
+                  'website-design-development': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+                  'print-packaging': '/1776208052226-019d8e3f-782b-7e5f-8052-3a66bbbee30d.png',
+                  'ui-ux-digital-experience': 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=800&q=80',
+                  'illustration-custom-artwork': 'https://images.unsplash.com/photo-1547891301-158cd0755ef2?auto=format&fit=crop&w=800&q=80',
+                  'experiential-interactive-design': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
+                  'photography-visual-content': 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=800&q=80',
+                };
 
-                  <Link
-                    to={`/services/${card.slug}`}
-                    className={`group relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest ${card.btnTextClass}`}
+                return (
+                  <motion.article
+                    key={service.slug}
+                    className={`relative min-w-[300px] md:min-w-[420px] h-[240px] md:h-[280px] flex flex-col justify-between overflow-hidden rounded-2xl p-6 md:p-8 snap-start transition-transform hover:-translate-y-1 ${
+                      isLight ? "bg-white text-zinc-950" : "bg-[#18181A] text-white"
+                    }`}
                   >
-                    <span className={`flex h-10 w-10 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${card.btnBgClass}`}>
-                      <ArrowUpRight size={18} className={card.btnIconClass} />
-                    </span>
-                    <span className="hidden md:inline">LEARN MORE</span>
-                  </Link>
-                </motion.article>
-              ))}
+                    <h3 className="whitespace-pre-line text-xl font-bold leading-tight tracking-tight md:text-3xl">
+                      {service.title}
+                    </h3>
+
+                    <div className="absolute -bottom-4 -right-4 w-40 md:-bottom-8 md:-right-8 md:w-64 opacity-90">
+                      <img
+                        src={cardImages[service.slug] || cardImages['branding-identity']}
+                        alt=""
+                        className="h-full w-full object-contain mix-blend-normal"
+                      />
+                    </div>
+
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className={`group relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest ${
+                        isLight ? "text-zinc-950" : "text-white"
+                      }`}
+                    >
+                      <span className={`flex h-10 w-10 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 ${
+                        isLight ? "bg-black" : "bg-white"
+                      }`}>
+                        <ArrowUpRight size={18} className={isLight ? "text-white" : "text-black"} />
+                      </span>
+                      <span className="hidden md:inline">LEARN MORE</span>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            {/* Progress Bar Area */}
+            <div className="mt-8 flex items-center justify-between gap-8 md:mt-12">
+              <div className="relative h-[2px] w-full bg-white/10 overflow-hidden rounded-full">
+                <div
+                  id="services-progress-bar"
+                  className="absolute left-0 top-0 h-full bg-[#D4AF37] transition-all duration-300"
+                  style={{ width: '0%' }}
+                />
+              </div>
+              <p className="hidden shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 md:block">Scroll to explore</p>
             </div>
           </div>
         </section>
@@ -988,13 +1006,12 @@ function LandingPage() {
                       ))}
                     </div>
                   </div>
-                  <div className="relative flex items-center justify-center">
-                    <div className="relative h-80 w-80">
-                      <div className="absolute inset-0 bg-[#B3001B]/20 blur-[100px]" />
+                  <div className="relative flex items-center justify-center h-full">
+                    <div className="relative h-full w-full">
                       <img 
                         src={industryInfo[activeIndustry].img} 
                         alt="" 
-                        className="relative z-10 h-full w-full object-contain filter drop-shadow-[0_0_30px_rgba(179,0,27,0.3)]"
+                        className="absolute inset-0 h-full w-full object-contain md:object-cover md:p-4"
                       />
                     </div>
                   </div>
@@ -1008,7 +1025,7 @@ function LandingPage() {
 
           {/* Mobile Carousel View */}
           <div className="lg:hidden">
-            <div className="relative overflow-hidden rounded-3xl bg-[#111111] px-6 py-10 text-white">
+            <div className="relative overflow-hidden rounded-3xl bg-[#111111] px-6 pt-10 pb-0 text-white min-h-[620px] flex flex-col">
               <motion.div
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -1021,7 +1038,7 @@ function LandingPage() {
                     setActiveIndustry(industries_list[currentIndex - 1]);
                   }
                 }}
-                className="relative z-10 flex flex-col items-center text-center focus:outline-none"
+                className="relative z-10 flex flex-1 flex-col items-start text-left focus:outline-none"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -1029,7 +1046,7 @@ function LandingPage() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
-                    className="flex flex-col items-center"
+                    className="flex flex-1 flex-col items-start text-left"
                   >
                     <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight">
                       {activeIndustry.replace('-', ' ')}
@@ -1037,7 +1054,7 @@ function LandingPage() {
                     <p className="mb-8 text-sm leading-relaxed text-zinc-400">
                       {industryInfo[activeIndustry].desc}
                     </p>
-                    <div className="mb-8 flex justify-center gap-8">
+                    <div className="mb-8 flex justify-start gap-12">
                       {industryInfo[activeIndustry].stats.map((stat, i) => (
                         <div key={i}>
                           <p className="text-2xl font-bold text-[#D4AF37]">{stat.val}</p>
@@ -1045,12 +1062,11 @@ function LandingPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="relative h-48 w-48">
-                      <div className="absolute inset-0 bg-[#B3001B]/20 blur-[60px]" />
+                    <div className="relative mt-auto w-[calc(100%+3rem)] h-64 overflow-hidden -mx-6">
                       <img 
                         src={industryInfo[activeIndustry].img} 
                         alt="" 
-                        className="relative z-10 h-full w-full object-contain"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                   </motion.div>
@@ -1166,9 +1182,9 @@ function LandingPage() {
                 <h2 className="mt-3 font-['Inter'] text-3xl font-bold md:text-4xl">Let&apos;s build something powerful together.</h2>
                 <p className="mt-3 max-w-xl text-sm text-red-100">Book a strategy call with our lead team and receive a personalized growth roadmap.</p>
               </div>
-              <a href="#enquiry" className="mt-6 inline-flex h-11 items-center bg-[#D4AF37] px-5 text-sm font-semibold text-black transition hover:bg-[#c39b1f] md:mt-0">
+              <Link to="/contact#enquiry" className="mt-6 inline-flex h-11 items-center bg-[#D4AF37] px-5 text-sm font-semibold text-black transition hover:bg-[#c39b1f] md:mt-0">
                 Book a Free Strategy Call
-              </a>
+              </Link>
             </div>
           </motion.div>
         </section>
@@ -1179,32 +1195,80 @@ function LandingPage() {
 
 function ServicesPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-14 md:px-6 md:py-18">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B3001B]">Our Services</p>
-      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-zinc-950 md:text-5xl">Solutions tailored for exponential brand growth.</h1>
-      <p className="mt-5 max-w-2xl text-lg text-zinc-700">From digital-first identities to tangible physical experiences, Digizinc provides a comprehensive ecosystem of creative and strategic capabilities.</p>
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <article key={service.slug} className="border border-zinc-200 p-6">
-            <service.icon size={20} className="text-[#B3001B]" />
-            <h2 className="mt-3 text-2xl font-semibold text-zinc-950">{service.title}</h2>
-            <p className="mt-3 text-zinc-700">{service.detail}</p>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-700">
-              {service.bullets.map((bullet) => (
-                <li key={bullet} className="flex items-center gap-2">
-                  <BarChart3 size={14} className="text-[#D4AF37]" />
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-            <Link to={`/services/${service.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#B3001B]">
-              Learn More
-              <ArrowRight size={16} />
-            </Link>
-          </article>
-        ))}
-      </div>
-    </main>
+    <div className="min-h-screen bg-white">
+      <header className="bg-zinc-950 pt-32 pb-16 text-white md:pt-40 md:pb-24">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#D4AF37]">Comprehensive Solutions</p>
+          <h1 className="mt-4 font-['Inter'] text-4xl font-bold md:text-7xl">Capabilities that drive impact.</h1>
+          <p className="mt-6 max-w-2xl text-base text-zinc-400 md:text-xl">
+            From strategic branding to technical SEO, we deploy premium digital expertise to help brands scale in the modern digital landscape.
+          </p>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-32">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {services.map((service, index) => {
+            const isLight = index % 2 === 0;
+            const cardImages: Record<string, string> = {
+              'video-production': '/service_video.png',
+              'motion-video-production': '/service_video.png',
+              'advertising-marketing': '/service_ppc.png',
+              'content-creation-storytelling': '/service_social.png',
+              'search-engine-optimization': '/service_seo.png',
+              'branding-identity': 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80',
+              'website-design-development': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+              'print-packaging': '/1776208052226-019d8e3f-782b-7e5f-8052-3a66bbbee30d.png',
+              'ui-ux-digital-experience': 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=800&q=80',
+              'illustration-custom-artwork': 'https://images.unsplash.com/photo-1547891301-158cd0755ef2?auto=format&fit=crop&w=800&q=80',
+              'experiential-interactive-design': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
+              'photography-visual-content': 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=800&q=80',
+            };
+
+            return (
+              <motion.article
+                key={service.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className={`group relative flex min-h-[260px] md:min-h-[340px] flex-col justify-between overflow-hidden rounded-2xl p-6 md:p-10 transition-transform hover:-translate-y-1 ${
+                  isLight ? "bg-zinc-50 text-zinc-950 border border-zinc-100" : "bg-[#18181A] text-white"
+                }`}
+              >
+                <div className="relative z-10 max-w-[65%]">
+                  <h3 className="whitespace-pre-line font-['Inter'] text-2xl font-bold leading-tight tracking-tight md:text-4xl">
+                    {service.title}
+                  </h3>
+                </div>
+
+                <div className="absolute -bottom-4 -right-4 w-48 md:-bottom-12 md:-right-8 md:w-80 opacity-90 transition-transform duration-500 group-hover:scale-110">
+                  <img
+                    src={cardImages[service.slug] || cardImages['branding-identity']}
+                    alt=""
+                    className="h-full w-full object-contain mix-blend-normal"
+                  />
+                </div>
+
+                <Link
+                  to={`/services/${service.slug}`}
+                  className={`group relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest ${
+                    isLight ? "text-zinc-950" : "text-white"
+                  }`}
+                >
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 group-hover:bg-[#B3001B] group-hover:text-white ${
+                    isLight ? "bg-zinc-900 text-white" : "bg-white text-black"
+                  }`}>
+                    <ArrowUpRight size={20} />
+                  </span>
+                  <span className="font-bold tracking-[0.2em]">KNOW MORE</span>
+                </Link>
+              </motion.article>
+            );
+          })}
+        </div>
+      </main>
+    </div>
   );
 }
 
@@ -1401,22 +1465,7 @@ function ProjectDetailPage() {
             </div>
           </div>
 
-          <div className="mt-16">
-            <h2 className="font-['Inter'] text-2xl font-bold text-zinc-900">Project Gallery</h2>
-            <div className="mt-8 columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
-              {(project.gallery || [1, 2, 3, 4, 5, 6]).map((item, i) => (
-                <div key={i} className="group relative overflow-hidden bg-zinc-100 transition-all hover:shadow-2xl">
-                  <div className="flex h-full w-full items-center justify-center border border-zinc-200 bg-zinc-50/50 p-4 transition-colors group-hover:bg-zinc-100">
-                    <img
-                      src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`}
-                      alt={`Gallery media ${i}`}
-                      className="h-auto w-full object-contain transition duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+
         </section>
         <aside className="space-y-8">
           <div className="border border-[#D4AF37]/30 bg-white p-8 shadow-lg">
@@ -1442,6 +1491,23 @@ function ProjectDetailPage() {
             </Link>
           </div>
         </aside>
+      </div>
+
+      <div className="mt-24">
+        <h2 className="font-['Inter'] text-3xl font-bold text-zinc-900">Project Gallery</h2>
+        <div className="mt-10 columns-1 gap-6 space-y-6 sm:columns-2 lg:columns-3">
+          {(project.gallery || [1, 2, 3, 4, 5, 6]).map((item, i) => (
+            <div key={i} className="group relative overflow-hidden transition-all md:bg-transparent md:hover:shadow-xl">
+              <div className="flex h-full w-full items-center justify-center border border-zinc-200 bg-zinc-50/50 p-4 transition-colors group-hover:bg-zinc-100 md:border-none md:bg-transparent md:p-0 md:group-hover:bg-transparent">
+                <img
+                  src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`}
+                  alt={`Gallery media ${i}`}
+                  className="h-auto w-full object-contain transition duration-500 group-hover:scale-105 md:object-cover md:shadow-xl"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
@@ -1589,7 +1655,7 @@ function Footer() {
         <div>
           <p className="font-['Inter'] text-2xl font-bold text-white">{brand}</p>
           <p className="mt-3 text-sm">Premium marketing systems for brands that want market authority and real growth.</p>
-          <Link to="/#enquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
+          <Link to="/contact#enquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
             Book Your Strategy Call
             <ArrowRight size={16} />
           </Link>
