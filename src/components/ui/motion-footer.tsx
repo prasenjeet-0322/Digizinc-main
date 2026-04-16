@@ -4,6 +4,7 @@ import * as React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { ArrowUp, LayoutGrid, Zap, Rocket, ShieldCheck, Mail } from "lucide-react";
 
@@ -225,10 +226,14 @@ export function CinematicFooter() {
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!wrapperRef.current) return;
+
+    // Refresh ScrollTrigger as the page height changes with route
+    ScrollTrigger.refresh();
 
     const ctx = gsap.context(() => {
       // Background Parallax
@@ -269,7 +274,7 @@ export function CinematicFooter() {
     }, wrapperRef);
 
     return () => ctx.revert();
-  },[]);
+  }, [location.pathname]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
