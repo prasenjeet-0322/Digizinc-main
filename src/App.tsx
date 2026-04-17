@@ -1,10 +1,12 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import SplashLoader from "@/components/ui/SplashLoader";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 import { ArticleCard } from "@/components/ui/blog-post-card";
 import { HeroSection } from "@/components/ui/glass-video-hero";
 import IntegrationHero from "@/components/ui/integration-hero";
+import { ProductRevealCard } from "@/components/ui/product-reveal-card";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -54,6 +56,7 @@ import {
 } from "react-router-dom";
 import { CircularTestimonials } from "@/components/ui/circular-testimonials";
 import { PricingSection } from "@/components/ui/pricing";
+import StackingIndustries from "@/components/ui/stacking-industries";
 
 const PLANS = [
   {
@@ -146,6 +149,16 @@ const PLANS = [
 
 const brand = "Digizinc";
 const formEndpoint = "https://formsubmit.co/ajax/hello@digizinc.com";
+
+const parallaxImages = [
+  { src: "/bento-grid/1.mp4", alt: "Collaboration" },
+  { src: "/bento-grid/2.jpg", alt: "Data Analytics" },
+  { src: "/bento-grid/3.mp4", alt: "Design Process" },
+  { src: "/bento-grid/4.jpg", alt: "Digital Strategy" },
+  { src: "/bento-grid/5.mp4", alt: "Studio Environment" },
+  { src: "/bento-grid/6.jpg", alt: "Digital Art" },
+  { src: "/bento-grid/7.mp4", alt: "Success Metrics" },
+];
 
 const services = [
   {
@@ -477,34 +490,6 @@ function ScrollManager() {
   return null;
 }
 
-function AboutCarousel() {
-  const images = ["/about-office-1.png", "/about-office-2.png", "/about-office-3.png"];
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [images.length]);
-
-  return (
-    <div className="relative h-full w-full">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={index}
-          src={images[index]}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-    </div>
-  );
-}
 
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [value, setValue] = useState(0);
@@ -607,6 +592,7 @@ function EnquiryForm({ compact = false }: { compact?: boolean }) {
 
 function Header() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
@@ -617,19 +603,32 @@ function Header() {
       const documentHeight = document.documentElement.scrollHeight;
 
       // The footer reveal usually occupies the last viewport height.
-      // We start fading out when the footer reveal begins.
-      const threshold = documentHeight - windowHeight - 50;
+      const footerThreshold = documentHeight - windowHeight - 50;
+      let shouldHide = scrollY > footerThreshold;
 
-      if (scrollY > threshold) {
-        setIsHidden(true);
-      } else {
-        setIsHidden(false);
+      // Hide navbar on landing page until the Services section is reached
+      if (pathname === "/") {
+        const servicesSection = document.getElementById("services");
+        if (servicesSection) {
+          // Fade in slightly before the section hits the top of the screen
+          const servicesTop = servicesSection.offsetTop;
+          if (scrollY < servicesTop - 150) {
+            shouldHide = true;
+          }
+        } else if (scrollY < windowHeight * 2) {
+            // Fallback if the section isn't mounted immediately
+            shouldHide = true;
+        }
       }
+
+      setIsHidden(shouldHide);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger immediately to hide on load
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const scrollLink = (id: string) => {
     navigate(`/#${id}`);
@@ -744,99 +743,58 @@ function Header() {
 
 
 function LandingPage() {
+  const navigate = useNavigate();
   const industryInfo: Record<string, any> = {
     'real-estate': {
       title: 'LUXURY',
       highlight: 'SPACES.',
       desc: 'Elevating property value through immersive digital experiences and high-end visual storytelling that captivates investors.',
       stats: [{ val: '15%', label: 'YIELD INCREASE' }, { val: '45+', label: 'PROJECTS' }],
-      img: '/industry_tech.png'
+      img: '/industries/1.jpg'
     },
     'education': {
       title: 'ENLIGHTENED',
       highlight: 'BRANDING.',
       desc: 'Modernizing the pursuit of knowledge. We build platforms and identities for educational institutions that value both tradition and evolution.',
       stats: [{ val: '24%', label: 'ENROLLMENT UP' }, { val: '120+', label: 'GLOBAL REACH' }],
-      img: '/industry_education.png'
+      img: '/industries/2.jpg'
     },
     'ecommerce': {
       title: 'CONVERSION',
       highlight: 'ENGINE.',
       desc: 'Engineering high-velocity digital storefronts that blend aesthetic excellence with forensic optimization for maximum ROI.',
       stats: [{ val: '300%', label: 'ROI BOOST' }, { val: '2M+', label: 'SHOPPERS' }],
-      img: '/industry_tech.png'
+      img: '/industries/3.jpg'
     },
     'healthcare': {
       title: 'DIGITAL',
       highlight: 'TRUST.',
       desc: 'Bridging the gap between patient care and digital innovation through secure, human-centered design for modern medical leaders.',
       stats: [{ val: '40%', label: 'GROWTH' }, { val: '15+', label: 'AWARDS' }],
-      img: '/industry_education.png'
+      img: '/industries/4.jpg'
     },
     'it-saas': {
       title: 'SCALABLE',
       highlight: 'SYSTEMS.',
       desc: 'Fueling hyperscale growth for SaaS and Tech through aggressive brand positioning and precision-engineered digital products.',
       stats: [{ val: '10X', label: 'FASTER SCALE' }, { val: '500k+', label: 'USERS' }],
-      img: '/industry_tech.png'
+      img: '/industries/5.jpg'
     },
     'corporate': {
       title: 'MARKET',
       highlight: 'AUTHORITY.',
       desc: 'Establishing market dominance for professional services through sophisticated brand systems and strategic digital dominance.',
       stats: [{ val: '50%', label: 'EFFICIENCY' }, { val: '100+', label: 'PARTNERS' }],
-      img: '/industry_education.png'
+      img: '/industries/6.jpg'
     }
   };
 
   return (
     <>
       <HeroSection />
+      <ZoomParallax images={parallaxImages} />
 
       <main>
-        <section id="about" className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="grid items-center gap-12 md:grid-cols-2">
-              <div className="space-y-8">
-                <motion.h2
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="font-['Bebas Neue'] text-4xl font-bold tracking-tight text-cream md:text-5xl lg:text-5.5xl leading-[1.1]"
-                >
-                  ABOUT US
-                </motion.h2>
-                <motion.p
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="max-w-xl text-lg leading-relaxed text-zinc-400"
-                >
-                  We're not your typical design agency. Founded in 2014, we're a collective of designers, developers, and strategists who believe great digital experiences should be beautiful, functional, and human-centered. From startups to global brands, we help ambitious businesses stand out.
-                </motion.p>
-              </div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="relative h-[300px] md:h-[450px] w-full overflow-hidden rounded-3xl group shadow-2xl"
-              >
-                <AboutCarousel />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none" />
-              </motion.div>
-            </div>
-
-
-          </motion.div>
-        </section>
 
         <section id="services" className="bg-zinc-950 py-16 text-white md:py-24">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -875,58 +833,43 @@ function LandingPage() {
 
             <div
               id="services-carousel"
-              className="mt-8 flex gap-6 overflow-x-auto pt-4 pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overflowY: 'visible' }}
+              className="mt-8 flex gap-6 overflow-x-auto pt-4 pb-12 snap-x snap-proximity scrollbar-hide no-scrollbar overscroll-x-contain touch-pan-x"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overflowY: 'visible', scrollPadding: '0 24px' }}
               onScroll={(e) => {
                 const target = e.currentTarget;
                 const progress = (target.scrollLeft / (target.scrollWidth - target.clientWidth)) * 100;
                 const bar = document.getElementById('services-progress-bar');
-                if (bar) bar.style.width = `${progress}%`;
+                if (bar) bar.style.setProperty('width', `${progress}%`);
               }}
             >
               {services.map((service, index) => {
                 const cardImages: Record<string, string> = {
-                  'branding-identity': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
-                  'website-design-development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-                  'content-creation-storytelling': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
-                  'print-packaging': 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&w=800&q=80',
+                  'branding': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
+                  'website-design': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
+                  'content-creation': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+                  'printpackaging': 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&w=800&q=80',
                   'advertising-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
                   'ui-ux-digital-experience': 'https://images.unsplash.com/photo-1541462608141-ad67577467b4?auto=format&fit=crop&w=800&q=80',
-                  'motion-video-production': 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
-                  'illustration-custom-artwork': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                  'experiential-interactive-design': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
-                  'photography-visual-content': 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80',
+                  'video-production': 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
+                  'illustration': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+                  'prouct photoshoot': 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80',
                 };
 
                 return (
-                  <motion.article
+                  <div 
                     key={service.slug}
-                    className="relative min-w-[300px] md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] h-[320px] md:h-[450px] flex flex-col items-start justify-center overflow-hidden rounded-2xl p-8 md:p-10 snap-start transition-all duration-500 hover:scale-[1.02] group"
-                    style={{
-                      backgroundImage: `linear-gradient(to bottom, rgba(242, 48, 48, 0.7), rgba(166, 31, 31, 0.85), rgba(13, 13, 13, 0.95)), url('${cardImages[service.slug] || cardImages['branding-identity']}')`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }}
+                    className="flex-shrink-0 snap-start h-[450px] w-[300px] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                   >
-                    <div className="relative z-10 w-full">
-                      <h3 className="font-['Inter'] text-2xl font-[900] leading-[0.95] tracking-tighter text-white md:text-3xl lg:text-[2.25rem] uppercase mb-4 drop-shadow-xl">
-                        {service.title.replace(' & ', ',\n')}
-                      </h3>
-                      <p className="max-w-[260px] text-[13px] font-normal leading-relaxed text-white/80 md:text-sm lg:text-[15px]">
-                        {service.short}
-                      </p>
-                    </div>
-
-                    <Link
-                      to={`/services/${service.slug}`}
-                      className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 hover:scale-110 active:scale-95"
-                    >
-                      <ArrowUpRight size={24} />
-                    </Link>
-
-                    {/* Animated Grain Overlay */}
-                    <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-                  </motion.article>
+                    <ProductRevealCard
+                      name={service.title}
+                      image={cardImages[service.slug]}
+                      description={service.short}
+                      features={service.bullets}
+                      className="h-full w-full"
+                      onDiscoverMore={() => navigate("/services/" + service.slug)}
+                      onAdd={() => navigate("/contact#enquiry")}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -945,111 +888,18 @@ function LandingPage() {
           </div>
         </section>
 
-        <section id="industries" className="bg-zinc-950 text-white py-16 md:py-24">
-          <div className="mx-auto max-w-6xl px-4 md:px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex flex-wrap items-end justify-between gap-4 mb-8 md:mb-12"
-            >
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">INDUSTRIES</p>
-                <h2 className="mt-3 font-['Inter'] text-3xl font-bold text-cream/80 md:text-5xl">WHO WE BUILD FOR</h2>
-              </div>
-              <div className="hidden items-center gap-4 md:flex">
-                <button
-                  onClick={() => {
-                    const carousel = document.getElementById('industries-carousel');
-                    if (carousel) carousel.scrollBy({ left: -400, behavior: 'smooth' });
-                  }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-transparent/5 transition hover:bg-transparent/20"
-                >
-                  <ChevronLeft size={24} className="text-[#A61F1F]" />
-                </button>
-                <button
-                  onClick={() => {
-                    const carousel = document.getElementById('industries-carousel');
-                    if (carousel) carousel.scrollBy({ left: 400, behavior: 'smooth' });
-                  }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-transparent/5 transition hover:bg-transparent/20"
-                >
-                  <ChevronRight size={24} className="text-[#A61F1F]" />
-                </button>
-              </div>
-            </motion.div>
-
-            <div
-              id="industries-carousel"
-              className="flex gap-6 overflow-x-auto pt-4 pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              onScroll={(e) => {
-                const target = e.currentTarget;
-                const progress = (target.scrollLeft / (target.scrollWidth - target.clientWidth)) * 100;
-                const bar = document.getElementById('industries-progress-bar');
-                if (bar) bar.style.width = `${progress}%`;
-              }}
-            >
-              {Object.entries(industryInfo).map(([id, info], index) => (
-                <motion.article
-                  key={id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative min-w-[300px] md:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex flex-col items-start justify-between overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/5 p-8 snap-start transition-all duration-500 hover:scale-[1.02] group shadow-2xl h-[580px] md:h-[620px]"
-                >
-                  <div className="relative z-10 w-full">
-                    <h3 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white group-hover:text-[#F23030] transition-colors duration-300">
-                      {id.replace('-', ' ')}
-                    </h3>
-                    <p className="mb-8 text-sm leading-relaxed text-zinc-400">
-                      {info.desc}
-                    </p>
-                    <div className="mb-8 flex justify-start gap-8">
-                      {info.stats.map((stat: any, i: number) => (
-                        <div key={i}>
-                          <p className="text-2xl font-bold text-[#A61F1F]">{stat.val}</p>
-                          <p className="mt-0.5 text-[10px] font-bold uppercase tracking-widest text-zinc-500">{stat.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="relative mt-auto w-[calc(100%+4rem)] h-64 overflow-hidden -mx-8 -mb-8">
-                    <img
-                      src={info.img}
-                      alt=""
-                      width={400}
-                      height={256}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                  </div>
-
-                  <div className="absolute inset-0 opacity-5 pointer-events-none">
-                    <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-
-            {/* Progress Bar Area */}
-            <div className="mt-8 flex items-center justify-between gap-8 md:mt-12">
-              <div className="relative h-[2px] w-full bg-white/5 overflow-hidden rounded-full">
-                <div
-                  id="industries-progress-bar"
-                  className="absolute left-0 top-0 h-full bg-[#F23030] transition-all duration-300"
-                  style={{ width: '0%' }}
-                />
-              </div>
-              <p className="hidden shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 md:block">Swipe to explore</p>
-            </div>
-            <p className="mt-4 block text-center text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 md:hidden">Swipe to explore</p>
-          </div>
+        <section id="industries" className="bg-zinc-950 text-white border-t border-white/5">
+          <StackingIndustries 
+            industries={Object.entries(industryInfo).map(([id, info]) => ({
+              id,
+              title: id.replace('-', ' '),
+              desc: info.desc,
+              stats: info.stats,
+              img: info.img
+            }))} 
+          />
         </section>
+
 
         <section id="portfolio" className="bg-transparent/40 md:bg-transparent py-16 md:py-20">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -1470,16 +1320,6 @@ function ProjectDetailPage() {
             <h2 className="font-['Inter'] text-2xl font-bold text-cream">Project Overview</h2>
             <p className="mt-4 text-lg leading-relaxed text-zinc-400">{project.detail}</p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="border border-white/5 md:border-white/10 bg-transparent/40 md:bg-transparent p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-zinc-400">Before</p>
-              <p className="mt-2 font-medium text-zinc-800">{project.before}</p>
-            </div>
-            <div className="border border-emerald-100 bg-emerald-50 p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-600">After</p>
-              <p className="mt-2 font-bold text-emerald-900">{project.after}</p>
-            </div>
-          </div>
 
 
         </section>
@@ -1583,18 +1423,36 @@ function BlogPage() {
     <main className="mx-auto max-w-6xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Blog</p>
       <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Marketing intelligence from the field.</h1>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="mt-12 grid gap-6 md:grid-cols-3">
         {posts.map((post) => (
-          <article key={post.slug} className="border border-white/10 p-5">
-            <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">{post.category}</p>
-            <h2 className="mt-3 text-2xl font-semibold text-cream/80">{post.title}</h2>
-            <p className="mt-3 text-sm text-zinc-400">{post.excerpt}</p>
-            <p className="mt-3 text-xs uppercase tracking-[0.12em] text-zinc-500">{post.date}</p>
-            <Link to={`/blog/${post.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#F23030]">
-              Read Article
-              <ArrowRight size={16} />
-            </Link>
-          </article>
+          <Link
+            key={post.slug}
+            to={`/blog/${post.slug}`}
+            className="group relative flex h-[450px] w-full flex-col justify-end overflow-hidden border border-white/10 bg-[#0a0a0a] rounded-2xl transition-all hover:border-[#F23030]/30 shadow-2xl"
+          >
+            <img 
+              src={post.image} 
+              alt={post.title} 
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-90 transition-opacity group-hover:opacity-100 z-0" />
+            
+            <div className="relative z-10 p-8 transform transition-transform duration-500 group-hover:-translate-y-4 flex flex-col h-full justify-end">
+              <p className="text-[#F23030] text-[10px] font-['Inter'] font-bold uppercase tracking-[0.3em] mb-4">
+                {post.category}
+              </p>
+              <h2 className="font-['Inter'] text-2xl font-bold uppercase text-white leading-tight mb-4 group-hover:text-[#F23030] transition-colors">{post.title}</h2>
+              <p className="text-sm text-zinc-400 line-clamp-3 mb-6 bg-transparent">{post.excerpt}</p>
+              
+              <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/10">
+                <p className="text-[10px] font-['Inter'] font-bold uppercase tracking-[0.2em] text-zinc-500">{post.date}</p>
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#F23030] opacity-0 transition-opacity duration-300 md:group-hover:opacity-100 hidden md:flex">
+                   Read Article
+                   <ArrowRight size={16} />
+                </div>
+              </div>
+            </div>
+          </Link>
         ))}
       </div>
     </main>

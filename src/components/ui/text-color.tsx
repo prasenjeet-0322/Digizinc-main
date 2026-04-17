@@ -31,7 +31,7 @@ export function TextColor() {
                 data-content="RESULTS."
                 className="before:animate-gradient-background-3 relative before:absolute before:bottom-1 before:left-0 before:top-0 before:z-0 before:w-full before:px-2 before:content-[attr(data-content)] sm:before:top-0"
               >
-                <span className="from-gradient-3-start to-gradient-3-end animate-gradient-foreground-3 bg-gradient-to-r bg-clip-text px-2 text-transparent sm:px-5">
+                <span className="animate-mesh-gradient animate-gradient-foreground-3 bg-clip-text px-2 text-transparent sm:px-5">
                   RESULTS.
                 </span>
               </span>
