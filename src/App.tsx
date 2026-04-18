@@ -161,96 +161,97 @@ const parallaxImages = [
 ];
 
 const services = [
+  // ── CORE SERVICES ──────────────────────────────────────────
   {
     slug: "branding",
-    title: "Branding ",
+    title: "Branding",
     footerTitle: "Branding",
     icon: Palette,
-    short: "Crafting distinct identities that resonate with your audience and define your market presence.",
+    short: "Building distinctive brand identities that command authority and create long-term market positioning.",
     detail:
-      "We build comprehensive brand systems including logo design, color theory, and verbal identity that ensure your brand stands out in a crowded marketplace. Every element is crafted to communicate your core values with precision and flair.",
-    bullets: ["Visual Identity Systems", "Brand Strategy & Positioning", "Voice & Tone Guidelines"],
+      "We engineer comprehensive brand systems — from logo design and visual language to verbal identity and brand strategy — built to establish market authority from day one. Every asset is crafted to position your business above competitors and communicate dominance with precision. Our brand architecture is designed for scale, ensuring consistency across all touchpoints as your company grows.",
+    bullets: ["Visual Identity Systems", "Brand Strategy & Positioning", "Voice & Tone Architecture", "Market Differentiation"],
   },
   {
-    slug: "website-design",
-    title: "Web Design ",
-    footerTitle: "Web Design",
-    icon: Laptop,
-    short: "High-performance digital homes built for speed, conversion, and premium user experience.",
-    detail:
-      "From custom landing pages to complex enterprise platforms, we develop responsive, SEO-ready websites that turn visitors into loyal customers. Our development process prioritizes clean code and lightning-fast performance.",
-    bullets: ["Responsive Web Design", "Custom CMS Integration", "Performance Optimization"],
-  },
-  {
-    slug: "content-creation",
-    title: "Content Creation",
-    footerTitle: "Content",
-    icon: MessageSquare,
-    short: "Narratives that captivate and convert through strategic content across all digital touchpoints.",
-    detail:
-      "We turn your brand's mission into compelling stories that build authority and community engagement. Through high-value blogs, social narratives, and email sequences, we keep your audience coming back for more.",
-    bullets: ["Editorial Strategy", "Social Media Content", "Copywriting & Scripting"],
-  },
-  {
-    slug: "printpackaging",
-    title: "Print Packaging",
-    footerTitle: "Print & Packaging",
-    icon: Box,
-    short: "Tangible brand experiences through premium packaging design and high-quality print collateral.",
-    detail:
-      "We bring your brand into the physical world with sustainable packaging solutions and stunning print materials. From the unboxing experience to the feel of the cardstock, every detail matters.",
-    bullets: ["Product Packaging Design", "Stationery & Collateral", "Premium Print Finishing"],
-  },
-  {
-    slug: "advertising-marketing",
-    title: "360° Advertising",
-    footerTitle: "Advertising",
+    slug: "digital-marketing",
+    title: "Digital Marketing",
+    footerTitle: "Digital Marketing",
     icon: Megaphone,
-    short: "Omnichannel campaigns engineered to scale your pipeline and maximize return on ad spend.",
+    short: "Driving consistent growth through integrated digital strategies focused on visibility, engagement, and conversion.",
     detail:
-      "We combine data-driven strategy with creative excellence to run profitable campaigns across Google, Meta, and LinkedIn. Our approach ensures every dollar spent is an investment in measurable growth.",
-    bullets: ["Paid Search & Social", "Ad Creative Strategy", "Analytics & Attribution"],
+      "We deploy integrated digital marketing ecosystems engineered for measurable B2B growth — from SEO and email automation to full-funnel paid strategies. Every campaign is built on data intelligence and calibrated for maximum ROI. Our frameworks are designed for dominance, ensuring your brand commands visibility across every critical digital channel.",
+    bullets: ["Full-Funnel Strategy", "SEO & Content Authority", "Email & Marketing Automation", "Analytics & Attribution"],
   },
   {
-    slug: "ui-ux-digital-experience",
-    title: "UI/UX ",
-    footerTitle: "UI/UX",
+    slug: "web-solutions",
+    title: "Web Solutions",
+    footerTitle: "Web Solutions",
+    icon: Laptop,
+    short: "Designing and developing high-performance websites and systems built for scalability and conversion.",
+    detail:
+      "We design and develop conversion-engineered web experiences built for enterprise-grade scalability. From high-impact landing pages to complex B2B platforms, every line of code is optimized for speed, performance, and business outcomes. Our web solutions are built to turn traffic into pipeline — not just to look premium, but to perform with precision.",
+    bullets: ["Conversion-Optimized Design", "Custom Platform Development", "Performance & Core Web Vitals", "CMS & System Integration"],
+  },
+  // ── SPECIALIZED SERVICES ───────────────────────────────────
+  {
+    slug: "software-development",
+    title: "Software Development",
+    footerTitle: "Software Dev",
     icon: Layers3,
-    short: "Intuitive interfaces designed to solve complex problems and provide seamless user journeys.",
+    short: "Building scalable, high-performance digital products tailored for business growth and operational efficiency.",
     detail:
-      "We focus on user-centric design principles to create interactive prototypes and final products that delight users and drive results. Our designs bridge the gap between technical complexity and effortless usability.",
-    bullets: ["User Research & Testing", "Interactive Prototyping", "Design System Management"],
+      "We architect and develop scalable software products — from internal business tools to customer-facing SaaS platforms — designed for operational excellence and market growth. Our engineering process is built around clean architecture, agile delivery, and performance at scale. Every digital product we build is designed to solve real business problems and generate measurable ROI.",
+    bullets: ["Custom SaaS Development", "API Architecture & Integration", "Business Process Automation", "Product Scaling & Optimization"],
   },
   {
-    slug: "video-production",
-    title: "Video Production",
-    footerTitle: "Motion",
-    icon: Video,
-    short: "Dynamic visual storytelling through professional video production and high-impact motion graphics.",
+    slug: "social-media-management",
+    title: "Social Media Management",
+    footerTitle: "Social Media",
+    icon: MessageSquare,
+    short: "Managing and growing your brand across Instagram, Facebook, and LinkedIn with consistent, strategy-led content.",
     detail:
-      "From cinematic brand films to social-first video ads, we bring your message to life with professional production and engaging animation. We capture attention in seconds and hold it with quality.",
-    bullets: ["Commercial Video Production", "2D/3D Motion Graphics", "Social Video Optimization"],
+      "We manage end-to-end social media ecosystems across Instagram, Facebook, and LinkedIn — built on strategic content calendars, brand-consistent creative, and data-driven engagement frameworks. Every post, story, and campaign is engineered to build authority, grow your audience, and generate qualified leads from your target B2B market.",
+    bullets: ["Platform Strategy (IG, FB, LinkedIn)", "Content Calendar & Production", "Community Management", "Performance Analytics & Reporting"],
   },
   {
-    slug: "illustration",
-    title: "Illustration ",
-    footerTitle: "Illustration",
+    slug: "performance-marketing",
+    title: "Performance Marketing",
+    footerTitle: "Performance",
+    icon: Target,
+    short: "Driving measurable ROI through precision-targeted campaigns across Meta, Google, LinkedIn, YouTube, and Display.",
+    detail:
+      "We run precision-engineered performance marketing campaigns across Meta, Google, LinkedIn, YouTube, and Display networks — each calibrated for your B2B growth objectives. Our approach combines audience intelligence, high-conversion creatives, and forensic attribution to ensure every ad rupee drives measurable business outcomes. Built for scale, optimized for dominance.",
+    bullets: ["Meta & Google Ads Management", "LinkedIn & YouTube Campaigns", "Display & Programmatic Advertising", "ROI Optimization & Attribution"],
+  },
+  {
+    slug: "graphic-design",
+    title: "Graphic Design",
+    footerTitle: "Graphic Design",
     icon: PenTool,
-    short: "Unique visual assets and bespoke illustrations that give your brand a one-of-a-kind personality.",
+    short: "Crafting impactful brand assets including logos, letterheads, and visiting cards that establish visual authority.",
     detail:
-      "Our artists create custom icons, illustrations, and digital art that differentiate your brand from the cookie-cutter competitors. We add a human touch to your digital presence through mastery of craft.",
-    bullets: ["Custom Iconography", "Digital Illustration", "Character Design"],
+      "We design premium brand collateral — logos, letterheads, visiting cards, and marketing assets — engineered to establish visual authority in every interaction. From the first business card handed over in a meeting to a boardroom presentation deck, every design asset we produce reinforces your brand's premium positioning and credibility.",
+    bullets: ["Logo & Identity Design", "Letterheads & Visiting Cards", "Marketing Collateral", "Presentation & Pitch Design"],
   },
-
   {
-    slug: "prouct photoshoot",
-    title: "prouct photoshoot ",
-    footerTitle: "Photography",
-    icon: Camera,
-    short: "Premium commercial photography and visual assets tailored for modern marketing channels.",
+    slug: "influencer-marketing",
+    title: "Influencer Marketing",
+    footerTitle: "Influencer",
+    icon: Handshake,
+    short: "Leveraging niche creators and UGC to build trust, reach targeted audiences, and drive authentic engagement.",
     detail:
-      "High-end product, lifestyle, and corporate photography that elevates your brand's aesthetic. We capture the essence of your brand in every frame, ensuring your visuals are as premium as your offering.",
-    bullets: ["Product Photography", "Corporate & Headshots", "Lifestyle Shoots"],
+      "We connect your brand with niche-relevant creators and UGC specialists to build authentic audience trust at scale. Our influencer marketing framework goes beyond follower counts — we focus on engagement quality, audience alignment, and conversion potential to ensure every collaboration drives real business results. Built for brands that demand authenticity with accountability.",
+    bullets: ["Niche Creator Sourcing & Management", "UGC Strategy & Production", "Campaign Performance Tracking", "B2B & B2C Influencer Activation"],
+  },
+  {
+    slug: "model-product-video",
+    title: "Model-Based Product Video",
+    footerTitle: "Product Video",
+    icon: Video,
+    short: "Creating high-conversion product videos with professional models to enhance brand perception and sales.",
+    detail:
+      "We produce high-conversion model-based product videos that elevate brand perception and drive purchase intent. From concept and casting to production and post-processing, every frame is engineered to showcase your product with cinematic precision. Our videos are optimized for paid social, e-commerce, and digital campaigns — designed to convert viewers into buyers.",
+    bullets: ["Professional Model Casting", "Cinematic Product Shoots", "Social & E-commerce Video Formats", "Post-Production & Color Grading"],
   },
 ];
 
@@ -476,15 +477,23 @@ function ScrollManager() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
     if (hash) {
       const id = hash.replace("#", "");
       const node = document.getElementById(id);
       if (node) {
-        setTimeout(() => node.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+        // Longer timeout to ensure content is rendered
+        setTimeout(() => node.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
       }
       return;
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Instant scroll to top on route change
+    window.scrollTo(0, 0);
   }, [pathname, hash]);
 
   return null;
@@ -616,8 +625,8 @@ function Header() {
             shouldHide = true;
           }
         } else if (scrollY < windowHeight * 2) {
-            // Fallback if the section isn't mounted immediately
-            shouldHide = true;
+          // Fallback if the section isn't mounted immediately
+          shouldHide = true;
         }
       }
 
@@ -746,47 +755,95 @@ function LandingPage() {
   const navigate = useNavigate();
   const industryInfo: Record<string, any> = {
     'real-estate': {
-      title: 'LUXURY',
-      highlight: 'SPACES.',
-      desc: 'Elevating property value through immersive digital experiences and high-end visual storytelling that captivates investors.',
-      stats: [{ val: '15%', label: 'YIELD INCREASE' }, { val: '45+', label: 'PROJECTS' }],
+      title: 'REAL ESTATE & INFRASTRUCTURE',
+      desc: 'Driving high-value property demand through immersive digital experiences and investor-focused positioning.',
+      stats: [{ val: '8X', label: 'LEAD CONVERSION' }, { val: '₹100Cr+', label: 'PROJECT VISIBILITY' }],
       img: '/industries/1.jpg'
     },
-    'education': {
-      title: 'ENLIGHTENED',
-      highlight: 'BRANDING.',
-      desc: 'Modernizing the pursuit of knowledge. We build platforms and identities for educational institutions that value both tradition and evolution.',
-      stats: [{ val: '24%', label: 'ENROLLMENT UP' }, { val: '120+', label: 'GLOBAL REACH' }],
+    'it-saas': {
+      title: 'IT & SAAS COMPANIES',
+      desc: 'Fueling scalable growth for SaaS and tech companies through precision-driven branding and product positioning.',
+      stats: [{ val: '10X', label: 'FASTER SCALE' }, { val: '500k+', label: 'USERS REACHED' }],
       img: '/industries/2.jpg'
     },
-    'ecommerce': {
-      title: 'CONVERSION',
-      highlight: 'ENGINE.',
-      desc: 'Engineering high-velocity digital storefronts that blend aesthetic excellence with forensic optimization for maximum ROI.',
-      stats: [{ val: '300%', label: 'ROI BOOST' }, { val: '2M+', label: 'SHOPPERS' }],
+    'healthcare': {
+      title: 'HEALTHCARE INSTITUTIONS',
+      desc: 'Building trust-driven digital ecosystems for hospitals and clinics that convert patients into long-term loyalty.',
+      stats: [{ val: '3X', label: 'PATIENT INQUIRIES' }, { val: '95%', label: 'TRUST SIGNALS' }],
       img: '/industries/3.jpg'
     },
-    'healthcare': {
-      title: 'DIGITAL',
-      highlight: 'TRUST.',
-      desc: 'Bridging the gap between patient care and digital innovation through secure, human-centered design for modern medical leaders.',
-      stats: [{ val: '40%', label: 'GROWTH' }, { val: '15+', label: 'AWARDS' }],
+    'manufacturing': {
+      title: 'MANUFACTURING & INDUSTRIAL',
+      desc: 'Transforming traditional industries with modern digital infrastructure that attracts global B2B clients.',
+      stats: [{ val: '5X', label: 'GLOBAL LEADS' }, { val: '70%', label: 'INQUIRY GROWTH' }],
       img: '/industries/4.jpg'
     },
-    'it-saas': {
-      title: 'SCALABLE',
-      highlight: 'SYSTEMS.',
-      desc: 'Fueling hyperscale growth for SaaS and Tech through aggressive brand positioning and precision-engineered digital products.',
-      stats: [{ val: '10X', label: 'FASTER SCALE' }, { val: '500k+', label: 'USERS' }],
+    'finance-consulting': {
+      title: 'FINANCE & CONSULTING FIRMS',
+      desc: 'Establishing authority-led digital presence that builds trust and drives high-value client acquisition.',
+      stats: [{ val: '4X', label: 'CLIENT ACQUISITION' }, { val: '2X', label: 'CONVERSION RATE' }],
       img: '/industries/5.jpg'
     },
-    'corporate': {
-      title: 'MARKET',
-      highlight: 'AUTHORITY.',
-      desc: 'Establishing market dominance for professional services through sophisticated brand systems and strategic digital dominance.',
-      stats: [{ val: '50%', label: 'EFFICIENCY' }, { val: '100+', label: 'PARTNERS' }],
+    'logistics': {
+      title: 'LOGISTICS & SUPPLY CHAIN',
+      desc: 'Optimizing digital visibility for logistics networks to attract enterprise partnerships and scale operations.',
+      stats: [{ val: '6X', label: 'INBOUND LEADS' }, { val: '3X', label: 'PARTNER GROWTH' }],
       img: '/industries/6.jpg'
-    }
+    },
+    'architecture-interior': {
+      title: 'ARCHITECTURE & INTERIOR DESIGN',
+      desc: 'Showcasing design excellence through high-impact digital portfolios that attract premium clients and projects.',
+      stats: [{ val: '4X', label: 'PROJECT INQUIRIES' }, { val: '2X', label: 'CLIENT VALUE' }],
+      img: '/industries/1.jpg'
+    },
+    'furniture-decor': {
+      title: 'FURNITURE & HOME DECOR',
+      desc: 'Elevating product-driven brands with visuals and systems that drive wholesale and retail demand.',
+      stats: [{ val: '3X', label: 'BULK ORDERS' }, { val: '5X', label: 'CATALOG REACH' }],
+      img: '/industries/2.jpg'
+    },
+    'construction': {
+      title: 'CONSTRUCTION & CONTRACTORS',
+      desc: 'Building authority for construction firms through digital presence that attracts large-scale projects and partnerships.',
+      stats: [{ val: '6X', label: 'PROJECT LEADS' }, { val: '3X', label: 'TENDER VISIBILITY' }],
+      img: '/industries/3.jpg'
+    },
+    'b2b-export': {
+      title: 'B2B EXPORT & TRADING',
+      desc: 'Positioning global suppliers with digital credibility that drives international inquiries and partnerships.',
+      stats: [{ val: '5X', label: 'GLOBAL INQUIRIES' }, { val: '2X', label: 'EXPORT DEALS' }],
+      img: '/industries/4.jpg'
+    },
+    'corporate': {
+      title: 'CORPORATE & ENTERPRISES',
+      desc: 'Strengthening enterprise presence with scalable digital systems built for credibility and long-term growth.',
+      stats: [{ val: '4X', label: 'BRAND AUTHORITY' }, { val: '2X', label: 'LEAD QUALITY' }],
+      img: '/industries/5.jpg'
+    },
+    'industrial-equipment': {
+      title: 'INDUSTRIAL EQUIPMENT SUPPLIERS',
+      desc: 'Transforming industrial brands with digital systems that attract high-value B2B buyers and distributors.',
+      stats: [{ val: '3X', label: 'DEALER NETWORK' }, { val: '4X', label: 'INBOUND LEADS' }],
+      img: '/industries/6.jpg'
+    },
+    'retail-franchises': {
+      title: 'RETAIL CHAINS & FRANCHISES',
+      desc: 'Scaling multi-location brands with unified digital systems that drive consistent growth and engagement.',
+      stats: [{ val: '2X', label: 'STORE FOOTFALL' }, { val: '3X', label: 'FRANCHISE LEADS' }],
+      img: '/industries/1.jpg'
+    },
+    'luxury-brands': {
+      title: 'LUXURY & PREMIUM BRANDS',
+      desc: 'Crafting high-end digital experiences that elevate perception and drive premium customer acquisition.',
+      stats: [{ val: '5X', label: 'ENGAGEMENT RATE' }, { val: '2X', label: 'CONVERSION VALUE' }],
+      img: '/industries/2.jpg'
+    },
+    'education': {
+      title: 'EDUCATION & TRAINING INSTITUTES',
+      desc: 'Building credibility-driven digital ecosystems for educational institutions that attract high-intent students and drive enrollment at scale.',
+      stats: [{ val: '4X', label: 'ENROLLMENTS' }, { val: '3X', label: 'INQUIRY VOLUME' }],
+      img: '/industries/3.jpg'
+    },
   };
 
   return (
@@ -845,18 +902,18 @@ function LandingPage() {
               {services.map((service, index) => {
                 const cardImages: Record<string, string> = {
                   'branding': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
-                  'website-design': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
-                  'content-creation': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
-                  'printpackaging': 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&w=800&q=80',
-                  'advertising-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-                  'ui-ux-digital-experience': 'https://images.unsplash.com/photo-1541462608141-ad67577467b4?auto=format&fit=crop&w=800&q=80',
-                  'video-production': 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
-                  'illustration': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                  'prouct photoshoot': 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80',
+                  'digital-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+                  'web-solutions': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
+                  'software-development': 'https://images.unsplash.com/photo-1541462608141-ad67577467b4?auto=format&fit=crop&w=800&q=80',
+                  'social-media-management': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+                  'performance-marketing': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+                  'graphic-design': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+                  'influencer-marketing': 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=800&q=80',
+                  'model-product-video': 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
                 };
 
                 return (
-                  <div 
+                  <div
                     key={service.slug}
                     className="flex-shrink-0 snap-start h-[450px] w-[300px] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                   >
@@ -888,15 +945,15 @@ function LandingPage() {
           </div>
         </section>
 
-        <section id="industries" className="bg-zinc-950 text-white border-t border-white/5">
-          <StackingIndustries 
+        <section id="industries" className="bg-zinc-950 text-white md:border-t md:border-white/5">
+          <StackingIndustries
             industries={Object.entries(industryInfo).map(([id, info]) => ({
               id,
-              title: id.replace('-', ' '),
+              title: info.title,
               desc: info.desc,
               stats: info.stats,
               img: info.img
-            }))} 
+            }))}
           />
         </section>
 
@@ -958,7 +1015,7 @@ function LandingPage() {
           </div>
         </section>
 
-        <section id="pricing" className="bg-zinc-950 py-16 text-white md:py-28 border-y border-white/5">
+        <section id="pricing" className="bg-zinc-950 py-16 text-white md:py-28 md:border-y md:border-white/5">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <PricingSection
               plans={PLANS}
@@ -969,7 +1026,7 @@ function LandingPage() {
         </section>
 
         <IntegrationHero />
-        
+
         <section id="reviews" className="bg-zinc-950 py-16 text-white md:py-28">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <motion.div
@@ -1070,18 +1127,15 @@ function ServicesPage() {
           {services.map((service, index) => {
             const isLight = index % 2 === 0;
             const cardImages: Record<string, string> = {
-              'video-production': '/service_video.png',
-              'motion-video-production': '/service_video.png',
-              'advertising-marketing': '/service_ppc.png',
-              'content-creation-storytelling': '/service_social.png',
-              'search-engine-optimization': '/service_seo.png',
-              'branding-identity': '/service_branding.png',
-              'website-design-development': '/service_web.png',
-              'print-packaging': '/service_print.png',
-              'ui-ux-digital-experience': '/service_uiux.png',
-              'illustration-custom-artwork': '/service_illustration.png',
-              'experiential-interactive-design': '/service_interactive.png',
-              'photography-visual-content': 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=800&q=80',
+              'branding': '/service_branding.png',
+              'digital-marketing': '/service_ppc.png',
+              'web-solutions': '/service_web.png',
+              'software-development': '/service_uiux.png',
+              'social-media-management': '/service_social.png',
+              'performance-marketing': '/service_seo.png',
+              'graphic-design': '/service_illustration.png',
+              'influencer-marketing': '/service_print.png',
+              'model-product-video': '/service_video.png',
             };
 
             return (
@@ -1093,7 +1147,7 @@ function ServicesPage() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="relative h-[360px] md:h-[450px] flex flex-col items-start justify-center overflow-hidden rounded-2xl p-8 md:p-10 transition-all duration-500 hover:scale-[1.02] group shadow-2xl"
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(242, 48, 48, 0.7), rgba(166, 31, 31, 0.85), rgba(13, 13, 13, 0.95)), url('${cardImages[service.slug] || cardImages['branding-identity']}')`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(242, 48, 48, 0.7), rgba(166, 31, 31, 0.85), rgba(13, 13, 13, 0.95)), url('${cardImages[service.slug] || cardImages['branding']}')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
@@ -1251,6 +1305,7 @@ function AboutPage() {
 
 function ServiceDetailPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const service = useMemo(() => services.find((item) => item.slug === slug), [slug]);
 
   if (!service) {
@@ -1264,28 +1319,157 @@ function ServiceDetailPage() {
     );
   }
 
+  const Icon = service.icon;
+
   return (
-    <main className="mx-auto max-w-4xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Service Detail</p>
-      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">{service.title}</h1>
-      <p className="mt-5 text-zinc-400">{service.detail}</p>
-      <ul className="mt-8 space-y-3 text-zinc-800">
-        {service.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-center gap-3 border-l-2 border-[#A61F1F] pl-3">
-            {bullet}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-10 border border-white/10 p-6">
-        <h2 className="font-['Inter'] text-2xl font-bold text-cream/80">Need this for your brand?</h2>
-        <p className="mt-3 text-sm text-zinc-400">Book a consultation and get a custom plan in 48 hours.</p>
-        <Link to="/#enquiry" className="mt-5 inline-flex h-10 items-center bg-[#F23030] px-4 text-sm font-semibold text-white">
-          Get Free Consultation
-        </Link>
-      </div>
+    <main className="bg-transparent min-h-screen">
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(242,48,48,0.12),_transparent_60%)] pointer-events-none" />
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F23030]/10 border border-[#F23030]/30 text-[#F23030]">
+                <Icon size={20} />
+              </div>
+              <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.25em] text-[#F23030]">Service</p>
+            </div>
+            <h1 className="font-['Inter'] text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6">
+              {service.title}
+            </h1>
+            <div className="h-1 w-16 bg-[#F23030] mb-8" />
+            <p className="text-zinc-300 text-lg md:text-xl font-['Inter'] leading-relaxed max-w-2xl">
+              {service.short}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <button
+                onClick={() => navigate('/contact#enquiry')}
+                className="inline-flex h-14 items-center gap-2 bg-[#F23030] px-8 rounded-full text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#A61F1F] hover:shadow-lg hover:shadow-red-900/30"
+              >
+                Start Your Project <ArrowRight size={16} />
+              </button>
+              <Link
+                to="/services"
+                className="inline-flex h-14 items-center gap-2 border border-white/20 px-8 rounded-full text-sm font-semibold text-zinc-300 transition hover:border-white/50 hover:text-white"
+              >
+                All Services
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── DETAILED DESCRIPTION ─────────────────────────────── */}
+      <section className="bg-zinc-950 py-16 md:py-24 border-y border-white/5">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-start">
+            <div>
+              <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Overview</p>
+              <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white leading-tight">
+                Engineered <span className="text-[#F23030]">For Scale</span>
+              </h2>
+            </div>
+            <div>
+              <p className="text-zinc-300 text-base md:text-lg font-['Inter'] leading-relaxed">
+                {service.detail}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── KEY OFFERINGS ────────────────────────────────────── */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Key Offerings</p>
+          <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-12">
+            What We Deliver
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {service.bullets.map((bullet, idx) => (
+              <motion.div
+                key={bullet}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="flex items-start gap-4 border border-white/10 bg-white/[0.02] rounded-2xl p-6 hover:border-[#F23030]/40 transition-colors duration-300"
+              >
+                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F23030]/10 border border-[#F23030]/30">
+                  <div className="h-2 w-2 rounded-full bg-[#F23030]" />
+                </div>
+                <div>
+                  <p className="font-['Inter'] font-bold text-white text-base">{bullet}</p>
+                  <p className="text-zinc-500 text-xs mt-1 font-['Inter']">Built for dominance. Designed for conversion.</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY CHOOSE US ────────────────────────────────────── */}
+      <section className="bg-zinc-950 py-16 md:py-24 border-y border-white/5">
+        <div className="mx-auto max-w-5xl px-4 md:px-6">
+          <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Why Digizinc</p>
+          <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-12">
+            Performance-First. <span className="text-[#F23030]">Authority-Driven.</span>
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              { title: "B2B Focused", desc: "Every strategy is calibrated for enterprise pipelines, high-value clients, and scalable revenue growth." },
+              { title: "Data-Led Execution", desc: "We combine market intelligence with creative precision to ensure measurable outcomes at every stage." },
+              { title: "Premium Delivery", desc: "From brief to launch, we operate with speed, transparency, and a relentless focus on business outcomes." },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="border-l-2 border-[#F23030] pl-6"
+              >
+                <h3 className="font-['Inter'] font-black text-lg uppercase tracking-tight text-white mb-2">{item.title}</h3>
+                <p className="text-zinc-400 text-sm font-['Inter'] leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-3xl px-4 md:px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Ready to Scale?</p>
+            <h2 className="font-['Inter'] text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-tight mb-6">
+              Let's Build Something <span className="text-[#F23030]">Dominant.</span>
+            </h2>
+            <p className="text-zinc-400 text-base md:text-lg font-['Inter'] leading-relaxed mb-10 max-w-xl mx-auto">
+              Get a custom strategy session and actionable plan for your business — delivered within 48 hours.
+            </p>
+            <button
+              onClick={() => navigate('/contact#enquiry')}
+              className="inline-flex h-14 items-center gap-2 bg-[#F23030] px-10 rounded-full text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#A61F1F] hover:shadow-xl hover:shadow-red-900/30 active:scale-95"
+            >
+              Start Your Project <ArrowRight size={16} />
+            </button>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }
+
 
 function ProjectDetailPage() {
   const { slug } = useParams();
@@ -1430,25 +1614,25 @@ function BlogPage() {
             to={`/blog/${post.slug}`}
             className="group relative flex h-[450px] w-full flex-col justify-end overflow-hidden border border-white/10 bg-[#0a0a0a] rounded-2xl transition-all hover:border-[#F23030]/30 shadow-2xl"
           >
-            <img 
-              src={post.image} 
-              alt={post.title} 
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            <img
+              src={post.image}
+              alt={post.title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-90 transition-opacity group-hover:opacity-100 z-0" />
-            
+
             <div className="relative z-10 p-8 transform transition-transform duration-500 group-hover:-translate-y-4 flex flex-col h-full justify-end">
               <p className="text-[#F23030] text-[10px] font-['Inter'] font-bold uppercase tracking-[0.3em] mb-4">
                 {post.category}
               </p>
               <h2 className="font-['Inter'] text-2xl font-bold uppercase text-white leading-tight mb-4 group-hover:text-[#F23030] transition-colors">{post.title}</h2>
               <p className="text-sm text-zinc-400 line-clamp-3 mb-6 bg-transparent">{post.excerpt}</p>
-              
+
               <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/10">
                 <p className="text-[10px] font-['Inter'] font-bold uppercase tracking-[0.2em] text-zinc-500">{post.date}</p>
                 <div className="flex items-center gap-2 text-sm font-semibold text-[#F23030] opacity-0 transition-opacity duration-300 md:group-hover:opacity-100 hidden md:flex">
-                   Read Article
-                   <ArrowRight size={16} />
+                  Read Article
+                  <ArrowRight size={16} />
                 </div>
               </div>
             </div>
@@ -1595,6 +1779,14 @@ function Footer() {
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
+  const location = useLocation();
+
+  // Trigger splash on every route change
+  useEffect(() => {
+    setShowSplash(true);
+    // Force instant scroll to top
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.key]);
 
   const handleSplashFinished = useCallback(() => {
     setShowSplash(false);

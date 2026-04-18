@@ -142,7 +142,7 @@ export function ProductRevealCard({
       onClick={() => setIsOpen(!isOpen)}
       variants={containerVariants}
       className={cn(
-        "relative w-full md:w-80 h-[450px] rounded-2xl border border-white/10 bg-zinc-900 text-white overflow-hidden",
+        "relative w-full md:w-80 h-[450px] rounded-2xl border-0 md:border md:border-white/10 bg-zinc-900 text-white overflow-hidden",
         "shadow-2xl shadow-black/50 cursor-pointer group",
         className
       )}
@@ -185,7 +185,7 @@ export function ProductRevealCard({
 
             {/* Interaction Indicator Arrow */}
             {!isOpen && (
-              <div className="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-white/10 border border-white/10 group-hover:bg-[#F23030] group-hover:border-[#F23030] transition-all duration-300">
+              <div className="h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-full bg-white/10 border-0 md:border md:border-white/10 group-hover:bg-[#F23030] group-hover:border-[#F23030] transition-all duration-300">
                 <ArrowUpRight className="w-6 h-6 text-[#F23030] group-hover:text-white transition-colors" />
               </div>
             )}

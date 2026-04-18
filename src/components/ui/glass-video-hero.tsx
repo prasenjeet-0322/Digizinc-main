@@ -18,7 +18,7 @@ const HeroSection = () => {
       >
         <source src={VIDEO_URL} type="video/mp4" />
       </video>
-      
+
       {/* PROPER Red Tone Overlays */}
       <div className="absolute inset-0 bg-[#F23030]/50 mix-blend-color z-[1]" />
       <div className="absolute inset-0 bg-[#F23030]/30 mix-blend-multiply z-[1]" />
@@ -26,28 +26,28 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/25 z-[1]" />
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 translate-y-[15pt]">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 translate-y-[10pt]">
         <TextColor />
 
         {/* Subtext */}
         <p className="font-inter font-normal text-[14px] md:text-base text-white/80 mt-2 max-w-4xl leading-relaxed tracking-[0.15em] uppercase">
-          Everything we build is made to <br className="sm:hidden" /> 
+          Everything we build is made to <br className="sm:hidden" />
           convert, scale, and win.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-6 mt-10">
-          <Link 
-            to="/contact" 
+        <div className="flex flex-col sm:flex-row items-center gap-6 mt-10 translate-y-[8pt]">
+          <Link
+            to="/contact"
             className="hidden sm:inline-flex px-10 py-4 rounded-full bg-primary text-white font-inter font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all shadow-xl shadow-primary/20"
           >
-            Get Free Consultation
+            Book 1:1 Call
           </Link>
-          <Link 
-            to="/portfolio" 
+          <Link
+            to="/portfolio"
             className="px-10 py-4 rounded-full border border-white/20 backdrop-blur-md text-white font-inter font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all"
           >
-            View Works
+            Explore Case Studies
           </Link>
         </div>
       </div>

@@ -52,7 +52,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   const hasFooter = writer || publishedAt;
 
   return (
-    <Card className="flex h-full w-full max-w-sm flex-col gap-3 overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a]/50 backdrop-blur-md p-3 shadow-lg transition-all duration-300 hover:border-[#F23030]/30 hover:shadow-[#F23030]/5">
+    <Card className="flex h-full w-full max-w-sm flex-col gap-3 overflow-hidden rounded-3xl border-0 md:border md:border-white/10 bg-[#0a0a0a]/50 backdrop-blur-md p-3 shadow-lg transition-all duration-300 hover:border-[#F23030]/30 hover:shadow-[#F23030]/5">
       {cover && (
         <CardHeader className="p-0">
           <div className="relative h-56 w-full overflow-hidden rounded-2xl">
@@ -98,7 +98,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       </CardContent>
 
       {hasFooter && (
-        <CardFooter className="flex items-center justify-between p-3 pt-0 border-t border-white/5 mt-2">
+        <CardFooter className="flex items-center justify-between p-3 pt-0 md:border-t md:border-white/5 mt-2">
           {writer && (
             <div>
               <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-0.5">By</p>

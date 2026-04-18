@@ -59,7 +59,7 @@ const StackingIndustries = forwardRef<HTMLElement, StackingIndustriesProps>(({ i
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.5 }}
-                        className="relative flex flex-col h-full w-full max-w-[500px] rounded-[2rem] border border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden group hover:border-[#F23030]/50 transition-colors duration-500"
+                        className="relative flex flex-col h-full w-full max-w-[500px] rounded-[2rem] border-0 md:border md:border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden group hover:border-[#F23030]/50 transition-colors duration-500"
                       >
                         {/* Background Image Layer */}
                         <div className="absolute inset-0 z-0">

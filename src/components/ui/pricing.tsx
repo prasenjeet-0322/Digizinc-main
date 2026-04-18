@@ -133,8 +133,8 @@ export function PricingCard({
 	return (
 		<div
 			className={cn(
-				'relative flex w-full flex-col rounded-2xl border',
-				plan.highlighted ? 'border-[#F23030]/50' : 'border-white/10',
+				'relative flex w-full flex-col rounded-2xl border-0 md:border',
+				plan.highlighted ? 'md:border-[#F23030]/50' : 'md:border-white/10',
 				className,
 			)}
 			{...props}
@@ -150,7 +150,7 @@ export function PricingCard({
 			)}
 			<div
 				className={cn(
-					'bg-black/40 rounded-t-2xl border-b border-white/10 p-8',
+					'bg-black/40 rounded-t-2xl md:border-b md:border-white/10 p-8',
 					plan.highlighted && 'bg-[#A61F1F]/10',
 				)}
 			>
@@ -219,7 +219,7 @@ export function PricingCard({
 			</div>
 			<div
 				className={cn(
-					'mt-auto w-full border-t border-white/10 p-6 rounded-b-2xl bg-black/20',
+					'mt-auto w-full md:border-t md:border-white/10 p-6 rounded-b-2xl bg-black/20',
 					plan.highlighted && 'bg-[#A61F1F]/5',
 				)}
 			>
