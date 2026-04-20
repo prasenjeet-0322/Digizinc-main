@@ -151,7 +151,7 @@ const brand = "Digizinc";
 const formEndpoint = "https://formsubmit.co/ajax/hello@digizinc.com";
 
 const parallaxImages = [
-  { src: "/bento-grid/1.mp4", alt: "Collaboration" },
+  { src: "/bento-grid/1.gif", alt: "Collaboration" },
   { src: "/bento-grid/2.jpg", alt: "Data Analytics" },
   { src: "/bento-grid/3.mp4", alt: "Design Process" },
   { src: "/bento-grid/4.jpg", alt: "Digital Strategy" },
@@ -1823,6 +1823,7 @@ export default function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogSinglePage />} />
           <Route path="/contact" element={<ContactPage />} />
+
         </Routes>
       </div>
       <CinematicFooter />
