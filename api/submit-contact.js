@@ -1,5 +1,3 @@
-// Using global fetch (available in Node 18+)
-
 const FORM_VIEW_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfBJr82Kj5nLS2Ba0TJRFPgsTKZg_cGQsNEK1RT7cGDzaPjFw/viewform";
 const FORM_SUBMISSION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfBJr82Kj5nLS2Ba0TJRFPgsTKZg_cGQsNEK1RT7cGDzaPjFw/formResponse";
 
@@ -30,36 +28,56 @@ function extractFbzx(html) {
   return "";
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const body = req.body;
+    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
     
     // 1. Fetch form to get tokens
-    const formRes = await fetch(FORM_VIEW_URL);
+    const formRes = await fetch(FORM_VIEW_URL, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      }
+    });
     const formHtml = await formRes.text();
 
     const fbzx = extractFbzx(formHtml);
-    const partialResponse = `[null,null,"${fbzx}"]`;
+    const tag = extractToken(formHtml, "tag");
+    const partialResponse = extractToken(formHtml, "partialResponse") || `[null,null,"${fbzx}"]`;
 
     // 2. Prepare payload
     const params = new URLSearchParams();
     for (const [field, entryId] of Object.entries(ENTRY_MAP)) {
       params.append(entryId, body[field] || "");
     }
+    
+    // Sentinel for choice question
+    params.append("entry.1957790957_sentinel", "");
+    
     params.append("fvv", "1");
-    params.append("fbzx", fbzx);
     params.append("pageHistory", "0");
     params.append("partialResponse", partialResponse);
+    params.append("submissionTimestamp", "-1");
+    if (fbzx) params.append("fbzx", fbzx);
+    if (tag) params.append("tag", tag);
 
     // 3. Submit
-    const response = await fetch(FORM_SUBMISSION_URL, {
+    await fetch(FORM_SUBMISSION_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         "Referer": FORM_VIEW_URL,
         "Origin": "https://docs.google.com"
       },
@@ -71,4 +89,5 @@ module.exports = async (req, res) => {
     console.error("Submission error:", error);
     return res.status(500).json({ error: error.message });
   }
-};
+}
+
