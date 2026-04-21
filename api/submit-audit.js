@@ -26,19 +26,30 @@ const ENTRY_MAP = {
 };
 
 function extractToken(html, name) {
+  // Pattern for <input type="hidden" name="name" value="value">
   const regex = new RegExp(`name="${name}"[^>]*value="([^"]*)"`, "i");
+  const m = html.match(regex);
+  if (m) return m[1];
+  
+  // Fallback for differently ordered attributes
   const altRegex = new RegExp(`value="([^"]*)"[^>]*name="${name}"`, "i");
-  const m = html.match(regex) || html.match(altRegex);
-  return m ? m[1] : "";
+  const mAlt = html.match(altRegex);
+  return mAlt ? mAlt[1] : "";
 }
 
 function extractFbzx(html) {
-  // Try from hidden input first
-  const inputMatch = html.match(/name="fbzx"[^>]*value="([^"]+)"/);
+  // 1. Try hidden input
+  const inputMatch = html.match(/name="fbzx"[^>]*value="([^"]+)"/i);
   if (inputMatch) return inputMatch[1];
-  // Try from FB_PUBLIC_LOAD_DATA_ (less reliable but fallback)
+  
+  // 2. Try FB_PUBLIC_LOAD_DATA_
   const dataMatch = html.match(/"fbzx"\s*:\s*"([^"]+)"/);
   if (dataMatch) return dataMatch[1];
+  
+  // 3. Try another pattern often found in scripts
+  const scriptMatch = html.match(/\["fbzx","([^"]+)"\]/);
+  if (scriptMatch) return scriptMatch[1];
+
   return "";
 }
 
