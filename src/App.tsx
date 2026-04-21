@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import SplashLoader from "@/components/ui/SplashLoader";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
@@ -15,6 +15,7 @@ import {
   Briefcase,
   Building2,
   Camera,
+  CheckCircle,
   ChevronLeft,
   ChevronRight,
   Fingerprint,
@@ -53,96 +54,107 @@ import {
   useLocation,
   useNavigate,
   useParams,
+  useSearchParams,
 } from "react-router-dom";
 import { CircularTestimonials } from "@/components/ui/circular-testimonials";
 import { PricingSection } from "@/components/ui/pricing";
 import StackingIndustries from "@/components/ui/stacking-industries";
 
+// --- MODAL CONTEXT ---
+const ModalContext = createContext<{
+  isAuditOpen: boolean;
+  openAudit: () => void;
+  closeAudit: () => void;
+}>({
+  isAuditOpen: false,
+  openAudit: () => { },
+  closeAudit: () => { },
+});
+
+const ModalProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isAuditOpen, setIsAuditOpen] = useState(false);
+  const openAudit = () => setIsAuditOpen(true);
+  const closeAudit = () => setIsAuditOpen(false);
+
+  useEffect(() => {
+    if (isAuditOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isAuditOpen]);
+
+  return (
+    <ModalContext.Provider value={{ isAuditOpen, openAudit, closeAudit }}>
+      {children}
+    </ModalContext.Provider>
+  );
+};
+
+const useModal = () => useContext(ModalContext);
+
 const PLANS = [
   {
-    id: 'basic',
-    name: 'Basic',
-    info: 'For most individuals',
-    price: {
-      monthly: 7,
-      yearly: Math.round(7 * 12 * (1 - 0.12)),
-    },
+    name: "Branding",
+    info: "Build a brand that stands out.",
+    price: { monthly: 0, yearly: 0 },
     features: [
-      { text: 'Up to 3 Blog posts', tooltip: '100 tags limit' },
-      { text: 'Up to 3 Transcriptions' },
-      { text: 'Up to 3 Posts stored' },
-      {
-        text: 'Markdown support',
-        tooltip: 'Export content in Markdown format',
-      },
-      {
-        text: 'Community support',
-        tooltip: 'Get answers your questions on discord',
-      },
-      {
-        text: 'AI powered suggestions',
-        tooltip: 'Get up to 100 AI powered suggestions',
-      },
+      { text: "Brand discovery & strategy" },
+      { text: "Competitor analysis" },
+      { text: "Logo & visual identity system" },
+      { text: "Brand guidelines & design system" },
+      { text: "Brand voice & messaging" },
+      { text: "Brand architecture" },
+      { text: "Marketing & social media assets" },
+      { text: "Website UI direction" },
+      { text: "Pitch & presentation design" },
+      { text: "Brand rollout strategy" },
     ],
     btn: {
-      text: 'Get started',
-      href: '#',
+      text: "Start Your Project",
+      href: "/contact?service=Branding#enquiry",
     },
   },
   {
     highlighted: true,
-    id: 'pro',
-    name: 'Pro',
-    info: 'For small businesses',
-    price: {
-      monthly: 17.99,
-      yearly: Math.round(17.99 * 12 * (1 - 0.12)),
-    },
+    name: "Web Solutions",
+    info: "Design experiences that convert.",
+    price: { monthly: 0, yearly: 0 },
     features: [
-      { text: 'Up to 500 Blog Posts', tooltip: '500 tags limit' },
-      { text: 'Up to 500 Transcriptions' },
-      { text: 'Up to 500 Posts stored' },
-      {
-        text: 'Unlimited Markdown support',
-        tooltip: 'Export content in Markdown format',
-      },
-      { text: 'SEO optimization tools' },
-      { text: 'Priority support', tooltip: 'Get 24/7 chat support' },
-      {
-        text: 'AI powered suggestions',
-        tooltip: 'Get up to 500 AI powered suggestions',
-      },
+      { text: "Website structure & page planning" },
+      { text: "Custom UI design" },
+      { text: "Fully responsive development" },
+      { text: "SEO-ready foundation" },
+      { text: "Lead capture systems" },
+      { text: "CRM integration" },
+      { text: "Performance & speed optimization" },
+      { text: "UI/UX experience design" },
+      { text: "Project timeline & delivery" },
     ],
     btn: {
-      text: 'Get started',
-      href: '#',
+      text: "Start Your Project",
+      href: "/contact?service=Web%20Solutions#enquiry",
     },
   },
   {
-    name: 'Business',
-    info: 'For large organizations',
-    price: {
-      monthly: 69.99,
-      yearly: Math.round(49.99 * 12 * (1 - 0.12)),
-    },
+    name: "Social Media",
+    info: "Turn attention into growth.",
+    price: { monthly: 0, yearly: 0 },
     features: [
-      { text: 'Unlimited Blog Posts' },
-      { text: 'Unlimited Transcriptions' },
-      { text: 'Unlimited Posts stored' },
-      { text: 'Unlimited Markdown support' },
-      {
-        text: 'SEO optimization tools',
-        tooltip: 'Advanced SEO optimization tools',
-      },
-      { text: 'Priority support', tooltip: 'Get 24/7 chat support' },
-      {
-        text: 'AI powered suggestions',
-        tooltip: 'Get up to 500 AI powered suggestions',
-      },
+      { text: "Platform strategy & planning" },
+      { text: "Content creation (posts & reels)" },
+      { text: "Creative direction & quality control" },
+      { text: "Content calendar management" },
+      { text: "Growth & engagement strategy" },
+      { text: "Community management" },
+      { text: "Influencer collaborations" },
+      { text: "Video production support" },
+      { text: "Performance reporting" },
+      { text: "Dedicated account management" },
     ],
     btn: {
-      text: 'Get started',
-      href: '#',
+      text: "Start Your Project",
+      href: "/contact?service=Social%20Media#enquiry",
     },
   },
 ];
@@ -428,24 +440,28 @@ const team = [
     role: "Founder & CEO",
     bio: "Visionary strategist with 12+ years in scaling digital ecosystems for premium brands.",
     image: "/bhargava-raj.png",
+    linkedin: "https://linkedin.com",
   },
   {
     name: "Sanya Gupta",
     role: "Creative Director",
     bio: "Award-winning designer obsessed with blending minimalism with high-impact visual storytelling.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    linkedin: "https://linkedin.com",
   },
   {
     name: "Vikram Shah",
     role: "Head of Growth",
     bio: "Data scientist turned marketer specializing in ROAS-first performance campaigns.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    linkedin: "https://linkedin.com",
   },
   {
     name: "Rhea Kapoor",
     role: "Lead Strategist",
     bio: "Behavioral analyst focusing on building deep consumer trust through content ecosystems.",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+    linkedin: "https://linkedin.com",
   },
 ];
 
@@ -487,13 +503,11 @@ function ScrollManager() {
       const id = hash.replace("#", "");
       const node = document.getElementById(id);
       if (node) {
-        // Longer timeout to ensure content is rendered
         setTimeout(() => node.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
       }
-      return;
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
     }
-    // Instant scroll to top on route change
-    window.scrollTo(0, 0);
   }, [pathname, hash]);
 
   return null;
@@ -529,27 +543,28 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   );
 }
 
-function EnquiryForm({ compact = false }: { compact?: boolean }) {
+function InquiryForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [searchParams] = useSearchParams();
+  const preselectedService = searchParams.get("service") || "";
+  const [selectedService, setSelectedService] = useState(preselectedService);
+
+  useEffect(() => {
+    if (preselectedService) setSelectedService(preselectedService);
+  }, [preselectedService]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("sending");
     const form = new FormData(event.currentTarget);
     const payload = Object.fromEntries(form.entries());
-
     try {
       const response = await fetch(formEndpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
+      if (!response.ok) throw new Error("Submission failed");
       setStatus("success");
       event.currentTarget.reset();
     } catch {
@@ -561,47 +576,321 @@ function EnquiryForm({ compact = false }: { compact?: boolean }) {
     <form
       id="enquiry"
       onSubmit={handleSubmit}
-      className={`scroll-mt-32 md:scroll-mt-40 space-y-4 border border-white/10 bg-black/60 backdrop-blur-2xl p-5 text-left shadow-2xl shadow-black/50 rounded-2xl ${compact ? "" : "md:p-8"
-        }`}
-      aria-label="Lead enquiry form"
+      className="scroll-mt-32 md:scroll-mt-40 space-y-6 border border-white/5 bg-black/40 backdrop-blur-3xl p-8 text-left shadow-2xl rounded-3xl"
     >
-      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#F23030]">Get Free Audit</p>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <input required name="name" placeholder="Name" className="h-12 border border-white/10 bg-white/5 rounded-lg px-4 text-sm text-cream placeholder:text-zinc-500 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
-        <input required name="phone" placeholder="Phone Number" className="h-12 border border-white/10 bg-white/5 rounded-lg px-4 text-sm text-cream placeholder:text-zinc-500 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
+      <div>
+        <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-2">Message</p>
+        <h2 className="font-['Inter'] text-2xl font-bold text-white tracking-tight">Let's talk about your project</h2>
       </div>
-      <input required type="email" name="email" placeholder="Email" className="h-12 w-full border border-white/10 bg-white/5 rounded-lg px-4 text-sm text-cream placeholder:text-zinc-500 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
-      <select required name="service" className="h-12 w-full border border-white/10 bg-white/5 rounded-lg px-4 text-sm text-zinc-400 focus:outline-none focus:border-[#F23030]/50 transition-colors">
-        <option value="">Service Interested In</option>
-        {services.map((service) => (
-          <option value={service.title} key={service.slug}>
-            {service.title}
-          </option>
-        ))}
-      </select>
-      <textarea
-        name="message"
-        placeholder="Tell us your growth goals"
-        rows={compact ? 3 : 4}
-        className="w-full border border-white/10 bg-white/5 rounded-lg px-4 py-3 text-sm text-cream placeholder:text-zinc-500 focus:outline-none focus:border-[#F23030]/50 transition-colors"
-      />
+      
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-1.5">
+          <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Full Name</label>
+          <input required name="name" placeholder="E.g. John Doe" className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
+        </div>
+        <div className="space-y-1.5">
+          <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Phone Number</label>
+          <input required name="phone" placeholder="+91 ..." className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
+        </div>
+      </div>
+
+      <div className="space-y-1.5">
+        <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Email Address</label>
+        <input required type="email" name="email" placeholder="john@company.com" className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50 transition-colors" />
+      </div>
+
+      <div className="space-y-1.5">
+        <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Service Interested In</label>
+        <select 
+          required 
+          name="service" 
+          value={selectedService}
+          onChange={(e) => setSelectedService(e.target.value)}
+          className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream focus:outline-none focus:border-[#F23030]/50 transition-colors appearance-none"
+        >
+          <option value="" className="bg-zinc-900 text-zinc-500">Select a Service</option>
+          {(() => {
+            const coreServices = ["Branding", "Web Solutions", "Social Media", "Custom Solution"];
+            const otherServices = services
+              .map(s => s.title)
+              .filter(title => !coreServices.includes(title) && title !== "Social Media Management"); // Avoid duplicates
+            
+            return [...coreServices, ...otherServices, "Other"].map((s) => (
+              <option value={s} key={s} className="bg-zinc-900 text-cream">
+                {s}
+              </option>
+            ));
+          })()}
+        </select>
+      </div>
+
+      <div className="space-y-1.5">
+        <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Message</label>
+        <textarea
+          name="message"
+          placeholder="Tell us about your project"
+          rows={5}
+          className="w-full border border-white/10 bg-white/5 rounded-xl px-4 py-3 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50 transition-colors"
+        />
+      </div>
+
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-12 w-full items-center justify-center gap-2 bg-[#F23030] rounded-lg px-4 text-sm font-bold text-white transition hover:bg-[#A61F1F] disabled:opacity-70 shadow-lg shadow-red-900/20"
+        className="inline-flex h-14 w-full items-center justify-center gap-2 bg-[#F23030] rounded-xl px-4 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#A61F1F] disabled:opacity-70 shadow-lg shadow-red-900/20"
       >
-        {status === "sending" ? "Sending..." : "Get Free Consultation"}
+        {status === "sending" ? "Sending..." : "Send Inquiry"}
         <ArrowRight size={16} />
       </button>
-      {status === "success" && <p className="text-xs font-medium text-emerald-600">Request sent. We will contact you shortly.</p>}
-      {status === "error" && <p className="text-xs font-medium text-red-600">Could not submit right now. Please email hello@digizinc.com.</p>}
+      
+      <p className="text-center text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
+        We'll get back to you within 24 hours
+      </p>
+
+      {status === "success" && <p className="text-xs font-medium text-emerald-600">Inquiry sent. We will contact you shortly.</p>}
+      {status === "error" && <p className="text-xs font-medium text-red-600">Could not submit. Please email hello@digizinc.com.</p>}
     </form>
+  );
+}
+
+function MultiStepAuditForm() {
+  const { closeAudit } = useModal();
+  const [step, setStep] = useState(1);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    businessName: "",
+    phone: "",
+    email: "",
+    helpWith: "",
+    stage: "",
+    budget: "",
+    goals: "",
+    challenge: "",
+  });
+
+  const updateField = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const nextStep = () => setStep(prev => prev + 1);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "sending") return;
+
+    setStatus("sending");
+    try {
+      // Use the server-side API proxy to handle tokens and submission reliably
+      const response = await fetch("/api/submit-audit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit to API");
+      }
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+      } else {
+        throw new Error(result.error || "Submission failed");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="text-center py-10 space-y-6">
+        <div className="mx-auto w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center border border-emerald-500/30">
+          <CheckCircle className="text-emerald-500 w-8 h-8" />
+        </div>
+        <h2 className="text-2xl font-bold text-white">Application Received</h2>
+        <p className="text-zinc-400 max-w-xs mx-auto leading-relaxed">
+          We work with a limited number of brands each month. If shortlisted, our team will reach out within 24 hours.
+        </p>
+        <button onClick={closeAudit} className="text-[#F23030] font-bold uppercase tracking-widest text-xs mt-6">
+          Close
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full">
+      <div className="mb-8 flex items-center justify-between">
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#F23030]">Step {step} of 3</p>
+        <div className="flex gap-1">
+          {[1, 2, 3].map(s => (
+            <div key={s} className={`h-1 w-8 rounded-full transition-colors duration-300 ${s <= step ? 'bg-[#F23030]' : 'bg-white/10'}`} />
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence mode="wait">
+        {step === 1 && (
+          <motion.div
+            key="step1"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-4"
+          >
+            <h2 className="text-2xl font-bold text-white tracking-tight">Basic Details</h2>
+            <p className="text-xs text-zinc-500 font-bold uppercase tracking-widest">Takes less than 60 seconds</p>
+            <div className="grid gap-4">
+              <input required placeholder="Full Name" value={formData.name} onChange={e => updateField('name', e.target.value)} className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+              <input required placeholder="Business Name" value={formData.businessName} onChange={e => updateField('businessName', e.target.value)} className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+              <input required placeholder="Phone Number" value={formData.phone} onChange={e => updateField('phone', e.target.value)} className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+              <input required type="email" placeholder="Email Address" value={formData.email} onChange={e => updateField('email', e.target.value)} className="h-13 w-full border border-white/10 bg-white/5 rounded-xl px-4 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+            </div>
+            <button 
+              onClick={nextStep} 
+              disabled={!formData.name || !formData.email || !formData.businessName || !formData.phone} 
+              className="mt-4 h-14 w-full bg-[#F23030] text-white font-bold uppercase tracking-widest rounded-xl hover:bg-[#A61F1F] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              CONTINUE
+            </button>
+          </motion.div>
+        )}
+
+        {step === 2 && (
+          <motion.div
+            key="step2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-6"
+          >
+            <h2 className="text-2xl font-bold text-white tracking-tight">Qualification</h2>
+            
+            <div className="space-y-3">
+              <p className="text-[10px] uppercase tracking-widest font-black text-zinc-500">What do you need help with?</p>
+              <div className="flex flex-wrap gap-2">
+                {["Branding", "Web Solutions", "Social Media", "Full Growth"].map(opt => (
+                  <button 
+                    key={opt}
+                    onClick={() => updateField('helpWith', opt)}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.helpWith === opt ? 'bg-[#F23030] border-[#F23030] text-white' : 'border-white/10 bg-white/5 text-zinc-400 hover:border-white/20'}`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-[10px] uppercase tracking-widest font-black text-zinc-500">Business stage?</p>
+              <div className="flex flex-wrap gap-2">
+                {["Just starting", "Growing", "Established"].map(opt => (
+                  <button 
+                    key={opt}
+                    onClick={() => updateField('stage', opt)}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.stage === opt ? 'bg-[#F23030] border-[#F23030] text-white' : 'border-white/10 bg-white/5 text-zinc-400 hover:border-white/20'}`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-[10px] uppercase tracking-widest font-black text-zinc-500">Approximate Budget?</p>
+              <div className="flex flex-wrap gap-2">
+                {["₹10K – ₹50K", "₹50K – ₹1L", "₹1L – ₹3L", "₹3L+"].map(opt => (
+                  <button 
+                    key={opt}
+                    onClick={() => updateField('budget', opt)}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.budget === opt ? 'bg-[#F23030] border-[#F23030] text-white' : 'border-white/10 bg-white/5 text-zinc-400 hover:border-white/20'}`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button 
+              onClick={nextStep} 
+              disabled={!formData.helpWith || !formData.stage || !formData.budget} 
+              className="mt-4 h-14 w-full bg-[#F23030] text-white font-bold uppercase tracking-widest rounded-xl hover:bg-[#A61F1F] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              CONTINUE
+            </button>
+          </motion.div>
+        )}
+
+        {step === 3 && (
+          <motion.div
+            key="step3"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="space-y-4"
+          >
+            <h2 className="text-2xl font-bold text-white tracking-tight">Context</h2>
+            <div className="space-y-1.5">
+               <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">What are your growth goals?</label>
+               <textarea required rows={3} value={formData.goals} onChange={e => updateField('goals', e.target.value)} placeholder="E.g. Scaling to 10k orders/mo..." className="w-full border border-white/10 bg-white/5 rounded-xl px-4 py-3 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+            </div>
+            <div className="space-y-1.5">
+               <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold ml-1">Biggest challenge right now?</label>
+               <textarea rows={2} value={formData.challenge} onChange={e => updateField('challenge', e.target.value)} placeholder="Optional" className="w-full border border-white/10 bg-white/5 rounded-xl px-4 py-3 text-sm text-cream placeholder:text-zinc-600 focus:outline-none focus:border-[#F23030]/50" />
+            </div>
+            <p className="text-[9px] text-zinc-500 text-center uppercase tracking-[0.15em] pt-4">
+              Limited spots available monthly. 24h response time.
+            </p>
+            <button onClick={handleSubmit} disabled={status === "sending" || !formData.goals} className="h-14 w-full bg-[#F23030] text-white font-bold uppercase tracking-widest rounded-xl hover:bg-[#A61F1F] transition-all flex items-center justify-center gap-2">
+              {status === "sending" ? "Processing..." : "Request Free Growth Audit"}
+              <ArrowRight size={16} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function AuditModal() {
+  const { isAuditOpen, closeAudit } = useModal();
+  return (
+    <AnimatePresence>
+      {isAuditOpen && (
+        <div className="fixed inset-0 z-[100000] flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeAudit}
+            className="absolute inset-0 bg-[#000]/80 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            className="relative w-full max-w-xl overflow-hidden bg-[#0D0D0D] border border-white/10 rounded-[32px] p-8 md:p-12 shadow-[0_0_100px_-20px_rgba(242,48,48,0.3)]"
+          >
+            <button onClick={closeAudit} className="absolute right-6 top-6 text-zinc-500 hover:text-white transition-colors">
+              <X size={24} />
+            </button>
+            <MultiStepAuditForm />
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }
 
 function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { openAudit } = useModal();
   const [open, setOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
@@ -679,10 +968,10 @@ function Header() {
               </NavLink>
             ))}
             <button
-              onClick={() => navigate("/contact#enquiry")}
+              onClick={openAudit}
               className="inline-flex h-10 items-center rounded-full bg-[#F23030] px-6 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#A61F1F] hover:shadow-lg hover:shadow-red-900/30 active:scale-95"
             >
-              Get Free Audit
+              Get Your Growth Audit
             </button>
           </nav>
           <button
@@ -733,11 +1022,11 @@ function Header() {
                 transition={{ delay: 0.5 }}
                 onClick={() => {
                   setOpen(false);
-                  navigate("/contact#enquiry");
+                  openAudit();
                 }}
                 className="mt-6 inline-flex h-14 items-center bg-[#F23030] px-10 text-sm font-bold uppercase tracking-widest text-white rounded-full transition hover:bg-[#A61F1F]"
               >
-                Get Free Audit
+                Get Your Growth Audit
               </motion.button>
             </div>
           </motion.nav>
@@ -758,91 +1047,91 @@ function LandingPage() {
       title: 'REAL ESTATE & INFRASTRUCTURE',
       desc: 'Driving high-value property demand through immersive digital experiences and investor-focused positioning.',
       stats: [{ val: '8X', label: 'LEAD CONVERSION' }, { val: '₹100Cr+', label: 'PROJECT VISIBILITY' }],
-      img: '/industries/1.jpg'
+      img: '/industries/industry_real_estate.jpg'
     },
     'it-saas': {
       title: 'IT & SAAS COMPANIES',
       desc: 'Fueling scalable growth for SaaS and tech companies through precision-driven branding and product positioning.',
       stats: [{ val: '10X', label: 'FASTER SCALE' }, { val: '500k+', label: 'USERS REACHED' }],
-      img: '/industries/2.jpg'
+      img: '/industries/industry_it_saas.jpg'
     },
     'healthcare': {
       title: 'HEALTHCARE INSTITUTIONS',
       desc: 'Building trust-driven digital ecosystems for hospitals and clinics that convert patients into long-term loyalty.',
       stats: [{ val: '3X', label: 'PATIENT INQUIRIES' }, { val: '95%', label: 'TRUST SIGNALS' }],
-      img: '/industries/3.jpg'
+      img: '/industries/industry_healthcare.jpg'
     },
     'manufacturing': {
       title: 'MANUFACTURING & INDUSTRIAL',
       desc: 'Transforming traditional industries with modern digital infrastructure that attracts global B2B clients.',
       stats: [{ val: '5X', label: 'GLOBAL LEADS' }, { val: '70%', label: 'INQUIRY GROWTH' }],
-      img: '/industries/4.jpg'
+      img: '/industries/industry_manufacturing.jpg'
     },
     'finance-consulting': {
       title: 'FINANCE & CONSULTING FIRMS',
       desc: 'Establishing authority-led digital presence that builds trust and drives high-value client acquisition.',
       stats: [{ val: '4X', label: 'CLIENT ACQUISITION' }, { val: '2X', label: 'CONVERSION RATE' }],
-      img: '/industries/5.jpg'
+      img: '/industries/industry_finance.jpg'
     },
     'logistics': {
       title: 'LOGISTICS & SUPPLY CHAIN',
       desc: 'Optimizing digital visibility for logistics networks to attract enterprise partnerships and scale operations.',
       stats: [{ val: '6X', label: 'INBOUND LEADS' }, { val: '3X', label: 'PARTNER GROWTH' }],
-      img: '/industries/6.jpg'
+      img: '/industries/industry_logistics.jpg'
     },
     'architecture-interior': {
       title: 'ARCHITECTURE & INTERIOR DESIGN',
       desc: 'Showcasing design excellence through high-impact digital portfolios that attract premium clients and projects.',
       stats: [{ val: '4X', label: 'PROJECT INQUIRIES' }, { val: '2X', label: 'CLIENT VALUE' }],
-      img: '/industries/1.jpg'
+      img: '/industries/industry_architecture.jpg'
     },
     'furniture-decor': {
       title: 'FURNITURE & HOME DECOR',
       desc: 'Elevating product-driven brands with visuals and systems that drive wholesale and retail demand.',
       stats: [{ val: '3X', label: 'BULK ORDERS' }, { val: '5X', label: 'CATALOG REACH' }],
-      img: '/industries/2.jpg'
+      img: '/industries/industry_furniture.jpg'
     },
     'construction': {
       title: 'CONSTRUCTION & CONTRACTORS',
       desc: 'Building authority for construction firms through digital presence that attracts large-scale projects and partnerships.',
       stats: [{ val: '6X', label: 'PROJECT LEADS' }, { val: '3X', label: 'TENDER VISIBILITY' }],
-      img: '/industries/3.jpg'
+      img: '/industries/industry_construction.jpg'
     },
     'b2b-export': {
       title: 'B2B EXPORT & TRADING',
       desc: 'Positioning global suppliers with digital credibility that drives international inquiries and partnerships.',
       stats: [{ val: '5X', label: 'GLOBAL INQUIRIES' }, { val: '2X', label: 'EXPORT DEALS' }],
-      img: '/industries/4.jpg'
+      img: '/industries/industry_export.jpg'
     },
     'corporate': {
       title: 'CORPORATE & ENTERPRISES',
       desc: 'Strengthening enterprise presence with scalable digital systems built for credibility and long-term growth.',
       stats: [{ val: '4X', label: 'BRAND AUTHORITY' }, { val: '2X', label: 'LEAD QUALITY' }],
-      img: '/industries/5.jpg'
+      img: '/industries/industry_corporate.jpg'
     },
     'industrial-equipment': {
       title: 'INDUSTRIAL EQUIPMENT SUPPLIERS',
       desc: 'Transforming industrial brands with digital systems that attract high-value B2B buyers and distributors.',
       stats: [{ val: '3X', label: 'DEALER NETWORK' }, { val: '4X', label: 'INBOUND LEADS' }],
-      img: '/industries/6.jpg'
+      img: '/industries/industry_industrial.jpg'
     },
     'retail-franchises': {
       title: 'RETAIL CHAINS & FRANCHISES',
       desc: 'Scaling multi-location brands with unified digital systems that drive consistent growth and engagement.',
       stats: [{ val: '2X', label: 'STORE FOOTFALL' }, { val: '3X', label: 'FRANCHISE LEADS' }],
-      img: '/industries/1.jpg'
+      img: '/industries/industry_retail.jpg'
     },
     'luxury-brands': {
       title: 'LUXURY & PREMIUM BRANDS',
       desc: 'Crafting high-end digital experiences that elevate perception and drive premium customer acquisition.',
       stats: [{ val: '5X', label: 'ENGAGEMENT RATE' }, { val: '2X', label: 'CONVERSION VALUE' }],
-      img: '/industries/2.jpg'
+      img: '/industries/industry_luxury.jpg'
     },
     'education': {
       title: 'EDUCATION & TRAINING INSTITUTES',
       desc: 'Building credibility-driven digital ecosystems for educational institutions that attract high-intent students and drive enrollment at scale.',
       stats: [{ val: '4X', label: 'ENROLLMENTS' }, { val: '3X', label: 'INQUIRY VOLUME' }],
-      img: '/industries/3.jpg'
+      img: '/industries/industry_education.jpg'
     },
   };
 
@@ -1019,9 +1308,18 @@ function LandingPage() {
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <PricingSection
               plans={PLANS}
-              heading="PLANS THAT SCALE WITH YOU"
-              description="Whether you're just starting out or growing fast, our flexible pricing has you covered — with no hidden costs."
+              heading="Capabilities that scale."
+              description="Strategic deliverables engineered to establish market dominance and drive measurable growth across every critical vertical."
             />
+            <div className="mt-16 flex justify-center">
+              <Link 
+                to="/contact?service=Custom%20Solution#enquiry" 
+                className="group flex items-center gap-3 text-zinc-500 hover:text-cream transition-all duration-300"
+              >
+                <span className="text-sm font-bold uppercase tracking-widest">looking for custom packages</span>
+                <ArrowRight size={18} className="text-[#F23030] transition-transform duration-300 group-hover:translate-x-2" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -1179,32 +1477,138 @@ function ServicesPage() {
   );
 }
 
+function TeamSlider() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    const maxScroll = target.scrollWidth - target.clientWidth;
+    if (maxScroll > 0) {
+      setScrollProgress((target.scrollLeft / maxScroll) * 100);
+    }
+  };
+
+  return (
+    <div className="relative">
+      <div 
+        className="mt-16 flex overflow-x-auto pb-8 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        onScroll={handleScroll}
+      >
+        {team.map((member) => (
+          <a 
+            key={member.name}
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col items-start text-left w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center mr-6 md:mr-0 cursor-pointer"
+          >
+            {/* Desktop Image with Hover Overlay */}
+            <div className="relative overflow-hidden w-full aspect-[4/5] bg-zinc-900 border border-white/5 hidden md:block">
+              <img
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="bg-[#F23030] text-white text-xs font-bold uppercase tracking-[0.2em] px-6 py-4 border border-[#F23030] translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  View Profile
+                </span>
+              </div>
+            </div>
+            
+            {/* Mobile Image (No overlay, direct tap) */}
+            <div className="relative overflow-hidden w-full aspect-[4/5] bg-zinc-900 border border-white/5 md:hidden">
+              <img
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover grayscale-[10%]"
+              />
+            </div>
+
+            {/* Info Section */}
+            <div className="w-full mt-6 flex flex-col items-start">
+              <h3 className="font-['Inter'] text-2xl font-bold text-cream/90 group-hover:text-white transition-colors">{member.name}</h3>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#F23030]">{member.role}</p>
+              <div className="mt-5 h-[2px] w-0 bg-[#F23030] transition-all duration-500 group-hover:w-full hidden md:block" />
+            </div>
+          </a>
+        ))}
+      </div>
+      
+      {/* Mobile Scroll Indicator */}
+      <div className="mt-4 flex flex-col items-center justify-center md:hidden pb-4">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
+          <ChevronLeft size={14} className="text-zinc-600 animate-pulse" />
+          Swipe to explore
+          <ChevronRight size={14} className="text-zinc-600 animate-pulse" />
+        </p>
+        <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-[#F23030] transition-all duration-150 ease-out rounded-full" 
+            style={{ width: `${Math.max(20, scrollProgress)}%` }} 
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AboutPage() {
   return (
     <main>
-      <section className="mx-auto max-w-6xl px-4 pt-32 pb-16 md:px-6 md:pt-40 md:pb-24">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Our Story</p>
-            <h1 className="mt-4 font-['Inter'] text-4xl font-bold text-cream/80 md:text-6xl">
-              We build the future of premium brands.
-            </h1>
-            <p className="mt-8 text-lg leading-relaxed text-zinc-400">
-              Founded on the belief that bold creative should be backed by precision data, <strong>Digizinc</strong> started as a small strategy boutique. Today, we are a full-scale growth partner for ambitious brands who refuse to settle for average.
+      <section className="mx-auto max-w-5xl px-4 pt-32 pb-16 md:px-6 md:pt-48 md:pb-24">
+        <div className="text-left">
+          <h1 className="mt-6 font-['Inter'] text-[42px] font-bold text-cream md:text-8xl lg:text-[100px] leading-[0.95] tracking-tighter">
+            We engineer brands people <br className="md:hidden" /> <span className="text-zinc-500 whitespace-nowrap">can’t ignore.</span>
+          </h1>
+          <div className="mt-12 max-w-3xl space-y-10">
+            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
+              <strong className="text-white">DigiZinc</strong> wasn't born in a boardroom. It was born from a simple, stubborn observation: that in a crowded market, <span className="text-cream italic">creativity without a strategy is just expensive noise.</span>
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-zinc-400">
-              We don't just run ads or build websites; we design ecosystems that dominate markets and command authority.
+            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
+              We started as a small strategy boutique with a singular focus to stop being 'just another agency' and start being a growth engine. We never measured our success by the size of our office, but by the scale of the impact we delivered for our partners.
+            </p>
+            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
+              Today, we don’t just build projects; we architect digital ecosystems. High-performance environments engineered to seize attention, influence decision-making, and turn market share into market dominance.
             </p>
           </div>
-          <div className="relative aspect-square">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
-              alt="Digizinc office"
-              width={600}
-              height={600}
-              loading="lazy"
-              className="h-full w-full object-cover shadow-2xl"
-            />
+        </div>
+      </section>
+
+      {/* Our Story / Message from Founder Section */}
+      <section className="py-24 md:py-32 bg-black relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-4 md:px-6 relative z-10">
+          <div className="grid gap-16 md:grid-cols-2 md:items-center">
+            <div className="relative group">
+              <div className="relative overflow-hidden rounded-none bg-zinc-900 border border-white/10 aspect-[4/5]">
+                <img
+                  src="/bhargava-raj.png"
+                  alt="Bhargava Raj"
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <h3 className="font-['Inter'] text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-8 leading-[1.1] tracking-tight">
+                A Message from <br /><span className="text-zinc-500">Our Founder</span>
+              </h3>
+
+              <div className="relative">
+                <p className="font-['Instrument_Serif'] text-2xl md:text-3xl lg:text-4xl leading-[1.4] text-cream/90 italic">
+                  We don’t spend our time chasing trends; we spend it building leverage. For us, AI has never been just a tool. It’s the unfair advantage we use to move faster and deliver at a higher intensity. We have zero interest in building brands that just exist. We engineer systems that are built to scale, dominate their space, and drive growth you can actually measure.
+                </p>
+
+                <div className="mt-10 flex items-center">
+                  <p className="text-sm font-bold uppercase tracking-widest text-zinc-400 whitespace-nowrap">
+                    Bhargava Raj <span className="text-[#F23030]/60 ml-2">— Founder & CEO</span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1215,13 +1619,13 @@ function AboutPage() {
             <div>
               <h2 className="font-['Inter'] text-3xl font-bold text-[#A61F1F]">The Mission</h2>
               <p className="mt-4 text-xl leading-relaxed text-zinc-300">
-                To bridge the gap between human emotion and digital performance, empowering brands to speak with conviction and scale with certainty.
+                Markets are louder than ever, but they've never been more hollow. We’re here to bridge that gap by using human psychology to trigger real emotion and data intelligence to back it up. We give brands the authority to speak with conviction and the infrastructure to scale without the guesswork.
               </p>
             </div>
             <div>
               <h2 className="font-['Inter'] text-3xl font-bold text-[#A61F1F]">The Vision</h2>
               <p className="mt-4 text-xl leading-relaxed text-zinc-300">
-                To become the global gold standard for agencies that blend cinematic creative with forensic data analysis.
+                We’re building the global gold standard for what a growth partner should actually be. Our vision is a world where cinematic storytelling and forensic data aren't separate departments, but a single, lethal weapon for our partners. We intend to be the reason the next generation of premium brands command their markets.
               </p>
             </div>
           </div>
@@ -1230,30 +1634,43 @@ function AboutPage() {
 
       <section className="bg-transparent/40 md:bg-transparent py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Methodology</p>
-            <h2 className="mt-4 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Our Proven Process.</h2>
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#F23030]">Methodology</p>
+            <h2 className="mt-6 font-['Inter'] text-4xl md:text-6xl font-black text-cream leading-tight">
+              Our Proven <span className="text-zinc-500">Process.</span>
+            </h2>
           </div>
-          <div className="mt-16 grid gap-6 md:grid-cols-5">
+          
+          <div className="mt-20 flex flex-col border-t border-white/10">
             {[
-              { step: "01", title: "Audit", desc: "Forensic research to find growth leaks.", icon: <Search size={24} /> },
-              { step: "02", title: "Strategy", desc: "Tailored roadmap for market dominance.", icon: <MapPin size={24} /> },
-              { step: "03", title: "Creative", desc: "Cinematic production and high-fidelity dev.", icon: <Palette size={24} /> },
-              { step: "04", title: "Launch", desc: "Precision targeting across all channels.", icon: <Sparkles size={24} /> },
-              { step: "05", title: "Scale", desc: "Performance tracking and future handoff.", icon: <Rocket size={24} /> },
+              { step: "01", title: "Forensic Audit", desc: "We don't guess. We perform a deep-tissue search of your current infrastructure to identify every leak and lost opportunity." },
+              { step: "02", title: "Market Strategy", desc: "A tailored roadmap engineered for dominance. We define the exact moves required to bend the market in your favor." },
+              { step: "03", title: "Cinematic Creative", desc: "High-fidelity production that commands attention. We build visuals that don't just look good—they convert." },
+              { step: "04", title: "Precision Launch", desc: "Targeted deployment across the digital wild. We move with surgical precision to reach the right people at the right time." },
+              { step: "05", title: "Scale & Dominate", desc: "Continuous performance tracking and aggressive scaling. We optimize until your authority is unquestioned." },
             ].map((p, i) => (
-              <div key={p.step} className="relative group">
-                {i < 4 && (
-                  <div className="absolute right-0 top-8 z-0 hidden h-[2px] w-full bg-zinc-200 md:block translate-x-1/2" />
-                )}
-                <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-transparent border-2 border-[#A61F1F] text-[#F23030] transition duration-500 group-hover:bg-[#F23030] group-hover:text-white group-hover:border-[#F23030] shadow-xl">
-                    {p.icon}
-                  </div>
-                  <span className="mt-4 text-xs font-bold uppercase tracking-widest text-[#F23030]">{p.step}</span>
-                  <h3 className="mt-2 font-['Inter'] text-xl font-bold text-cream">{p.title}</h3>
-                  <p className="mt-3 text-sm text-zinc-400 px-2">{p.desc}</p>
+              <div key={p.step} className="group relative flex flex-col md:flex-row md:items-center gap-6 md:gap-16 border-b border-white/10 py-10 md:py-16 px-4 md:px-8 transition-all duration-500 hover:bg-white/[0.02]">
+                {/* Massive Number */}
+                <div className="text-5xl md:text-7xl font-['Instrument_Serif'] text-zinc-700 transition-colors duration-500 group-hover:text-[#F23030]">
+                  {p.step}
                 </div>
+                
+                {/* Title */}
+                <div className="flex-1">
+                  <h3 className="font-['Inter'] text-3xl md:text-5xl font-bold text-cream tracking-tight transition-transform duration-500 group-hover:translate-x-4">
+                    {p.title}
+                  </h3>
+                </div>
+                
+                {/* Description */}
+                <div className="md:w-[40%]">
+                  <p className="text-zinc-400 text-base md:text-lg leading-relaxed transition-colors duration-500 group-hover:text-zinc-300">
+                    {p.desc}
+                  </p>
+                </div>
+                
+                {/* Red accent bar on hover */}
+                <div className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#F23030] transition-all duration-700 group-hover:w-full" />
               </div>
             ))}
           </div>
@@ -1265,40 +1682,9 @@ function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">The Team</p>
           <h2 className="mt-4 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Meet the Strategists.</h2>
         </div>
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((member) => (
-            <div key={member.name} className="group flex flex-col items-center text-center">
-              <div className="overflow-hidden shadow-lg">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  width={300}
-                  height={400}
-                  loading="lazy"
-                  className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="mt-6 font-['Inter'] text-xl font-bold text-cream/80">{member.name}</h3>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#F23030]">{member.role}</p>
-            </div>
-          ))}
-        </div>
+        <TeamSlider />
       </section>
 
-      <section className="bg-transparent/40 md:bg-transparent py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center md:px-6">
-          <h2 className="font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Ready to write your growth story?</h2>
-          <p className="mt-6 text-lg text-zinc-400">
-            Join the ranks of premium brands that scale with Digizinc. Let's discuss your targets.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-10 inline-flex h-14 items-center bg-[#F23030] px-10 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#920015]"
-          >
-            Start Your Audit
-          </Link>
-        </div>
-      </section>
     </main>
   );
 }
@@ -1704,7 +2090,7 @@ function ContactPage() {
           </div>
         </section>
         <section>
-          <EnquiryForm />
+          <InquiryForm />
         </section>
       </div>
     </main>
@@ -1781,52 +2167,53 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
 
-  // Trigger splash on every route change
+  // Trigger splash only on initial load
   useEffect(() => {
-    setShowSplash(true);
     // Force instant scroll to top
     window.scrollTo(0, 0);
-  }, [location.pathname, location.key]);
+  }, []);
 
   const handleSplashFinished = useCallback(() => {
     setShowSplash(false);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#000000] text-cream antialiased selection:bg-[#F23030] selection:text-white">
-      {/* Global Cinematic Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Artistic Hand-Made Grid (Faded in parts) */}
-        <div
-          className="absolute inset-0 opacity-[0.08]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
-            backgroundSize: '80px 80px',
-            maskImage: 'radial-gradient(circle at 10% 20%, black 0%, transparent 40%), radial-gradient(circle at 90% 10%, black 0%, transparent 35%), radial-gradient(circle at 50% 80%, black 0%, transparent 50%), radial-gradient(circle at 85% 65%, black 0%, transparent 30%)',
-            WebkitMaskImage: 'radial-gradient(circle at 10% 20%, black 0%, transparent 40%), radial-gradient(circle at 90% 10%, black 0%, transparent 35%), radial-gradient(circle at 50% 80%, black 0%, transparent 50%), radial-gradient(circle at 85% 65%, black 0%, transparent 30%)'
-          }}
-        />
+    <ModalProvider>
+      <div className="min-h-screen bg-[#000000] text-cream antialiased selection:bg-[#F23030] selection:text-white">
+        {/* Global Cinematic Background */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* Artistic Hand-Made Grid (Faded in parts) */}
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+              backgroundSize: '80px 80px',
+              maskImage: 'radial-gradient(circle at 10% 20%, black 0%, transparent 40%), radial-gradient(circle at 90% 10%, black 0%, transparent 35%), radial-gradient(circle at 50% 80%, black 0%, transparent 50%), radial-gradient(circle at 85% 65%, black 0%, transparent 30%)',
+              WebkitMaskImage: 'radial-gradient(circle at 10% 20%, black 0%, transparent 40%), radial-gradient(circle at 90% 10%, black 0%, transparent 35%), radial-gradient(circle at 50% 80%, black 0%, transparent 50%), radial-gradient(circle at 85% 65%, black 0%, transparent 30%)'
+            }}
+          />
+        </div>
+
+        {showSplash && <SplashLoader onFinished={handleSplashFinished} />}
+
+        <div className="relative z-10 bg-transparent">
+          <ScrollManager />
+          <Header />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<ServiceDetailPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/:slug" element={<ProjectDetailPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogSinglePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </div>
+        <CinematicFooter />
+        <AuditModal />
       </div>
-
-      {showSplash && <SplashLoader onFinished={handleSplashFinished} />}
-
-      <div className="relative z-10 bg-transparent">
-        <ScrollManager />
-        <Header />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServiceDetailPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/portfolio/:slug" element={<ProjectDetailPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogSinglePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-
-        </Routes>
-      </div>
-      <CinematicFooter />
-    </div>
+    </ModalProvider>
   );
 }

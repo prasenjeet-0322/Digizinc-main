@@ -58,7 +58,7 @@ export function PricingSection({
 			{...props}
 		>
 			<div className="w-full md:mx-auto max-w-3xl space-y-4 pb-8">
-				<p className="text-left md:text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Pricing</p>
+				<p className="text-left md:text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Services</p>
 				<h2 className="text-left md:text-center font-['Inter'] text-3xl font-bold text-white md:text-5xl">
 					{heading}
 				</h2>
@@ -68,10 +68,6 @@ export function PricingSection({
 					</p>
 				)}
 			</div>
-			<PricingFrequencyToggle
-				frequency={frequency}
-				setFrequency={setFrequency}
-			/>
 			<div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 mt-8">
 				{plans.map((plan) => (
 					<PricingCard plan={plan} key={plan.name} frequency={frequency} />
@@ -154,36 +150,8 @@ export function PricingCard({
 					plan.highlighted && 'bg-[#A61F1F]/10',
 				)}
 			>
-				<div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-					{plan.highlighted && (
-						<p className="bg-[#F23030] text-white flex items-center gap-1 rounded-md px-2 py-1 text-xs font-bold uppercase tracking-wider">
-							<StarIcon className="h-3 w-3 fill-current" />
-							Popular
-						</p>
-					)}
-					{frequency === 'yearly' && (
-						<p className="bg-emerald-600 text-white flex items-center gap-1 rounded-md px-2 py-1 text-xs font-bold uppercase tracking-wider">
-							{Math.round(
-								((plan.price.monthly * 12 - plan.price.yearly) /
-									plan.price.monthly /
-									12) *
-									100,
-							)}
-							% off
-						</p>
-					)}
-				</div>
-
-				<div className="font-['Inter'] text-2xl font-bold text-cream">{plan.name}</div>
-				<p className="text-zinc-400 text-sm font-medium mt-1">{plan.info}</p>
-				<h3 className="mt-6 flex items-end gap-1">
-					<span className="font-['Inter'] text-5xl font-black text-white">${plan.price[frequency]}</span>
-					<span className="text-zinc-500 font-bold mb-1">
-						{plan.name !== 'Free'
-							? '/' + (frequency === 'monthly' ? 'mo' : 'yr')
-							: ''}
-					</span>
-				</h3>
+				<div className="font-['Inter'] text-3xl font-bold text-cream tracking-tight">{plan.name}</div>
+				<p className="text-zinc-400 text-sm font-medium mt-2">{plan.info}</p>
 			</div>
 			<div
 				className={cn(
