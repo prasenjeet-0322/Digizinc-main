@@ -4,29 +4,28 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 
 const ICONS_ROW1 = [
-  "/logos/partners/ALC (2).png",
-  "/logos/partners/Asset 1RTS-fav.png",
-  "/logos/partners/Asset 1glen white.png",
-  "/logos/partners/Asset 1onegrasp1.png",
-  "/logos/partners/Asset 2magnus.png",
-  "/logos/partners/Aura white.png",
-  "/logos/partners/Celebrity-Secrets white.png",
-  "/logos/partners/Ebisu_90 White.png",
-  "/logos/partners/Logo Lite.png",
-  "/logos/partners/STOTAA white.png",
+  "/logos/partners/Asset_1broken.png",
+  "/logos/partners/Asset_1onegrasp1.png",
+  "/logos/partners/Asset_2magnus.png",
+  "/logos/partners/Asset_3.png",
+  "/logos/partners/Aura_white.png",
+  "/logos/partners/Ebisu_90_White.png",
+  "/logos/partners/Group_58.png",
+  "/logos/partners/Logo.jpg",
+  "/logos/partners/Logo_Lite.png",
+  "/logos/partners/ReWiser_Logo_1.png",
 ];
 
 const ICONS_ROW2 = [
-  "/logos/partners/ReWiser Logo 1.png",
-  "/logos/partners/Skinnfit Logo.png",
   "/logos/partners/Sobha-Town-Park-Logo-1.png",
+  "/logos/partners/Updated-logo-CMPS1.png",
   "/logos/partners/aspire.png",
-  "/logos/partners/ghu.png",
+  "/logos/partners/asset.png",
+  "/logos/partners/footer-logo_white.png",
   "/logos/partners/jayanthi-logo-2.webp",
-  "/logos/partners/logo 1.png",
-  "/logos/partners/myra-logo.png",
-  "/logos/partners/theja-infracon-logo white.png",
-  "/logos/partners/zephhtmblack (1) white.png",
+  "/logos/partners/logo.png",
+  "/logos/partners/logo_skyven_updated-02(1)_copy.png",
+  "/logos/partners/theja-infracon-logo_white.png",
 ];
 
 // Utility to repeat icons enough times
@@ -48,7 +47,7 @@ export default function IntegrationHero() {
         {/* Carousel Container */}
         <div className="mt-20 overflow-hidden relative group">
           {/* Row 1: Moving Left */}
-          <div className="flex gap-4 whitespace-nowrap animate-scroll-left [animation-duration:5s] md:[animation-duration:40s] py-4 hover:[animation-play-state:paused] cursor-pointer">
+          <div className="flex gap-4 whitespace-nowrap animate-scroll-left [animation-duration:4.5s] md:[animation-duration:36s] py-4 hover:[animation-play-state:paused] cursor-pointer">
             {repeatedIcons(ICONS_ROW1, 8).map((src, i) => (
               <div 
                 key={i} 
@@ -57,7 +56,7 @@ export default function IntegrationHero() {
                 <img 
                   src={src} 
                   alt="partner-logo" 
-                  className="h-14 w-auto max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity" 
+                  className="h-14 w-auto max-w-full object-contain opacity-70 hover:opacity-100 transition-all duration-500 invert brightness-0 grayscale hover:invert-0 hover:brightness-100 hover:grayscale-0" 
                   loading="lazy" 
                 />
               </div>
@@ -65,7 +64,7 @@ export default function IntegrationHero() {
           </div>
 
           {/* Row 2: Moving Right */}
-          <div className="flex gap-4 whitespace-nowrap mt-4 animate-scroll-right [animation-duration:5s] md:[animation-duration:40s] py-4 hover:[animation-play-state:paused] cursor-pointer">
+          <div className="flex gap-4 whitespace-nowrap mt-4 animate-scroll-right [animation-duration:4.5s] md:[animation-duration:36s] py-4 hover:[animation-play-state:paused] cursor-pointer">
             {repeatedIcons(ICONS_ROW2, 8).map((src, i) => (
               <div 
                 key={i} 
@@ -74,7 +73,7 @@ export default function IntegrationHero() {
                 <img 
                   src={src} 
                   alt="partner-logo" 
-                  className="h-14 w-auto max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity" 
+                  className="h-14 w-auto max-w-full object-contain opacity-70 hover:opacity-100 transition-all duration-500 invert brightness-0 grayscale hover:invert-0 hover:brightness-100 hover:grayscale-0" 
                   loading="lazy"
                 />
               </div>

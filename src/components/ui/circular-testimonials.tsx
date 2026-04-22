@@ -214,12 +214,6 @@ export const CircularTestimonials = ({
               >
                 {activeTestimonial.name}
               </h3>
-              <p
-                className="designation"
-                style={{ color: colorDesignation, fontSize: fontSizeDesignation }}
-              >
-                {activeTestimonial.designation}
-              </p>
               <motion.p
                 className="quote"
                 style={{ color: colorTestimony, fontSize: fontSizeQuote }}

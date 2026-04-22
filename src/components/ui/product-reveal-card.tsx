@@ -20,6 +20,7 @@ interface ProductRevealCardProps {
   onDiscoverMore?: () => void
   enableAnimations?: boolean
   className?: string
+  imgClassName?: string
 }
 
 export function ProductRevealCard({
@@ -36,6 +37,7 @@ export function ProductRevealCard({
   onDiscoverMore,
   enableAnimations = true,
   className,
+  imgClassName,
 }: ProductRevealCardProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
@@ -152,7 +154,7 @@ export function ProductRevealCard({
         <motion.img
           src={image}
           alt={name}
-          className="h-full w-full object-cover"
+          className={cn("h-full w-full object-cover", imgClassName)}
           variants={imageVariants}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />

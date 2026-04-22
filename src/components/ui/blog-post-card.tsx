@@ -8,6 +8,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 
 
 export interface ArticleCardProps {
@@ -52,40 +53,38 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   const hasFooter = writer || publishedAt;
 
   return (
-    <Card className="flex h-full w-full max-w-sm flex-col gap-3 overflow-hidden rounded-3xl border-0 md:border md:border-white/10 bg-[#0a0a0a]/50 backdrop-blur-md p-3 shadow-lg transition-all duration-300 hover:border-[#F23030]/30 hover:shadow-[#F23030]/5">
+    <Card className="group flex h-full w-full flex-col bg-zinc-900/40 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 hover:border-[#F23030]/20 hover:bg-zinc-900/60 hover:shadow-[0_20px_50px_-20px_rgba(242,48,48,0.15)]">
       {cover && (
-        <CardHeader className="p-0">
-          <div className="relative h-56 w-full overflow-hidden rounded-2xl">
-            <img
-              src={cover}
-              alt={headline}
-              className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-              loading="lazy"
-            />
-          </div>
+        <CardHeader className="p-0 relative aspect-[16/10] overflow-hidden">
+          <img
+            src={cover}
+            alt={headline}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+          {tag && (
+            <div className="absolute top-6 left-6">
+              <Badge className="bg-[#F23030] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border-0 backdrop-blur-md">
+                {tag}
+              </Badge>
+            </div>
+          )}
         </CardHeader>
       )}
 
-      <CardContent className="flex-grow p-3">
-        {hasMeta && (
-          <div className="mb-4 flex items-center text-sm text-zinc-500">
-            {tag && (
-            <Badge className="rounded-full border-none bg-zinc-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-400 hover:bg-[#F23030] hover:text-white transition-colors duration-200">
-              {tag}
-            </Badge>
+      <CardContent className="flex-grow p-8 flex flex-col">
+        <div className="flex items-center gap-4 text-[9px] font-bold uppercase tracking-widest text-zinc-500 mb-6">
+          {publishedAt && <span>{formatPostDate(publishedAt)}</span>}
+          {publishedAt && readingTime && <span className="w-1 h-1 rounded-full bg-zinc-700" />}
+          {readingTime && <span>{formatReadTime(readingTime)}</span>}
+        </div>
 
-            )}
-            {tag && readingTime && <span className="mx-2 opacity-30">•</span>}
-            {readingTime && <span className="text-xs font-medium uppercase tracking-wide">{formatReadTime(readingTime)}</span>}
-          </div>
-        )}
-
-        <h2 className="mb-3 text-2xl font-bold leading-tight text-white group-hover:text-[#F23030] transition-colors">
+        <h2 className="font-['Inter'] text-2xl font-bold leading-tight text-white mb-4 group-hover:text-[#F23030] transition-colors line-clamp-2">
           {headline}
         </h2>
 
         <p
-          className={cn("text-zinc-400 leading-relaxed text-sm", {
+          className={cn("text-zinc-400 leading-relaxed text-sm mb-8", {
             "overflow-hidden text-ellipsis [-webkit-box-orient:vertical] [display:-webkit-box]":
               clampLines && clampLines > 0,
           })}
@@ -95,26 +94,12 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         >
           {excerpt}
         </p>
-      </CardContent>
 
-      {hasFooter && (
-        <CardFooter className="flex items-center justify-between p-3 pt-0 md:border-t md:border-white/5 mt-2">
-          {writer && (
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-0.5">By</p>
-              <p className="text-xs font-bold text-zinc-300">{writer}</p>
-            </div>
-          )}
-          {publishedAt && (
-            <div className={writer ? "text-right" : ""}>
-              <p className="text-[10px] uppercase tracking-widest text-zinc-500 mb-0.5">Published</p>
-              <p className="text-xs font-bold text-zinc-300">
-                {formatPostDate(publishedAt)}
-              </p>
-            </div>
-          )}
-        </CardFooter>
-      )}
+        <div className="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F23030] group/link">
+          <span>Read Full Analysis</span>
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
+        </div>
+      </CardContent>
     </Card>
   );
 };

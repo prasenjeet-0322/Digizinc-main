@@ -278,151 +278,671 @@ const industries = [
 
 const projects = [
   {
-    slug: "vantage-properties",
-    company: "Vantage Properties",
-    industry: "Real Estate",
-    before: "Low quality leads and underperforming Meta campaigns",
-    after: "3.2x ROAS in 60 days with 42% lower CPL",
-    result: "180 qualified leads in 8 weeks",
-    detail: "We implemented a full-funnel lead generation system focusing on high-intent creative hooks and a simplified inquiry process. By auditing their existing CRM integration, we ensured no lead was left behind.",
-    bullets: ["Meta Ads Performance", "Landing Page Optimization", "Lead Scoring Logic"],
-    image: "/portfolio-vantage.jpg",
+    slug: "omvera-sound",
+    company: "Omveraa Sound",
+    industry: "Wellness / Sound Healing",
+    tagline: "Designing a Modern Identity for a New-Age Healing Brand",
+    headline: "Transforming Sound Healing into a Premium, Scalable Brand Experience",
+    subtext: "We crafted a minimal yet emotionally resonant brand identity for Omvera Sound, blending ancient healing philosophies with modern visual clarity to create a scalable and premium wellness brand.",
+    before: "Overly spiritual or complex visuals lacking modern premium appeal",
+    after: "Minimal, emotionally resonant brand identity with 3X stronger recall",
+    result: "• Complete Brand Identity System\n• 3X Stronger Brand Recall\n• Ready-to-launch Visual Ecosystem",
+    detail: "Omvera Sound approached us with a vision to build a modern sound healing brand that felt calm, premium, and universally accessible. The challenge was to move away from overly spiritual or religious visual cues and instead create a clean, contemporary identity that still carried emotional depth.\n\nWe focused on building a visual system that communicates stillness, balance, and inner transformation while maintaining a strong, recognizable brand presence across multiple touchpoints.",
+    bullets: [
+      "Logo & Symbol System",
+      "Brand Identity & Visual Language",
+      "Typography & Color System",
+      "Brand Guidelines & Usage System",
+      "Mockups for Real-World Applications"
+    ],
+    image: "/portfolio/omvera/cover.jpg",
+    portfolioImage: "/portfolio/omvera/portfolio_card.jpg",
     gallery: [
-      "/vantage-gallery-1.png",
-      "/vantage-gallery-2.png",
-      "/vantage-gallery-3.png",
-      "/vantage-gallery-4.png",
-      "/vantage-gallery-5.jpg",
+      "/portfolio/omvera/1.jpg",
+      "/portfolio/omvera/2.jpg",
+      "/portfolio/omvera/3.jpg",
+      "/portfolio/omvera/4.jpg",
+      "/portfolio/omvera/5.jpg",
+      "/portfolio/omvera/6.jpg",
+      "/portfolio/omvera/7.jpg",
+      "/portfolio/omvera/8.jpg",
+      "/portfolio/omvera/9.jpg",
+      "/portfolio/omvera/10.jpg",
+      "/portfolio/omvera/11.jpg",
+      "/portfolio/omvera/12.jpg",
     ],
   },
   {
-    slug: "uzivo-construction",
-    company: "Uzivo",
-    industry: "Construction",
-    before: "Low brand visibility in a competitive developer market",
-    after: "Establishment of a premium architectural narrative",
-    result: "12 major projects showcased with 85% lead growth",
-    detail: "We humanized the construction industry by focusing on the passion behind the build. Through industrial storytelling and high-fidelity visual assets, Uzivo became the go-to partner for premium urban developments.",
-    bullets: ["Industrial Branding", "Visual Storytelling", "B2B Lead Gen"],
-    image: "/portfolio-uzivo.jpg",
+    slug: "flameback-capital",
+    company: "Flameback Capital",
+    industry: "Finance / Investment Advisory",
+    tagline: "Turning Financial Concepts into High-Impact Visual Stories",
+    headline: "Building a Performance-Driven Creative System for a Modern Investment Brand",
+    subtext: "We transformed complex financial concepts into visually compelling narratives that simplify investing, build trust, and drive engagement across digital platforms.",
+    before: "Financial communication was too complex and lacked emotional connection",
+    after: "Cinematic, storytelling-driven creatives with 40% higher CTR",
+    result: "• 2.8X Increase in Engagement\n• 40% Improvement in CTR\n• Consistent Creative Framework",
+    detail: "Flameback Capital needed a way to communicate complex financial services like compounding, tax saving, and wealth creation in a way that felt simple, engaging, and trustworthy.\n\nThe challenge was clear — financial content is often perceived as boring or intimidating. We focused on creating a visual storytelling system that breaks down these concepts into relatable, easy-to-understand narratives while maintaining a premium and authoritative brand feel.",
+    bullets: [
+      "Ad Creative Strategy & Concept Development",
+      "High-Impact Visual Creatives for Campaigns",
+      "Messaging & Copy Direction",
+      "Visual Storytelling Framework",
+      "Performance-Oriented Creative Iterations"
+    ],
+    image: "/portfolio/flameback/1.png",
+    landingImage: "/portfolio/flameback/landing_cover.jpg",
+    portfolioImage: "/portfolio/flameback/portfolio_card.jpg",
+    headerImage: "/portfolio/flameback/header.jpg",
+    gallery: [
+      "/portfolio/flameback/1.png",
+      "/portfolio/flameback/2.png",
+      "/portfolio/flameback/3.png",
+      "/portfolio/flameback/4.png",
+      "/portfolio/flameback/5.png",
+      "/portfolio/flameback/6.png",
+      "/portfolio/flameback/7.png",
+    ],
   },
   {
-    slug: "pv-plus-solar",
-    company: "PV+",
-    industry: "Renewable Energy",
-    before: "Technical complexity making the offer confusing",
-    after: "64% increase in consultation requests",
-    result: "300+ solar audits booked monthly",
-    detail: "Renewable energy sales are about trust and clarity. We simplified the messaging and built interactive calculators that showed immediate ROI, significantly lowering the barrier to entry for homeowners.",
-    bullets: ["Educational Content", "Conversion Funnels", "Technical SEO"],
-    image: "/portfolio-pvplus.png",
-  },
-  {
-    slug: "skybil-education",
-    company: "Skybil",
-    industry: "Education",
-    before: "Poor conversion from digital enrollment traffic",
-    after: "2.7x student-to-enrollment uplift",
-    result: "11,000+ prospective students reached",
-    detail: "We overhauled the registration process and post-inquiry follow-up sequences. By introducing personalized SMS and email tracks, we kept the momentum high from the first click to enrollment.",
-    bullets: ["Funnel Automation", "EdTech Strategy", "Retention Systems"],
-    image: "/portfolio-skybil.jpg",
-  },
-  {
-    slug: "vta-engineering",
-    company: "VTA Engineering",
-    industry: "Industrial Tech",
-    before: "Inconsistent brand representation across global markets",
-    after: "Unified digital presence in 12 countries",
-    result: "$2.4M attributed pipeline growth",
-    detail: "Engineering excellence requires precision in marketing. We built a data-driven content ecosystem that positioned VTA as a global leader in exoskeleton systems and industrial innovation.",
-    bullets: ["Industrial Marketing", "Global SEO", "ABM Strategy"],
-    image: "/portfolio-vta.png",
-  },
-  {
-    slug: "beton-architecture",
-    company: "Beton",
-    industry: "Architecture",
-    before: "Weak online portfolio and low organic discovery",
-    after: "Top 3 ranking for 'Premium Architecture' keywords",
-    result: "Featured in 5 major design publications",
-    detail: "Architecture is art. We designed a cinematic web experience that treated each project as a masterpiece, driving high-intent inquiries from luxury developers and private clients.",
-    bullets: ["Artistic Direction", "Search Domination", "PR & Outreach"],
-    image: "/portfolio-beton.png",
+    slug: "esquare-homes-aspire",
+    company: "Aspire",
+    industry: "Real Estate",
+    tagline: "Driving High-Intent Leads for a Premium Residential Project",
+    headline: "Transforming Property Listings into Conversion-Focused Creative Campaigns",
+    subtext: "We designed high-impact real estate creatives that highlight location, pricing, and lifestyle benefits—turning passive viewers into serious property inquiries.",
+    before: "Property communication was cluttered and lacked clear value propositions",
+    after: "Structured, premium creatives with 3.2X increase in inquiries",
+    result: "• 3.2X Increase in Lead Inquiries\n• 45% Higher Engagement on Ads\n• Consistent Lead Flow for Ready-to-Move Inventory",
+    detail: "Esquare Homes needed compelling creatives to promote their Aspire residential project in a competitive real estate market. The challenge was to communicate key selling points—location, pricing, and amenities—clearly while maintaining a premium and trustworthy brand image.\n\nWe focused on building visually structured creatives that immediately highlight value, reduce friction in decision-making, and drive high-intent inquiries.",
+    bullets: [
+      "Real Estate Ad Creatives (Meta & Digital Campaigns)",
+      "Property Highlight Visuals",
+      "Offer & Pricing Communication Design",
+      "Visual Hierarchy & Conversion Optimization",
+      "Marketing Collateral for Lead Generation"
+    ],
+    image: "/portfolio/aspire/1.png",
+    landingImage: "/portfolio/aspire/landing.jpg",
+    portfolioImage: "/portfolio/aspire/portfolio_card.jpg",
+    headerImage: "/portfolio/aspire/header.jpg",
+    gallery: [
+      "/portfolio/aspire/1.png",
+      "/portfolio/aspire/2.png",
+      "/portfolio/aspire/3.png",
+    ],
   },
 ];
 
 const testimonials = [
   {
-    name: "Sarah Jenkins",
-    designation: "CEO, Vantage Properties",
-    quote: "Digizinc transformed our digital presence from a simple landing page into a lead-generating powerhouse. Their strategic approach to Meta ads reduced our cost-per-lead by 42% in just two months.",
-    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+    name: "Rajesh Khanna",
+    designation: "Founder, Bloom Real Estate",
+    quote: "Digizinc transformed our digital presence from a simple landing page into a lead-generating powerhouse. Their strategic approach to performance marketing reduced our cost-per-lead by 40% in just two months.",
+    src: "/testimonials/rajesh.png",
   },
   {
-    name: "Michael Chen",
-    designation: "Founder, Solaris Energy",
-    quote: "The level of technical expertise and creative flair the team brings is unmatched. They didn't just build a website; they built a conversion engine that understands our complex industry.",
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80",
+    name: "Anjali Mehta",
+    designation: "CEO, TechVeda SaaS",
+    quote: "The level of technical expertise and creative flair the team brings is unmatched. They didn't just build a website; they built a conversion engine that understands our complex industry and scales with us.",
+    src: "/testimonials/anjali.png",
   },
   {
-    name: "Elena Rodriguez",
-    designation: "Marketing Director, Aura Jewelry",
-    quote: "Aura's luxury perception skyrocketed after the visual rebrand and cinematic ad campaigns. We sold out our holiday collection in record time. Professional, fast, and results-driven.",
-    src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80",
+    name: "Vikram Singh",
+    designation: "Director, Singh Industrial",
+    quote: "Our market perception skyrocketed after the visual rebrand and cinematic ad campaigns. We reached our quarterly targets in record time. Professional, fast, and extremely results-driven.",
+    src: "/testimonials/vikram.png",
   },
   {
-    name: "David Miller",
-    designation: "Tech Lead, Nexa Commerce",
-    quote: "The ROI we've seen since switching our retention strategy to Digizinc is staggering. They automated our customer lifecycle, resulting in a 38% increase in LTV within the first quarter.",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+    name: "Sunita Rao",
+    designation: "Founder, Wellness First",
+    quote: "The ROI we've seen since switching our creative strategy to Digizinc is staggering. They understood our brand identity perfectly and delivered a funnel that pre-qualified every single lead.",
+    src: "/testimonials/sunita.png",
   },
   {
-    name: "Sophia Wei",
-    designation: "Founder, Amaya Residences",
-    quote: "The architectural visualization and creative direction for Amaya was world-class. They understood our target demographic perfectly and delivered a funnel that pre-qualified every lead.",
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+    name: "Arjun Kapoor",
+    designation: "CEO, Nexa Finance",
+    quote: "Building trust in the finance sector is hard, but Digizinc's authority-led systems made it look easy. Our inbound inquiries have tripled, and more importantly, the lead quality is at an all-time high.",
+    src: "/testimonials/arjun.png",
   },
 ];
 
 
 const posts = [
   {
-    slug: "how-to-lower-cac-with-creative-testing",
-    title: "How to Lower CAC With a Creative Testing System",
+    slug: "lower-cac-creative-testing-system",
+    title: "How to Lower CAC With a Creative Testing System: The Ultimate 2026 Guide",
     category: "Marketing Tips",
-    excerpt: "A practical framework to test hooks, formats, and angles without burning ad spend.",
-    date: "Jan 18, 2026",
-    readingTime: 300,
+    metaDescription: "Stop burning ad spend. Learn the modular creative testing system elite agencies use to drop CAC by 30% while scaling vertically in 2026.",
+    excerpt: "The era of 'spray and pray' advertising is over. To scale in 2026, you need a modular creative testing system that isolates winning variables with surgical precision.",
+    date: "April 22, 2026",
+    readingTime: 1200,
     author: "Bhargava Raj",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    content:
-      "Most teams test ads randomly. Elite teams test with structure. Start with one offer, build 3 audience clusters, and launch 5 creative angles per cluster. Measure thumb-stop rate, hold rate, and conversion rate before scaling.",
+    content: `INTRODUCTION
+
+**How to Lower CAC With a Creative Testing System** is no longer just a luxury—it’s a survival requirement. In a landscape where algorithms are becoming more autonomous and CPMs are hitting record highs, your creative is the only lever left that can truly move the needle.
+
+Most brands are currently trapped in a cycle of 'creative exhaustion.' They launch high-production videos, watch them fail within 48 hours, and then wonder why their customer acquisition cost (CAC) is bleeding their margins dry. They aren't failing because of their product; they are failing because their testing methodology is broken.
+
+This guide will solve the complexity of modern creative testing. We will break down the exact modular framework Digizinc uses to help premium brands drop their CAC by up to 30% while maintaining vertical scaling momentum.
+
+---
+
+TABLE OF CONTENTS
+
+1. The Death of Guesswork: Why Your Ads Are Failing
+2. The Modular Framework: Variable Isolation
+3. The Hook Phase: Mastering the First 3 Seconds
+4. The Angle Phase: Psychological Leverage
+5. The Visual Phase: Aesthetics vs. Performance
+6. Scaling the Winners: The 80/20 Rule
+7. FAQ Section
+8. Conclusion
+
+---
+
+1. THE DEATH OF GUESSWORK: WHY YOUR ADS ARE FAILING
+
+The fundamental problem with traditional creative testing is the lack of structure. Most teams test 'videos' rather than 'variables.' When you launch two completely different videos and one performs better, you don't actually know *why* it won. Was it the music? The first sentence? The color grading?
+
+**Elite teams test with surgical precision by isolating single variables at a time.**
+
+Without this isolation, you are essentially gambling with your ad spend. You might find a winner by accident, but you won't be able to replicate it. This leads to the dreaded 'performance plateau' where you can't seem to scale beyond a certain daily spend without your ROAS tanking.
+
+[IMAGE PLACEMENT: A cinematic shot of a dark laboratory where data streams are being injected into a floating holographic cube.]
+
+---
+
+2. THE MODULAR FRAMEWORK: VARIABLE ISOLATION
+
+To lower your CAC, you must move toward a modular creative testing system. This means breaking every ad down into its constituent parts: The Hook, The Body, and The CTA.
+
+**The goal is to build a library of winning components that can be mixed and matched to create endless high-performing assets.**
+
+By isolating variables, you significantly reduce the 'cost of failure.' Instead of wasting $5,000 on a high-end production that might not work, you spend $500 testing 5 different hooks. Once a hook is proven, you invest the production budget into making it world-class.
+
+---
+
+3. THE HOOK PHASE: MASTERING THE FIRST 3 SECONDS
+
+In 2026, the battle for attention is won or lost in the first 1,500 milliseconds. Your hook is the most critical component of your creative testing system. 
+
+**If your hook doesn't stop the scroll, the rest of your video—no matter how good it is—simply doesn't exist.**
+
+We recommend testing at least 5 distinct hooks for every new product or offer. These should range from 'Visual Pattern Interrupts' (something unexpected happening on screen) to 'Direct Result Statements' (showing the payoff immediately). Measure your 'Thumb-Stop Rate'—the percentage of people who watch the first 3 seconds—to identify your winners.
+
+---
+
+4. THE ANGLE PHASE: PSYCHOLOGICAL LEVERAGE
+
+Once you have a winning hook, you need to test the 'Angle.' The angle is the psychological reason why someone would care about your product. 
+
+**Different audiences are driven by different emotional triggers; testing angles allows you to speak to multiple desires simultaneously.**
+
+Common angles include:
+• Time-Saving (Efficiency)
+• Status Enhancement (Authority)
+• Pain Removal (Relief)
+• Financial Gain (Opportunity)
+
+By testing these angles against your winning hook, you can identify which psychological lever resonates most deeply with your target market, allowing for much more efficient scaling.
+
+---
+
+5. THE VISUAL PHASE: AESTHETICS VS. PERFORMANCE
+
+The final modular variable is the Visual Style. Often, a 'Lo-fi' UGC-style video will outperform a $50k cinematic production because it feels more authentic to the platform. 
+
+**You must test your winning message across different visual formats to find the 'Native Resonance' of your brand.**
+
+Don't assume a premium brand needs only premium visuals. Sometimes, the contrast between a high-ticket offer and an 'unpolished' visual can create a powerful trust signal. Test split screens, 3D renders, and direct-to-camera testimonials to see what your data actually supports.
+
+[IMAGE PLACEMENT: A high-contrast, cinematic motion-blur shot of a finger about to tap a glowing red button in a tech-heavy environment.]
+
+---
+
+6. SCALING THE WINNERS: THE 80/20 RULE
+
+Once your modular testing system identifies a winning combination of Hook, Angle, and Visual, it’s time to move into the 'Scaling Phase.' 
+
+**Spend 80% of your budget on your proven 'Control' creatives and 20% on constant iterative testing.**
+
+This '80/20' split ensures that you are always protecting your ROAS while simultaneously searching for the next 'Unfair Advantage' that will allow you to scale to the next level. This is how you build a compounding growth engine that doesn't rely on luck.
+
+---
+
+FAQ SECTION
+
+**How long does a creative test take to reach significance?**
+Generally, we look for at least 2-3x your target CAC in spend per variable. In high-volume accounts, this can happen in 48 hours; in smaller accounts, it may take 5-7 days.
+
+**Should I test creatives in my main scaling campaign?**
+No. Always use a dedicated 'Sandbox' campaign for testing. This prevents unproven assets from disrupting your stable scaling environment and allows for cleaner data collection.
+
+**What is a 'good' thumb-stop rate?**
+While it varies by industry, we typically aim for a 35% thumb-stop rate (3-second views / impressions). Anything below 25% indicates that your hooks need immediate refinement.
+
+---
+
+CONCLUSION
+
+Lowering your CAC with a creative testing system is about moving from a 'Creative First' to a 'Data First' mindset. By breaking your ads into modular components and isolating variables, you remove the guesswork from your marketing and build a predictable path to scale.
+
+Remember the three pillars:
+1. **Isolate Variables**: Never test more than one change at a time.
+2. **Master the Hook**: Your first 3 seconds determine your ROI.
+3. **80/20 Scaling**: Protect your winners while hunting for new ones.
+
+**Are you ready to establish market dominance with an engineered growth system?** Digizinc specializes in building high-fidelity creative engines for premium brands. 
+
+[CTA: Book Your Strategy Call with Digizinc]`
   },
   {
-    slug: "case-study-from-1-2x-to-3x-roas",
+    slug: "case-study-roas-turnaround",
     title: "Case Study: From 1.2x to 3x ROAS in 60 Days",
-    category: "Case Studies",
-    excerpt: "See exactly what changed in targeting, landing pages, and offer positioning.",
-    date: "Feb 04, 2026",
-    readingTime: 420,
+    category: "Case Study",
+    metaDescription: "A deep dive into the 60-day strategy that tripled ROAS for a premium brand by fixing message-market fit and pre-qualification.",
+    excerpt: "Triple-digit growth isn't a miracle—it's engineering. See how we took a struggling premium brand from break-even to high-profit dominance.",
+    date: "April 15, 2026",
+    readingTime: 1080,
     author: "Sanya Gupta",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    content:
-      "We rebuilt the funnel from offer to thank-you page. The biggest wins came from message-market fit and pre-qualifying visitors before checkout. Performance improved week-over-week because each iteration was tied to one clear hypothesis.",
+    content: `INTRODUCTION
+
+**From 1.2x to 3x ROAS in 60 Days** is a transformation many brands believe is impossible without doubling their ad spend. In reality, scaling ROAS (Return on Ad Spend) is rarely about budget—it’s about the surgical alignment of your message with your most profitable audience.
+
+When we first audited this premium D2C brand, the founder was exhausted. They were spending $2,000/day and barely breaking even. They had a beautiful product, but their marketing was shouting into a void. This case study breaks down the forensic process we used to flip their unit economics and build a high-profit growth engine.
+
+---
+
+TABLE OF CONTENTS
+
+1. The Diagnosis: Why the 1.2x Floor Existed
+2. Message-Market Realignment: Stop Selling, Start Pre-Qualifying
+3. The Friction Funnel: Why More Steps Mean More Profit
+4. Creative Forensic Audit: Cutting the 'Pretty' Dead Weight
+5. The 60-Day Timeline: From Stagnation to Scale
+6. Key Takeaways for High-Ticket Brands
+7. Case Study FAQ
+8. Conclusion
+
+---
+
+1. THE DIAGNOSIS: WHY THE 1.2X FLOOR EXISTED
+
+The brand was suffering from a classic case of 'broad targeting bloat.' They were running ads to anyone interested in 'luxury goods,' which resulted in a high volume of low-intent clicks. 
+
+**Low ROAS is almost always a byproduct of high-volume, low-intent traffic.**
+
+The 1.2x floor was a symptom of a fundamental trust gap. Prospects were clicking because the ads were attractive, but they weren't buying because the landing page didn't answer their core anxieties. We identified that the cost per lead was acceptable, but the quality was so low that the sales team couldn't close.
+
+---
+
+2. MESSAGE-MARKET REALIGNMENT: STOP SELLING, START PRE-QUALIFYING
+
+Our first move was to shift the copy from 'Product Features' to 'Identity Transformation.' Premium buyers don't buy objects; they buy versions of themselves.
+
+**We moved away from 'The Best Quality' and toward 'The standard for those who don't compromise.'**
+
+This shift immediately began filtering out bargain hunters. Our click-through rate (CTR) actually dropped slightly, but our conversion rate (CR) began to climb. We were paying for fewer clicks, but every click was worth 5x more to the bottom line.
+
+---
+
+3. THE FRICTION FUNNEL: WHY MORE STEPS MEAN MORE PROFIT
+
+Counter-intuitively, we added *more* steps to the customer journey. We replaced the 'Buy Now' button with a 'Growth Readiness Quiz.' 
+
+**In the premium space, friction is a trust signal. If it's too easy to buy, the value is perceived as lower.**
+
+The quiz forced prospects to engage with the brand’s philosophy before seeing a price. This 'Pre-Qualification' phase meant that by the time someone reached the checkout, they were 80% convinced of the value, making the final sale a formality.
+
+[IMAGE PLACEMENT: A dark, moody office at night. A large glass screen displays an aggressive upward trending graph in vibrant red light.]
+
+---
+
+4. CREATIVE FORENSIC AUDIT: CUTTING THE 'PRETTY' DEAD WEIGHT
+
+We cut 70% of the brand's existing creative assets. They were 'pretty,' but they were passive. We replaced them with 'Direct-Response Cinematic' assets—videos that looked like high-end films but were structured with a surgical Hook-Body-CTA framework.
+
+**Creative must be a sales tool, not an art project.**
+
+We prioritized 'Problem-Solution' narratives over 'Lifestyle' montages. We showed the product solving specific, high-friction problems in a premium environment, which directly addressed the target audience's daily frustrations.
+
+---
+
+5. THE 60-DAY TIMELINE: FROM STAGNATION TO SCALE
+
+• **Days 1-15**: Forensic Audit & Audience Re-Mapping. We identified 'Time-Poor Professionals' as the core profitable segment.
+• **Days 16-30**: Implementation of the Friction Funnel & New Creative Launch.
+• **Days 31-45**: Data Calibration. We doubled down on the winning 'Identity' angle and cut the 'Feature' angle.
+• **Days 46-60**: Aggressive Vertical Scaling. We pushed the budget by 20% every 48 hours as long as ROAS remained above 2.8x.
+
+By Day 60, the account was hitting a consistent 3.1x ROAS at $4,500/day spend.
+
+---
+
+CASE STUDY FAQ
+
+**Did the increased friction lead to higher drop-off?**
+Yes, total traffic drop-off increased by 15%. However, the traffic that remained was so much higher in quality that the cost-per-acquisition (CPA) dropped by 40%.
+
+**Is this strategy applicable to low-ticket items?**
+No. This specific framework is engineered for high-ticket, premium brands where trust and authority are more important than convenience.
+
+---
+
+CONCLUSION
+
+Triple-digit growth is an engineering problem, not a creative one. By aligning your message with the right audience and using friction as a trust signal, you can break through performance plateaus and build a dominant market position.
+
+**Is your brand stuck at a performance ceiling?** Digizinc builds the infrastructure to help you break through.
+
+[CTA: Book Your Free Growth Audit]`
   },
   {
-    slug: "what-high-ticket-brands-do-differently",
-    title: "What High-Ticket Brands Do Differently in 2026",
+    slug: "high-ticket-brands-authority-gap",
+    title: "The Authority Gap: What High-Ticket Brands Do Differently",
     category: "Industry Insights",
-    excerpt: "Premium brands align authority content, proof assets, and conversion pathways.",
-    date: "Mar 12, 2026",
-    readingTime: 360,
-    author: "Vikram Shah",
+    metaDescription: "High-ticket growth isn't about louder ads. Discover the trust-signals and authority frameworks that separate market leaders from commodities.",
+    excerpt: "In the premium space, trust is the only currency that matters. If your brand doesn't command authority, you're just competing on price.",
+    date: "April 08, 2026",
+    readingTime: 1140,
+    author: "Bhargava Raj",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-    content:
-      "Premium growth is not about louder ads. It is about stronger trust signals and cleaner positioning. Build proof into every stage: ads, landing pages, sales calls, and follow-up sequences. Consistency compounds conversions.",
+    content: `INTRODUCTION
+
+**The Authority Gap** is the invisible chasm between brands that are treated as commodities and those that are treated as essential partners. In the high-ticket space, this gap determines whether a client pays you $50,000 with a smile or haggles over a $5,000 invoice.
+
+Most premium brands attempt to bridge this gap with 'features' and 'benefits.' But in a saturated market, features are easily replicated. Authority, however, is engineered. It is a psychological state of 'Certainty' that you induce in your prospect before they ever speak to a sales representative. This guide explores the trust-signals and authority frameworks used by the world's most dominant premium brands.
+
+---
+
+TABLE OF CONTENTS
+
+1. The Commodity Trap: Why Benefits Aren't Enough
+2. The Psychology of Certainty: Engineering Trust
+3. Cinematic Proof Assets: High-Fidelity Authority
+4. The Inversion Offer: Flipping the Power Dynamic
+5. Content Ecosystems as Experience Design
+6. Bridging the Gap: A 3-Step Implementation
+7. Authority FAQ
+8. Conclusion
+
+---
+
+1. THE COMMODITY TRAP: WHY BENEFITS AREN'T ENOUGH
+
+If you are selling 'better, faster, cheaper,' you are playing a losing game. These are commodity metrics. High-ticket buyers aren't looking for the 'best' version of a product; they are looking for the 'only' version that solves their specific, complex problem.
+
+**Authority brands don't compete on value; they command through positioning.**
+
+When you lead with benefits, you invite comparison. When you lead with authority, you eliminate the possibility of comparison. Your prospect stops asking 'What does it cost?' and starts asking 'How do we get started?'
+
+---
+
+2. THE PSYCHOLOGY OF CERTAINTY: ENGINEERING TRUST
+
+Trust is not a binary state; it is a compounding series of 'Certainty Signals.' Every touchpoint—from your ad creative to your email signature—either adds to or subtracts from your authority bank account.
+
+**The goal is to move the prospect from 'Skepticism' to 'Inevitability.'**
+
+You achieve this by consistently proving you understand their problem better than they do. When you can articulate a prospect's pain more clearly than they can themselves, they automatically credit you with having the solution.
+
+---
+
+3. CINEMATIC PROOF ASSETS: HIGH-FIDELITY AUTHORITY
+
+In the premium space, 'good enough' is a failure. If your visual assets look like stock photography or generic corporate templates, you are actively signaling that you are a commodity.
+
+**High-ticket brands use 'Cinematic Proof'—high-fidelity visual stories that show the process, the people, and the results with the quality of a premium documentary.**
+
+Stop telling people you are premium. Show them through the quality of your pixels. Cinematic proof assets create an immediate visceral reaction of quality that words can never replicate.
+
+[IMAGE PLACEMENT: A minimalist, ultra-luxury penthouse view of a futuristic city at dusk. Deep shadows, subtle red neon accents.]
+
+---
+
+4. THE INVERSION OFFER: FLIPPING THE POWER DYNAMIC
+
+Commodity brands beg for attention. Authority brands offer an opportunity. The 'Inversion Offer' is a strategy where you qualify the prospect as much as they qualify you.
+
+**Instead of asking 'Will you buy from us?', you ask 'Are you the right fit for this level of transformation?'**
+
+This flip in the power dynamic creates an immediate surge in perceived value. It moves the brand from a 'Vendor' to a 'Gatekeeper,' which is the highest form of authority in any market.
+
+---
+
+5. CONTENT ECOSYSTEMS AS EXPERIENCE DESIGN
+
+Your content should not feel like marketing; it should feel like a premium experience. Every piece of insight you share should be a 'micro-transformation' for the reader.
+
+**Authority is built through the accumulation of small wins provided to the prospect before any money changes hands.**
+
+By the time a prospect reaches out to an authority brand, they have already 'consumed' the brand's expertise and are ready for the full-scale implementation.
+
+---
+
+AUTHORITY FAQ
+
+**Can a new brand build authority quickly?**
+Yes. Authority is not about age; it's about the density of certainty signals. A new brand with world-class cinematic assets and a deep understanding of its audience can out-position a 20-year-old legacy brand in months.
+
+**Is authority just about high prices?**
+No. High prices are a result of authority, not the cause. You cannot simply double your prices and expect to be an authority. You must first engineer the certainty that justifies those prices.
+
+---
+
+CONCLUSION
+
+The Authority Gap is the most expensive problem a premium brand can have. By shifting your focus from 'Selling' to 'Engineering Certainty,' you can move out of the commodity market and into a space where you command both attention and profit.
+
+**Are you ready to stop competing and start commanding?** Digizinc engineers authority for brands that refuse to be commodities.
+
+[CTA: Let's Build Your Authority Ecosystem]`
   },
+  {
+    slug: "ads-fail-first-3-seconds",
+    title: "The 3-Second Rule: Why Your Ads Are Being Ignored",
+    category: "Marketing Tips",
+    metaDescription: "Your first 3 seconds determine your entire ROI. Master the psychology of thumb-stopping hooks that convert passive scrollers into active leads.",
+    excerpt: "You have 3 seconds to capture a human's attention before they vanish forever. Are you winning the battle for the thumb?",
+    date: "April 02, 2026",
+    readingTime: 960,
+    author: "Sampad Dutta",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
+    content: `INTRODUCTION
+
+**The 3-Second Rule** is the brutal reality of modern digital marketing. In an era of infinite scroll and dopamine-saturated feeds, you aren't just competing with your business rivals; you are competing with every cat video, meme, and breaking news story on the planet.
+
+Imagine your ideal customer. They are tired, distracted, and moving through their feed with a high degree of 'ad-blindness.' Your ad has exactly 3,000 milliseconds to earn the right to exist in their consciousness. If you fail this initial test, the rest of your high-budget video, your incredible offer, and your world-class product simply do not matter. This guide breaks down the psychology of 'Thumb-Stopping Hooks' and how to win the battle for attention-equity.
+
+---
+
+TABLE OF CONTENTS
+
+1. Attention-Equity: The Only Currency that Matters
+2. Pattern Interrupts: Breaking the Scroll Cycle
+3. The Anatomy of a Winning Hook: Visuals vs. Copy
+4. The Psychological Open Loop: Compelling Curiosity
+5. Speed of Relevance: Why Introductions are Fatal
+6. Testing Your Hooks: Data-Driven Dominance
+7. Hook Strategy FAQ
+8. Conclusion
+
+---
+
+1. ATTENTION-EQUITY: THE ONLY CURRENCY THAT MATTERS
+
+In 2026, the most valuable asset in the world is not data; it is attention. Every person who scrolls past your ad is 'Attention-Equity' that you have lost forever.
+
+**You must earn the second 3 seconds by winning the first 3.**
+
+Most brands treat the beginning of their video as an introduction. This is a fatal mistake. Your audience doesn't care who you are yet. They only care about what you can do for them. Every millisecond spent on a logo animation or a generic greeting is a leak in your profit funnel.
+
+---
+
+2. PATTERN INTERRUPTS: BREAKING THE SCROLL CYCLE
+
+The human brain is hardwired to ignore the expected and focus on the novel. To stop the scroll, you must present a 'Pattern Interrupt'—something that doesn't belong in the standard feed environment.
+
+**An effective hook is a visual or auditory jolt that forces the subconscious to hand over control to the conscious mind.**
+
+This could be a high-contrast visual, an unexpected motion, or a bold statement that challenges the viewer's current worldview. If your ad looks like an ad, it will be treated like an ad—and ignored.
+
+---
+
+3. THE ANATOMY OF A WINNING HOOK: VISUALS VS. COPY
+
+A winning hook is a dual-threat of visual and verbal leverage. While the visual stops the eye, the copy must stop the mind.
+
+**The visual hook creates the 'What is that?' moment, while the verbal hook creates the 'I need that' moment.**
+
+We recommend testing hooks that lead with the 'Ultimate Result.' Instead of explaining how your service works, show the moment the problem is solved. The 'After' state is always more compelling than the 'Process' state in the first 3 seconds.
+
+[IMAGE PLACEMENT: A high-speed, cinematic motion-blur shot of a finger about to tap a glowing red button.]
+
+---
+
+4. THE PSYCHOLOGICAL OPEN LOOP: COMPELLING CURIOSITY
+
+One of the most powerful tools in hook design is the 'Open Loop.' This is a storytelling technique where you present a question or a scenario that the human brain *must* see the conclusion of to feel satisfied.
+
+**Curiosity is a psychological tension that can only be resolved by watching the rest of your video.**
+
+When you start with a result that seems impossible, or a question that hits a deep pain point, you create a loop that keeps the viewer engaged far beyond the initial 3-second window.
+
+---
+
+5. SPEED OF RELEVANCE: WHY INTRODUCTIONS ARE FATAL
+
+The 'Speed of Relevance' is how quickly you can tell the viewer exactly why this content is for them. In a 3-second window, there is no room for filler.
+
+**Get to the point before they get to the next post.**
+
+Identify the audience and the benefit immediately. "For Founders struggling with CAC..." is 100x more effective than "Hi, we are Digizinc and we help brands grow." Respect your audience's time, and they will reward you with their attention.
+
+---
+
+HOOK STRATEGY FAQ
+
+**Should hooks always be high-production?**
+No. Often, 'Lo-fi' or 'UGC' hooks outperform high-production ones because they feel more native and less like a sales pitch. The goal is resonance, not polish.
+
+**How many hooks should I test per ad?**
+We recommend a minimum of 3-5 distinct hooks for every winning body content. Small changes in the first 3 seconds can lead to 300% differences in ROI.
+
+---
+
+CONCLUSION
+
+Winning the first 3 seconds is the difference between a scaling brand and a struggling one. By mastering pattern interrupts, open loops, and the speed of relevance, you can capture the attention-equity needed to drive high-intent leads and market dominance.
+
+**Is your message being ignored?** Let Digizinc sharpen your creative edge.
+
+[CTA: Request Your Free Creative Audit]`
+  },
+  {
+    slug: "death-of-traditional-marketing",
+    title: "The Death of Traditional Marketing: Enter Growth Systems",
+    category: "Industry Insights",
+    metaDescription: "Traditional funnels are dead. Discover the growth systems that leverage AI and psychology to build sustainable market dominance in 2026.",
+    excerpt: "The old playbook of 'Buy ads -> Get clicks -> Sell stuff' is broken. Welcome to the era of intelligent growth ecosystems.",
+    date: "March 28, 2026",
+    readingTime: 1260,
+    author: "Bhargava Raj",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    content: `INTRODUCTION
+
+**The Death of Traditional Marketing** is not a hyperbolic statement; it is a clinical observation of the current digital landscape. The old playbook—buying cheap traffic, sending it to a basic landing page, and hoping for a conversion—is fundamentally broken. Rising platform volatility, the removal of third-party cookies, and the surge of AI-generated noise have made traditional 'linear funnels' obsolete.
+
+In 2026, the brands that win are those that move away from 'Marketing Departments' and toward 'Growth Systems.' A growth system is an integrated, feedback-led ecosystem that leverages AI, behavioral psychology, and omnichannel resonance to build sustainable market dominance. This guide explores the mechanics of this new era and how to upgrade your brand’s infrastructure for the future.
+
+---
+
+TABLE OF CONTENTS
+
+1. The Linear Funnel Collapse: Why Your ROI is Dropping
+2. From Funnels to Flywheels: The Growth System Logic
+3. Omnichannel Resonance: Presence vs. Performance
+4. AI-Leveraged Content: Accelerating Creative Output
+5. Psychological LTV: The Post-Purchase Acquisition Channel
+6. Upgrading Your Infrastructure: The 30-Day Plan
+7. Growth Systems FAQ
+8. Conclusion
+
+---
+
+1. THE LINEAR FUNNEL COLLAPSE: WHY YOUR ROI IS DROPPING
+
+The traditional marketing funnel is built on a series of disconnected 'jumps.' A user jumps from an ad to a page, then from a page to a cart. At every jump, you lose 80-90% of your potential. In a high-cost environment, these leaks are fatal to your ROI.
+
+**Linear funnels assume a predictable customer journey; modern growth systems assume chaos.**
+
+Today's consumer interacts with your brand across 10+ touchpoints before making a decision. If your marketing is only focused on the 'Last Click,' you are missing 90% of the influence window. The collapse of traditional tracking means you can no longer rely on simple attribution; you must rely on ecosystem-wide resonance.
+
+---
+
+2. FROM FUNNELS TO FLYWHEELS: THE GROWTH SYSTEM LOGIC
+
+A Growth System is a flywheel—a self-reinforcing loop where every successful acquisition makes the next acquisition cheaper and faster. 
+
+**While funnels require constant fuel (ad spend), flywheels build their own momentum through data and authority.**
+
+In this model, your creative testing informs your product development, which informs your community engagement, which in turn lowers your customer acquisition cost. It’s an integrated approach that turns marketing into a core business asset rather than a variable expense.
+
+---
+
+3. OMNICHANNEL RESONANCE: PRESENCE VS. PERFORMANCE
+
+Most brands mistake 'being everywhere' for 'omnichannel.' Presence is just noise. Resonance is when your message is amplified across multiple platforms in a way that feels native to each but consistent in authority.
+
+**You don't need more ads; you need a more resonant ecosystem.**
+
+Whether your prospect is on LinkedIn, Instagram, or reading your newsletter, the trust signals must be identical. This creates a 'Surround Sound' effect where your brand becomes the only logical choice in their mind.
+
+[IMAGE PLACEMENT: A cinematic image of an old analog radio being slowly overtaken by sleek, red liquid-metal AI particles.]
+
+---
+
+4. AI-LEVERAGED CONTENT: ACCELERATING CREATIVE OUTPUT
+
+AI is not a replacement for creativity; it is a force multiplier. In a growth system, AI allows you to test 100 variations of a winning hook in the time it used to take to produce one.
+
+**Use AI for the 'Heavy Lifting' of production so your human team can focus on the 'Strategic Leverage' of the message.**
+
+The brands that will dominate 2026 are those that use AI to personalize content at scale, ensuring every prospect receives a message that hits their specific psychological triggers.
+
+---
+
+5. PSYCHOLOGICAL LTV: THE POST-PURCHASE ACQUISITION CHANNEL
+
+The most expensive way to grow is to keep buying new customers. Growth systems focus on Lifetime Value (LTV) as a primary acquisition channel. 
+
+**A satisfied customer is a high-authority referral engine that costs zero in ad spend.**
+
+By engineering the 'Post-Purchase' experience with the same cinematic quality and psychological depth as your ads, you turn customers into advocates who do the heavy lifting of market expansion for you.
+
+---
+
+GROWTH SYSTEMS FAQ
+
+**Is a growth system only for enterprise brands?**
+No. In fact, small-to-medium brands need growth systems even more because they cannot afford the waste associated with traditional funnels. A lean growth system is the most efficient way to scale a startup.
+
+**How does AI fit into the strategy?**
+AI should be used for data analysis, creative iteration, and personalization. It allows your system to learn and adapt to consumer behavior faster than any human team could.
+
+---
+
+CONCLUSION
+
+The game has changed. Traditional marketing is a race to the bottom of rising CPMs and declining attention. Growth systems are the path to the top—building sustainable, defensible, and high-profit market dominance.
+
+**Are you still playing the old version of the game?** Let Digizinc upgrade your system for the 2026 landscape.
+
+[CTA: Architect Your Growth System Today]`
+  }
 ];
 
 const navItems = [
@@ -439,28 +959,56 @@ const team = [
     name: "Bhargava Raj",
     role: "Founder & CEO",
     bio: "Visionary strategist with 12+ years in scaling digital ecosystems for premium brands.",
-    image: "/bhargava-raj.png",
+    image: "/team/bhargava-raj.png",
     linkedin: "https://linkedin.com",
   },
   {
-    name: "Sanya Gupta",
-    role: "Creative Director",
-    bio: "Award-winning designer obsessed with blending minimalism with high-impact visual storytelling.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    name: "Praveen Kumar VS",
+    role: "CXO",
+    bio: "Strategic leader driving operational excellence and cross-functional synergy at the highest level.",
+    image: "/team/Praveen Kumar VS.jpg",
     linkedin: "https://linkedin.com",
   },
   {
-    name: "Vikram Shah",
-    role: "Head of Growth",
-    bio: "Data scientist turned marketer specializing in ROAS-first performance campaigns.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    name: "Sridhar Goud",
+    role: "Business Development Director",
+    bio: "Driving strategic partnerships and market expansion for premium brands through authority-led growth systems.",
+    image: "/team/sridhar.png",
     linkedin: "https://linkedin.com",
   },
   {
-    name: "Rhea Kapoor",
-    role: "Lead Strategist",
-    bio: "Behavioral analyst focusing on building deep consumer trust through content ecosystems.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+    name: "Nikhil Sukla",
+    role: "Operations Manager",
+    bio: "Streamlining agency workflows and project delivery with surgical precision and efficiency.",
+    image: "/team/Nikhil Sukla.jpeg",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    name: "Sampad Dutta",
+    role: "Creative Head",
+    bio: "A visual storyteller pushing the boundaries of creative excellence and brand aesthetics.",
+    image: "/team/Sampad Dutta.jpeg",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    name: "Srikar Kudurmalla",
+    role: "Senior Engineer",
+    bio: "Architecting robust, scalable technical infrastructures for high-performance digital ecosystems.",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    name: "Prince Gupta",
+    role: "Head Of Engineering",
+    bio: "Full-stack specialist focused on building clean, efficient, and enterprise-grade software solutions.",
+    image: "/team/Prince Gupta.jpeg",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    name: "Prasenjeet Yadav",
+    role: "Front End Developer",
+    bio: "Crafting pixel-perfect, highly interactive front-end experiences that command user attention.",
+    image: "/team/Prasenjeet Yadav.jpeg",
     linkedin: "https://linkedin.com",
   },
 ];
@@ -1143,36 +1691,6 @@ function LandingPage() {
       stats: [{ val: '6X', label: 'PROJECT LEADS' }, { val: '3X', label: 'TENDER VISIBILITY' }],
       img: '/industries/industry_construction.jpg'
     },
-    'b2b-export': {
-      title: 'B2B EXPORT & TRADING',
-      desc: 'Positioning global suppliers with digital credibility that drives international inquiries and partnerships.',
-      stats: [{ val: '5X', label: 'GLOBAL INQUIRIES' }, { val: '2X', label: 'EXPORT DEALS' }],
-      img: '/industries/industry_export.jpg'
-    },
-    'corporate': {
-      title: 'CORPORATE & ENTERPRISES',
-      desc: 'Strengthening enterprise presence with scalable digital systems built for credibility and long-term growth.',
-      stats: [{ val: '4X', label: 'BRAND AUTHORITY' }, { val: '2X', label: 'LEAD QUALITY' }],
-      img: '/industries/industry_corporate.jpg'
-    },
-    'industrial-equipment': {
-      title: 'INDUSTRIAL EQUIPMENT SUPPLIERS',
-      desc: 'Transforming industrial brands with digital systems that attract high-value B2B buyers and distributors.',
-      stats: [{ val: '3X', label: 'DEALER NETWORK' }, { val: '4X', label: 'INBOUND LEADS' }],
-      img: '/industries/industry_industrial.jpg'
-    },
-    'retail-franchises': {
-      title: 'RETAIL CHAINS & FRANCHISES',
-      desc: 'Scaling multi-location brands with unified digital systems that drive consistent growth and engagement.',
-      stats: [{ val: '2X', label: 'STORE FOOTFALL' }, { val: '3X', label: 'FRANCHISE LEADS' }],
-      img: '/industries/industry_retail.jpg'
-    },
-    'luxury-brands': {
-      title: 'LUXURY & PREMIUM BRANDS',
-      desc: 'Crafting high-end digital experiences that elevate perception and drive premium customer acquisition.',
-      stats: [{ val: '5X', label: 'ENGAGEMENT RATE' }, { val: '2X', label: 'CONVERSION VALUE' }],
-      img: '/industries/industry_luxury.jpg'
-    },
     'education': {
       title: 'EDUCATION & TRAINING INSTITUTES',
       desc: 'Building credibility-driven digital ecosystems for educational institutions that attract high-intent students and drive enrollment at scale.',
@@ -1239,12 +1757,12 @@ function LandingPage() {
                   'branding': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
                   'digital-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
                   'web-solutions': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
-                  'software-development': 'https://images.unsplash.com/photo-1541462608141-ad67577467b4?auto=format&fit=crop&w=800&q=80',
+                  'software-development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
                   'social-media-management': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
                   'performance-marketing': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
                   'graphic-design': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-                  'influencer-marketing': 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?auto=format&fit=crop&w=800&q=80',
-                  'model-product-video': 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
+                  'influencer-marketing': 'https://www.aimtechnologies.co/wp-content/uploads/2024/01/Social-Media-Influencer.png',
+                  'model-product-video': 'https://mattnawrot.com/wp-content/uploads/2023/04/The-Beginners-Guide-to-Becoming-a-UGC-Creator-1024x576.jpg',
                 };
 
                 return (
@@ -1255,6 +1773,7 @@ function LandingPage() {
                     <ProductRevealCard
                       name={service.title}
                       image={cardImages[service.slug]}
+                      imgClassName={(service.slug === 'influencer-marketing' || service.slug === 'model-product-video') ? "object-right" : ""}
                       description={service.short}
                       features={service.bullets}
                       className="h-full w-full"
@@ -1308,7 +1827,7 @@ function LandingPage() {
                 </h2>
               </div>
               <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-semibold text-[#F23030] transition hover:text-[#7a0012]">
-                View All Projects
+                View Case Studies
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -1327,7 +1846,7 @@ function LandingPage() {
                     className="group relative block aspect-[4/3] overflow-hidden bg-zinc-900 rounded-2xl"
                   >
                     <img
-                      src={project.image}
+                      src={(project as any).landingImage || project.image}
                       alt={project.company}
                       width={400}
                       height={300}
@@ -1423,7 +1942,7 @@ function LandingPage() {
             </Link>
           </motion.div>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {posts.map((post, idx) => (
+            {posts.slice(0, 3).map((post, idx) => (
               <motion.div
                 key={post.slug}
                 initial={{ opacity: 0, y: 30 }}
@@ -1471,15 +1990,15 @@ function ServicesPage() {
           {services.map((service, index) => {
             const isLight = index % 2 === 0;
             const cardImages: Record<string, string> = {
-              'branding': '/service_branding.png',
-              'digital-marketing': '/service_ppc.png',
-              'web-solutions': '/service_web.png',
-              'software-development': '/service_uiux.png',
-              'social-media-management': '/service_social.png',
-              'performance-marketing': '/service_seo.png',
-              'graphic-design': '/service_illustration.png',
-              'influencer-marketing': '/service_print.png',
-              'model-product-video': '/service_video.png',
+              'branding': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
+              'digital-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+              'web-solutions': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
+              'software-development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
+              'social-media-management': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
+              'performance-marketing': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+              'graphic-design': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+              'influencer-marketing': 'https://www.aimtechnologies.co/wp-content/uploads/2024/01/Social-Media-Influencer.png',
+              'model-product-video': 'https://mattnawrot.com/wp-content/uploads/2023/04/The-Beginners-Guide-to-Becoming-a-UGC-Creator-1024x576.jpg',
             };
 
             return (
@@ -1493,7 +2012,7 @@ function ServicesPage() {
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(242, 48, 48, 0.7), rgba(166, 31, 31, 0.85), rgba(13, 13, 13, 0.95)), url('${cardImages[service.slug] || cardImages['branding']}')`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  backgroundPosition: (service.slug === 'influencer-marketing' || service.slug === 'model-product-video') ? 'right' : 'center',
                 }}
               >
                 <div className="relative z-10 w-full">
@@ -1631,7 +2150,7 @@ function AboutPage() {
             <div className="relative group">
               <div className="relative overflow-hidden rounded-none bg-zinc-900 border border-white/10 aspect-[4/5]">
                 <img
-                  src="/bhargava-raj.png"
+                  src="/team/bhargava-raj.png"
                   alt="Bhargava Raj"
                   className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                 />
@@ -1922,27 +2441,40 @@ function ProjectDetailPage() {
     <main className="mx-auto max-w-5xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
       <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr]">
         <section>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">{project.industry}</p>
-          <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">{project.company}</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">
+            {(project as any).tagline || project.industry}
+          </p>
+          <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl leading-tight">
+            {(project as any).headline || project.company}
+          </h1>
+          {(project as any).subtext && (
+            <p className="mt-6 text-xl text-zinc-400 font-medium leading-relaxed">
+              {(project as any).subtext}
+            </p>
+          )}
           <img
-            src={project.image}
+            src={(project as any).headerImage || project.image}
             alt={project.company}
             width={800}
             height={450}
             loading="lazy"
             className="mt-8 h-80 w-full object-cover shadow-xl md:h-[450px]"
           />
-          <div className="mt-10">
+          <div className="mt-16">
             <h2 className="font-['Inter'] text-2xl font-bold text-cream">Project Overview</h2>
-            <p className="mt-4 text-lg leading-relaxed text-zinc-400">{project.detail}</p>
+            <div className="mt-6 text-lg leading-relaxed text-zinc-400 space-y-4 whitespace-pre-wrap">
+              {project.detail}
+            </div>
           </div>
 
 
         </section>
         <aside className="space-y-8">
-          <div className="border border-[#A61F1F]/30 bg-transparent p-8 shadow-lg">
+          <div className="border border-[#A61F1F]/30 bg-black/40 backdrop-blur-md p-8 shadow-2xl rounded-2xl">
             <p className="text-xs font-bold uppercase tracking-widest text-[#F23030]">Measurable Result</p>
-            <p className="mt-4 font-['Inter'] text-3xl font-bold text-[#F23030]">{project.result}</p>
+            <div className="mt-6 font-['Inter'] text-2xl font-bold text-[#F23030] space-y-2 whitespace-pre-wrap leading-tight">
+              {project.result}
+            </div>
           </div>
           <div className="bg-zinc-900 p-8 text-white">
             <h3 className="text-lg font-bold">Key Deliverables</h3>
@@ -1969,15 +2501,15 @@ function ProjectDetailPage() {
         <h2 className="font-['Inter'] text-3xl font-bold text-cream">Project Gallery</h2>
         <div className="mt-10 columns-1 gap-6 space-y-6 sm:columns-2 lg:columns-3">
           {(project.gallery || [1, 2, 3, 4, 5, 6]).map((item, i) => (
-            <div key={i} className="group relative overflow-hidden transition-all md:bg-transparent md:hover:shadow-xl">
-              <div className="flex h-full w-full items-center justify-center border border-white/10 bg-transparent/40 md:bg-transparent/50 p-4 transition-colors group-hover:bg-white/5 md:border-none md:bg-transparent md:p-0 md:group-hover:bg-transparent">
+            <div key={i} className="group relative overflow-hidden transition-all">
+              <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-zinc-900/50">
                 <img
                   src={typeof item === 'string' ? item : `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&w=800&q=20`}
                   alt={`Gallery media ${i}`}
-                  width={400}
-                  height={300}
+                  width={800}
+                  height={600}
                   loading="lazy"
-                  className="h-auto w-full object-contain transition duration-500 group-hover:scale-105 md:object-cover md:shadow-xl"
+                  className="h-auto w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -2002,7 +2534,7 @@ function PortfolioPage() {
           >
             <div className="overflow-hidden rounded-xl">
               <img
-                src={project.image}
+                src={project.portfolioImage || project.image}
                 alt={project.company}
                 width={600}
                 height={400}
@@ -2036,36 +2568,53 @@ function PortfolioPage() {
 
 function BlogPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Blog</p>
-      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Marketing intelligence from the field.</h1>
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+    <main className="mx-auto max-w-7xl px-4 pt-32 pb-20 md:px-6 md:pt-40">
+      <div className="mb-12">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F23030]">The Archive</p>
+        <h1 className="mt-4 font-['Inter'] text-4xl font-extrabold text-white md:text-6xl tracking-tight">Strategy & Insights.</h1>
+        <p className="mt-6 max-w-2xl text-zinc-400 text-lg leading-relaxed">
+          Deep dives into growth engineering, creative strategy, and the mechanics of market dominance.
+        </p>
+      </div>
+
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <Link
             key={post.slug}
             to={`/blog/${post.slug}`}
-            className="group relative flex h-[450px] w-full flex-col justify-end overflow-hidden border border-white/10 bg-[#0a0a0a] rounded-2xl transition-all hover:border-[#F23030]/30 shadow-2xl"
+            className="group flex flex-col bg-zinc-900/30 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 hover:border-[#F23030]/20 hover:bg-zinc-900/50 hover:shadow-[0_20px_50px_-20px_rgba(242,48,48,0.1)]"
           >
-            <img
-              src={post.image}
-              alt={post.title}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-90 transition-opacity group-hover:opacity-100 z-0" />
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute top-6 left-6">
+                <span className="bg-[#F23030] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full backdrop-blur-md">
+                  {post.category}
+                </span>
+              </div>
+            </div>
 
-            <div className="relative z-10 p-8 transform transition-transform duration-500 group-hover:-translate-y-4 flex flex-col h-full justify-end">
-              <p className="text-[#F23030] text-[10px] font-['Inter'] font-bold uppercase tracking-[0.3em] mb-4">
-                {post.category}
+            <div className="p-8 flex flex-col flex-grow">
+              <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">
+                <span>{post.date}</span>
+                <span className="w-1 h-1 rounded-full bg-zinc-700" />
+                <span>{Math.ceil(post.readingTime / 60)} min read</span>
+              </div>
+              
+              <h2 className="font-['Inter'] text-2xl font-bold text-white leading-tight mb-4 group-hover:text-[#F23030] transition-colors line-clamp-2">
+                {post.title}
+              </h2>
+              
+              <p className="text-sm text-zinc-400 line-clamp-3 mb-8 leading-relaxed">
+                {post.excerpt}
               </p>
-              <h2 className="font-['Inter'] text-2xl font-bold uppercase text-white leading-tight mb-4 group-hover:text-[#F23030] transition-colors">{post.title}</h2>
-              <p className="text-sm text-zinc-400 line-clamp-3 mb-6 bg-transparent">{post.excerpt}</p>
 
-              <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/10">
-                <p className="text-[10px] font-['Inter'] font-bold uppercase tracking-[0.2em] text-zinc-500">{post.date}</p>
-                <div className="flex items-center gap-2 text-sm font-semibold text-[#F23030] opacity-0 transition-opacity duration-300 md:group-hover:opacity-100 hidden md:flex">
-                  Read Article
-                  <ArrowRight size={16} />
-                </div>
+              <div className="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F23030] group/link">
+                <span>Read Full Analysis</span>
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
               </div>
             </div>
           </Link>
@@ -2091,11 +2640,84 @@ function BlogSinglePage() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
-      <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">{post.category}</p>
-      <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">{post.title}</h1>
-      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-zinc-500">{post.date}</p>
-      <article className="mt-8 border-l-2 border-[#A61F1F] pl-5 text-lg leading-relaxed text-zinc-800">{post.content}</article>
+    <main className="mx-auto max-w-4xl px-4 pt-32 pb-20 md:px-6 md:pt-48">
+      {/* Header */}
+      <div className="mb-16 text-center">
+        <div className="flex justify-center items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-8">
+          <span>{post.category}</span>
+          <span className="w-1 h-1 rounded-full bg-zinc-700" />
+          <span>{post.date}</span>
+        </div>
+        <h1 className="font-['Inter'] text-4xl font-extrabold text-white md:text-6xl tracking-tight leading-[1.1] max-w-3xl mx-auto">
+          {post.title}
+        </h1>
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">WRITTEN BY</p>
+          <p className="text-sm font-semibold text-zinc-300">{post.author}</p>
+        </div>
+      </div>
+
+      {/* Featured Image */}
+      <div className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl mb-16 border border-white/5">
+        <img
+          src={post.image}
+          alt={post.title}
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 to-transparent" />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12">
+        {/* Sidebar / TOC */}
+        <aside className="hidden lg:block sticky top-32 h-fit">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">Inside this analysis</p>
+          <nav className="space-y-4">
+            <a href="#intro" className="block text-xs font-semibold text-[#F23030] hover:text-white transition-colors">Introduction</a>
+            <a href="#insight" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">The Insight</a>
+            <a href="#strategy" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">The Strategy</a>
+            <a href="#faq" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">FAQ</a>
+            <a href="#conclusion" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">Conclusion</a>
+          </nav>
+        </aside>
+
+        {/* Content Area */}
+        <article id="intro" className="max-w-2xl mx-auto lg:mx-0">
+          <div className="prose prose-zinc prose-invert max-w-none">
+            <div className="text-xl leading-relaxed text-zinc-300 font-medium mb-12 first-letter:text-5xl first-letter:font-bold first-letter:text-[#F23030] first-letter:mr-3 first-letter:float-left">
+              {post.metaDescription || post.excerpt}
+            </div>
+
+            <div className="whitespace-pre-wrap text-zinc-300 leading-[1.8] text-lg space-y-8">
+              {post.content}
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <section id="faq" className="mt-20 pt-20 border-t border-white/5">
+            <h2 className="text-2xl font-bold text-white mb-10">Frequently Asked Questions</h2>
+            <div className="space-y-8">
+              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-2xl">
+                <h3 className="text-white font-bold mb-4">How long does it take to see results?</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">Most systems show initial engagement improvements within 14 days, with full CAC stabilization occurring over a 60-90 day window.</p>
+              </div>
+              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-2xl">
+                <h3 className="text-white font-bold mb-4">What is the ideal ad budget for testing?</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed">We recommend starting with a minimum of $50-$100 per variable per day to reach statistical significance quickly.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Footer */}
+          <section id="conclusion" className="mt-20 p-10 bg-[#F23030] rounded-3xl text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">Ready to dominate your market?</h2>
+            <p className="text-white/80 mb-8 text-sm">Join the elite brands using Digizinc’s growth systems to establish authority and drive measurable ROI.</p>
+            <Link to="/contact#enquiry" className="inline-flex items-center gap-2 bg-white text-black font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-full hover:bg-zinc-100 transition-all">
+              Book Your Strategy Call
+              <ArrowRight size={16} />
+            </Link>
+          </section>
+        </article>
+      </div>
     </main>
   );
 }
