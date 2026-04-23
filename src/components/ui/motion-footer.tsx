@@ -290,7 +290,7 @@ export function CinematicFooter() {
             ref={giantTextRef}
             className="footer-giant-bg-text absolute -bottom-[5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
-            DIGIZINC
+            SAAVIK SOLUTIONS
           </div>
 
           <div className="absolute top-3 md:top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-4 z-10 -rotate-1 scale-110 shadow-2xl">
@@ -340,7 +340,7 @@ export function CinematicFooter() {
           <div className="relative z-20 w-full pb-8 px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
             
             <div className="text-zinc-500 text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1 text-center md:text-left">
-              © 2026 DIGIZINC. ALL RIGHTS RESERVED.
+              © 2026 SAAVIK SOLUTIONS. ALL RIGHTS RESERVED.
             </div>
 
             <div className="order-1 md:order-2"></div>
