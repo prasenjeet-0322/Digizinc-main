@@ -970,7 +970,7 @@ const team = [
     linkedin: "https://linkedin.com",
   },
   {
-    name: "Sridhar Goud",
+    name: "Palley Sridhar",
     role: "Business Development Director",
     bio: "Driving strategic partnerships and market expansion for premium brands through authority-led growth systems.",
     image: "/team/sridhar.png",
@@ -978,7 +978,7 @@ const team = [
   },
   {
     name: "Nikhil Sukla",
-    role: "Operations Manager",
+    role: "Head of Operations Manager",
     bio: "Streamlining agency workflows and project delivery with surgical precision and efficiency.",
     image: "/team/Nikhil Sukla.png",
     linkedin: "https://linkedin.com",
@@ -992,7 +992,7 @@ const team = [
   },
   {
     name: "Srikar Kudurmalla",
-    role: "Senior Engineer",
+    role: "Founding Engineer",
     bio: "Architecting robust, scalable technical infrastructures for high-performance digital ecosystems.",
     image: "/team/Srikar Kudurumalla.png",
     linkedin: "https://linkedin.com",
