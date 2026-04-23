@@ -1743,7 +1743,7 @@ function LandingPage() {
 
             <div
               id="services-carousel"
-              className="mt-8 flex gap-6 overflow-x-auto pt-4 pb-12 snap-x snap-proximity scrollbar-hide no-scrollbar overscroll-x-contain touch-pan-x"
+              className="mt-8 flex gap-6 overflow-x-auto pt-4 pb-12 snap-x snap-proximity scrollbar-hide no-scrollbar touch-auto"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overflowY: 'visible', scrollPadding: '0 24px' }}
               onScroll={(e) => {
                 const target = e.currentTarget;
@@ -2056,7 +2056,7 @@ function TeamSlider() {
   return (
     <div className="relative">
       <div 
-        className="mt-16 flex overflow-x-auto pb-8 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
+        className="mt-16 flex overflow-x-auto pb-8 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden touch-pan-x"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         onScroll={handleScroll}
       >

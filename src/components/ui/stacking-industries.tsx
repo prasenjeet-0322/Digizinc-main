@@ -17,8 +17,8 @@ interface StackingIndustriesProps {
 
 const StackingIndustries = forwardRef<HTMLElement, StackingIndustriesProps>(({ industries }, ref) => {
   return (
-    <ReactLenis root>
-      <main className="bg-transparent" ref={ref}>
+    <>
+      <div className="bg-transparent" ref={ref}>
         <section className="text-white w-full py-16 md:py-0">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             
@@ -59,14 +59,14 @@ const StackingIndustries = forwardRef<HTMLElement, StackingIndustriesProps>(({ i
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, margin: "-100px" }}
                         transition={{ duration: 0.5 }}
-                        className="relative flex flex-col h-full w-full max-w-[500px] rounded-[2rem] border-0 md:border md:border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden group hover:border-[#F23030]/50 transition-colors duration-500"
+                        className="relative flex flex-col h-full w-full max-w-[500px] rounded-[2rem] border-0 md:border md:border-white/10 bg-[#0a0a0a] shadow-2xl overflow-hidden group hover:border-[#F23030]/50 transition-colors duration-500 touch-pan-x touch-pan-y"
                       >
                         {/* Background Image Layer */}
                         <div className="absolute inset-0 z-0">
                            <img 
                               src={industry.img} 
                               alt={industry.title} 
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110"
                             />
                             {/* Radial/Linear gradient overlay for text readability */}
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/40" />
@@ -108,8 +108,8 @@ const StackingIndustries = forwardRef<HTMLElement, StackingIndustriesProps>(({ i
 
         {/* Space at the bottom to allow last card to be viewed */}
         <div className="h-[20vh]" />
-      </main>
-    </ReactLenis>
+      </div>
+    </>
   );
 });
 

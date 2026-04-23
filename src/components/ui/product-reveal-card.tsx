@@ -139,13 +139,13 @@ export function ProductRevealCard({
     <motion.div
       data-slot="product-reveal-card"
       initial="rest"
-      whileHover="hover"
+      whileHover={typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches ? "hover" : undefined}
       animate={isOpen ? "hover" : "rest"}
       onClick={() => setIsOpen(!isOpen)}
       variants={containerVariants}
       className={cn(
         "relative w-full md:w-80 h-[450px] rounded-2xl border-0 md:border md:border-white/10 bg-zinc-900 text-white overflow-hidden",
-        "shadow-2xl shadow-black/50 cursor-pointer group",
+        "shadow-2xl shadow-black/50 cursor-pointer group touch-auto",
         className
       )}
     >
