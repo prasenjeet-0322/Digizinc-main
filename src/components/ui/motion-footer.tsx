@@ -48,11 +48,6 @@ const STYLES = `
   to { transform: translateX(-50%); }
 }
 
-@keyframes footer-heartbeat {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(242, 48, 48, 0.3)); }
-  15%, 45% { transform: scale(1.2); filter: drop-shadow(0 0 10px rgba(242, 48, 48, 0.6)); }
-  30% { transform: scale(1); }
-}
 
 .animate-footer-breathe {
   animation: footer-breathe 8s ease-in-out infinite alternate;
@@ -62,9 +57,6 @@ const STYLES = `
   animation: footer-scroll-marquee 40s linear infinite;
 }
 
-.animate-footer-heartbeat {
-  animation: footer-heartbeat 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-}
 
 /* Theme-adaptive Grid Background */
 .footer-bg-grid {
@@ -351,12 +343,7 @@ export function CinematicFooter() {
               © 2026 DIGIZINC. ALL RIGHTS RESERVED.
             </div>
 
-            <div className="footer-glass-pill px-6 py-3 rounded-full flex items-center justify-center gap-2 order-1 md:order-2 cursor-default border-white/5 mx-auto">
-              <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Built for</span>
-              <span className="animate-footer-heartbeat text-sm md:text-base text-[#F23030]">❤</span>
-              <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">by</span>
-              <img src="/logo.svg" alt="DIGIZINC" className="h-8 w-auto object-contain ml-2" />
-            </div>
+            <div className="order-1 md:order-2"></div>
 
             <div className="flex justify-center md:justify-end order-3">
               <MagneticButton
