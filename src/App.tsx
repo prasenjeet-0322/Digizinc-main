@@ -966,7 +966,7 @@ const team = [
     name: "Praveen Kumar VS",
     role: "CXO",
     bio: "Strategic leader driving operational excellence and cross-functional synergy at the highest level.",
-    image: "/team/Praveen Kumar VS.jpg",
+    image: "/team/Praveen Kumar VS.png",
     linkedin: "https://linkedin.com",
   },
   {
@@ -980,14 +980,14 @@ const team = [
     name: "Nikhil Sukla",
     role: "Operations Manager",
     bio: "Streamlining agency workflows and project delivery with surgical precision and efficiency.",
-    image: "/team/Nikhil Sukla.jpeg",
+    image: "/team/Nikhil Sukla.png",
     linkedin: "https://linkedin.com",
   },
   {
     name: "Sampad Dutta",
     role: "Creative Head",
     bio: "A visual storyteller pushing the boundaries of creative excellence and brand aesthetics.",
-    image: "/team/Sampad Dutta.jpeg",
+    image: "/team/Sampad Dutta.png",
     linkedin: "https://linkedin.com",
   },
   {
@@ -1001,14 +1001,14 @@ const team = [
     name: "Prince Gupta",
     role: "Head Of Engineering",
     bio: "Full-stack specialist focused on building clean, efficient, and enterprise-grade software solutions.",
-    image: "/team/Prince Gupta.jpeg",
+    image: "/team/Prince Gupta.png",
     linkedin: "https://linkedin.com",
   },
   {
     name: "Prasenjeet Yadav",
     role: "Front End Developer",
     bio: "Crafting pixel-perfect, highly interactive front-end experiences that command user attention.",
-    image: "/team/Prasenjeet Yadav.jpeg",
+    image: "/team/Prasenjeet Yadav.png",
     linkedin: "https://linkedin.com",
   },
 ];
@@ -1544,9 +1544,9 @@ function Header() {
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[95%] md:max-w-6xl transition-all duration-700 ease-in-out md:top-6 ${isHidden ? "opacity-0 invisible translate-y-[-20px]" : "opacity-100 visible translate-y-0"
           }`}
       >
-        <div className="flex h-14 md:h-16 items-center justify-between bg-black/40 backdrop-blur-xl px-6 transition-all duration-300 rounded-full border border-white/10 md:px-10 md:shadow-2xl md:shadow-red-900/10">
-          <Link to="/" className="font-['Inter'] text-2xl font-bold tracking-tight text-[#F23030]">
-            {brand}
+        <div className="flex h-16 md:h-20 items-center justify-between bg-black/40 backdrop-blur-xl px-6 transition-all duration-300 rounded-full border border-white/10 md:px-10 md:shadow-2xl md:shadow-red-900/10">
+          <Link to="/" className="flex items-center">
+            <img src="/logo.svg" alt={brand} className="h-12 md:h-16 w-auto object-contain" />
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-semibold tracking-wide md:flex">
             {navItems.map((item) => (
@@ -1588,7 +1588,9 @@ function Header() {
             className="fixed inset-0 z-[10000] flex flex-col bg-[#0D0D0D]/95 backdrop-blur-2xl"
           >
             <div className="flex h-18 items-center justify-between px-4 border-b border-white/5">
-              <span className="font-['Inter'] text-2xl font-bold text-[#F23030]">{brand}</span>
+              <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
+                <img src="/logo.svg" alt={brand} className="h-14 w-auto object-contain" />
+              </Link>
               <button onClick={() => setOpen(false)} className="p-2 text-cream">
                 <X size={32} />
               </button>
@@ -2770,7 +2772,9 @@ function Footer() {
     <footer className="bg-zinc-950 py-12 text-zinc-300">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-4 md:px-6">
         <div>
-          <p className="font-['Inter'] text-2xl font-bold text-white">{brand}</p>
+          <Link to="/" className="inline-block mb-3">
+            <img src="/logo.svg" alt={brand} className="h-14 w-auto object-contain" />
+          </Link>
           <p className="mt-3 text-sm">Premium marketing systems for brands that want market authority and real growth.</p>
           <Link to="/contact#enquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#A61F1F]">
             Book Your Strategy Call

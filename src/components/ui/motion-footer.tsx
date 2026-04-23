@@ -355,7 +355,7 @@ export function CinematicFooter() {
               <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Built for</span>
               <span className="animate-footer-heartbeat text-sm md:text-base text-[#F23030]">❤</span>
               <span className="text-zinc-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">by</span>
-              <span className="text-white font-black text-xs md:text-sm tracking-normal ml-1">DIGIZINC</span>
+              <img src="/logo.svg" alt="DIGIZINC" className="h-8 w-auto object-contain ml-2" />
             </div>
 
             <div className="flex justify-center md:justify-end order-3">
