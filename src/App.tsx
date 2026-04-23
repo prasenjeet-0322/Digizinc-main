@@ -1,11 +1,11 @@
-import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { ZoomParallax } from "@/components/ui/zoom-parallax";
+import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState, lazy, Suspense } from "react";
+const ZoomParallax = lazy(() => import("@/components/ui/zoom-parallax").then(m => ({ default: m.ZoomParallax })));
 import SplashLoader from "@/components/ui/SplashLoader";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
-import { CinematicFooter } from "@/components/ui/motion-footer";
+const CinematicFooter = lazy(() => import("@/components/ui/motion-footer").then(m => ({ default: m.CinematicFooter })));
 import { ArticleCard } from "@/components/ui/blog-post-card";
 import { HeroSection } from "@/components/ui/glass-video-hero";
-import IntegrationHero from "@/components/ui/integration-hero";
+const IntegrationHero = lazy(() => import("@/components/ui/integration-hero"));
 import { ProductRevealCard } from "@/components/ui/product-reveal-card";
 import {
   ArrowRight,
@@ -56,9 +56,9 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { CircularTestimonials } from "@/components/ui/circular-testimonials";
-import { PricingSection } from "@/components/ui/pricing";
-import StackingIndustries from "@/components/ui/stacking-industries";
+const CircularTestimonials = lazy(() => import("@/components/ui/circular-testimonials").then(m => ({ default: m.CircularTestimonials })));
+const PricingSection = lazy(() => import("@/components/ui/pricing").then(m => ({ default: m.PricingSection })));
+const StackingIndustries = lazy(() => import("@/components/ui/stacking-industries"));
 
 // --- MODAL CONTEXT ---
 const ModalContext = createContext<{
@@ -2871,19 +2871,21 @@ export default function App() {
         <div className="relative z-10 bg-transparent">
           <ScrollManager />
           <Header />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/:slug" element={<ServiceDetailPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/portfolio/:slug" element={<ProjectDetailPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogSinglePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:slug" element={<ServiceDetailPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/portfolio/:slug" element={<ProjectDetailPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogSinglePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+            <CinematicFooter />
+          </Suspense>
         </div>
-        <CinematicFooter />
         <AuditModal />
       </div>
     </ModalProvider>

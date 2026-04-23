@@ -18,10 +18,10 @@ const SplashLoader: React.FC<SplashLoaderProps> = ({ onFinished }) => {
   }, []);
 
   useEffect(() => {
-    // Loading animation plays for ~4s (one full cycle), then trigger split
+    // Loading animation plays for ~1.8s, then trigger split
     const loadTimer = setTimeout(() => {
       setPhase('splitting');
-    }, 4000);
+    }, 1800);
 
     return () => clearTimeout(loadTimer);
   }, []);
@@ -34,7 +34,7 @@ const SplashLoader: React.FC<SplashLoaderProps> = ({ onFinished }) => {
         // Restore body scroll
         document.body.style.overflow = '';
         onFinished();
-      }, 1200);
+      }, 800);
       return () => clearTimeout(splitTimer);
     }
   }, [phase, onFinished]);
@@ -141,7 +141,7 @@ const StyledWrapper = styled.div`
     height: 100%;
     padding-left: 6px;
     color: #F23030;
-    animation: spin_4991 4s infinite;
+    animation: spin_4991 2s infinite;
   }
 
   @keyframes spin_4991 {
