@@ -278,10 +278,10 @@ export function CinematicFooter() {
       
       <div
         ref={wrapperRef}
-        className="relative h-[80vh] md:h-screen w-full bg-transparent"
+        className="relative h-[95vh] md:h-screen w-full bg-transparent"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        <footer className="fixed bottom-0 left-0 flex h-[80vh] md:h-screen w-full flex-col justify-between overflow-hidden bg-[#0a0a0a] text-white cinematic-footer-wrapper">
+        <footer className="fixed bottom-0 left-0 flex h-[95vh] md:h-screen w-full flex-col justify-between overflow-hidden bg-[#0a0a0a] text-white cinematic-footer-wrapper">
           
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
           <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
@@ -305,12 +305,12 @@ export function CinematicFooter() {
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-24 md:mt-16 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-12 text-center leading-[0.9]"
+              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-8 md:mb-12 text-center leading-[0.9]"
             >
               READY TO <br /><span className="text-[#F23030]">SCALE?</span>
             </h2>
 
-            <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
+            <div ref={linksRef} className="flex flex-col items-center gap-4 md:gap-6 w-full">
               <div className="flex flex-wrap justify-center gap-4 w-full">
                 <MagneticButton as="a" href="/contact#enquiry" className="footer-glass-pill px-10 py-5 rounded-full text-white font-bold text-sm md:text-base flex items-center gap-3 group">
                   <Zap className="w-5 h-5 text-[#F23030]" />
