@@ -293,7 +293,7 @@ export function CinematicFooter() {
             DIGIZINC
           </div>
 
-          <div className="absolute top-8 md:top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-4 z-10 -rotate-1 scale-110 shadow-2xl">
+          <div className="absolute top-3 md:top-12 left-0 w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-4 z-10 -rotate-1 scale-110 shadow-2xl">
             <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-[0.3em] text-zinc-500 uppercase">
               <MarqueeItem />
               <MarqueeItem />
