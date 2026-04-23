@@ -994,7 +994,7 @@ const team = [
     name: "Srikar Kudurmalla",
     role: "Senior Engineer",
     bio: "Architecting robust, scalable technical infrastructures for high-performance digital ecosystems.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+    image: "/team/Srikar Kudurumalla.png",
     linkedin: "https://linkedin.com",
   },
   {
