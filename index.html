@@ -32,12 +32,12 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1900&q=80" />
 
     <!-- SVG favicon — preferred by modern browsers & Google Search -->
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=2">
     <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="icon" href="/favicon/favicon.ico">
+    <link rel="icon" href="/favicon/favicon.ico?v=2">
 
     <!-- JSON-LD: Organization schema so Google updates the search snippet logo -->
     <script type="application/ld+json">
@@ -46,9 +46,49 @@
       "@type": "Organization",
       "name": "Digizinc",
       "url": "https://digizinc.com",
-      "logo": "https://digizinc.com/favicon/favicon.svg",
+      "logo": "https://digizinc.com/favicon/favicon.svg?v=2",
       "sameAs": [
         "https://digizinc.com"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: SiteNavigationElement schema to explicitly tell Google the preferred Sitelinks -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Services",
+          "url": "https://digizinc.com/services"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Portfolio",
+          "url": "https://digizinc.com/portfolio"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "About",
+          "url": "https://digizinc.com/about"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Blog",
+          "url": "https://digizinc.com/blog"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Contact",
+          "url": "https://digizinc.com/contact"
+        }
       ]
     }
     </script>
