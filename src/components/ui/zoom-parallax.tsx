@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Image {
 	src: string;
@@ -14,6 +14,15 @@ interface ZoomParallaxProps {
 }
 
 export function ZoomParallax({ images }: ZoomParallaxProps) {
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const check = () => setIsMobile(window.innerWidth < 768);
+		check();
+		window.addEventListener('resize', check);
+		return () => window.removeEventListener('resize', check);
+	}, []);
+
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: container,
@@ -27,6 +36,8 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
 	const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
+
+	if (isMobile) return null;
 
 	return (
 		<div ref={container} className="relative h-[250vh] bg-black">
