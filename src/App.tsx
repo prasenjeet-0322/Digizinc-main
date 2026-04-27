@@ -1546,7 +1546,7 @@ function Header() {
       >
         <div className="flex h-16 md:h-20 items-center justify-between bg-black/40 backdrop-blur-xl px-6 transition-all duration-300 rounded-full border border-white/10 md:px-10 md:shadow-2xl md:shadow-red-900/10">
           <Link to="/" className="flex items-center">
-            <img src="/logo.svg" alt={brand} className="h-12 md:h-16 w-auto object-contain" />
+            <img src="/logo.svg" alt={brand} className="h-9 md:h-12 w-auto object-contain" />
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-semibold tracking-wide md:flex">
             {navItems.map((item) => (
@@ -1589,7 +1589,7 @@ function Header() {
           >
             <div className="flex h-18 items-center justify-between px-4 border-b border-white/5">
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
-                <img src="/logo.svg" alt={brand} className="h-14 w-auto object-contain" />
+                <img src="/logo.svg" alt={brand} className="h-10 w-auto object-contain" />
               </Link>
               <button onClick={() => setOpen(false)} className="p-2 text-cream">
                 <X size={32} />
@@ -2773,7 +2773,7 @@ function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-4 md:px-6">
         <div>
           <Link to="/" className="inline-block mb-3">
-            <img src="/logo.svg" alt={brand} className="h-14 w-auto object-contain" />
+            <img src="/logo.svg" alt={brand} className="h-10 w-auto object-contain" />
           </Link>
           <p className="mt-3 text-sm">Premium marketing systems for brands that want market authority and real growth.</p>
           <Link to="/contact#enquiry" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#A61F1F]">
