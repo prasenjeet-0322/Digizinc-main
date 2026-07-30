@@ -962,13 +962,7 @@ const team = [
     image: "/team/bhargava-raj.png",
     linkedin: "https://linkedin.com",
   },
-  {
-    name: "Praveen Kumar VS",
-    role: "CXO",
-    bio: "Strategic leader driving operational excellence and cross-functional synergy at the highest level.",
-    image: "/team/Praveen Kumar VS.png",
-    linkedin: "https://linkedin.com",
-  },
+
   {
     name: "Palley Sridhar",
     role: "Business Development Director",
@@ -977,10 +971,10 @@ const team = [
     linkedin: "https://linkedin.com",
   },
   {
-    name: "Nikhil Sukla",
-    role: "Head of Operations Manager",
+    name: "Nikhil Singh Rajawat",
+    role: "Marketing Head",
     bio: "Streamlining agency workflows and project delivery with surgical precision and efficiency.",
-    image: "/team/Nikhil Sukla.png",
+    image: "/team/Nikhil singh rajawat.png",
     linkedin: "https://linkedin.com",
   },
   {
