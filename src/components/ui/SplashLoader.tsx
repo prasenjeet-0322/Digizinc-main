@@ -39,8 +39,6 @@ const SplashLoader: React.FC<SplashLoaderProps> = ({ onFinished }) => {
     }
   }, [phase, onFinished]);
 
-  if (phase === 'done') return null;
-
   return (
     <AnimatePresence>
       {phase !== 'done' && (

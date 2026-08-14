@@ -1,6 +1,5 @@
 'use client';
-import { ReactLenis } from 'lenis/react';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface Industry {
@@ -15,7 +14,7 @@ interface StackingIndustriesProps {
   industries: Industry[];
 }
 
-const StackingIndustries = forwardRef<HTMLElement, StackingIndustriesProps>(({ industries }, ref) => {
+const StackingIndustries = forwardRef<HTMLDivElement, StackingIndustriesProps>(({ industries }, ref) => {
   return (
     <>
       <div className="bg-transparent" ref={ref}>

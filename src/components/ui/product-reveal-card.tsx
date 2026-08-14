@@ -58,7 +58,7 @@ export function ProductRevealCard({
       scale: 1.03, 
       y: -8,
       transition: { 
-        type: "spring", 
+        type: "spring" as any, 
         stiffness: 300, 
         damping: 30,
         mass: 0.8,
@@ -80,7 +80,7 @@ export function ProductRevealCard({
       y: "0%", 
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as any,
         stiffness: 400,
         damping: 28,
         mass: 0.6,
@@ -101,7 +101,7 @@ export function ProductRevealCard({
       y: 0, 
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as any,
         stiffness: 400,
         damping: 25,
         mass: 0.5,
@@ -115,7 +115,7 @@ export function ProductRevealCard({
       scale: 1.05, 
       y: -2,
       transition: { 
-        type: "spring", 
+        type: "spring" as any, 
         stiffness: 400, 
         damping: 25 
       }
@@ -156,7 +156,7 @@ export function ProductRevealCard({
           alt={name}
           className={cn("h-full w-full object-cover", imgClassName)}
           variants={imageVariants}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: "spring" as any, stiffness: 300, damping: 30 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         

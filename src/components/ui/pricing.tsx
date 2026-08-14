@@ -225,7 +225,7 @@ export function BorderTrail({
   const BASE_TRANSITION = {
     repeat: Infinity,
     duration: 5,
-    ease: 'linear',
+    ease: 'linear' as const,
   };
 
   return (
