@@ -9,7 +9,7 @@ export function TextColor() {
       <div className="mb-2 mt-4 md:mt-6">
         <div className="px-2">
           <div className="relative w-full h-full">
-            <h1 className="tracking-tighter flex select-none px-3 py-2 flex-col text-center text-[64px] font-black leading-[1.0] sm:text-[68px] md:flex-col lg:flex-row lg:text-[80px] uppercase">
+            <h1 className="font-sofia tracking-tighter flex select-none px-3 py-2 flex-col text-center text-[64px] font-black leading-[1.0] sm:text-[68px] md:flex-col lg:flex-row lg:text-[80px] uppercase">
 
               <span
                 data-content="DESIGN."

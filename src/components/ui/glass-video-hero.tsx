@@ -30,7 +30,7 @@ const HeroSection = () => {
         <TextColor />
 
         {/* Subtext */}
-        <p className="font-inter font-normal text-[14px] md:text-base text-white/80 mt-2 max-w-4xl leading-relaxed tracking-[0.15em] uppercase">
+        <p className="font-sofia font-normal text-[14px] md:text-base text-white/80 mt-2 max-w-4xl leading-relaxed tracking-[0.15em] uppercase">
           Everything we build is made to <br className="sm:hidden" />
           convert, scale, and win.
         </p>
@@ -39,13 +39,13 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center gap-6 mt-10 translate-y-[8pt]">
           <Link
             to="/contact"
-            className="hidden sm:inline-flex px-10 py-4 rounded-full bg-primary text-white font-inter font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all shadow-xl shadow-primary/20"
+            className="hidden sm:inline-flex px-10 py-4 rounded-full bg-primary text-white font-sofia font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all shadow-xl shadow-primary/20"
           >
             Book 1:1 Call
           </Link>
           <Link
             to="/portfolio"
-            className="px-10 py-4 rounded-full border border-white/20 backdrop-blur-md text-white font-inter font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all"
+            className="px-10 py-4 rounded-full border border-white/20 backdrop-blur-md text-white font-sofia font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all"
           >
             Explore Case Studies
           </Link>
