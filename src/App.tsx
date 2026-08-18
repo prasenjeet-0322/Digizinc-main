@@ -8,6 +8,7 @@ import { HeroSection } from "@/components/ui/glass-video-hero";
 const IntegrationHero = lazy(() => import("@/components/ui/integration-hero"));
 import { ProductRevealCard } from "@/components/ui/product-reveal-card";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   BarChart3,
@@ -971,6 +972,13 @@ const team = [
     linkedin: "https://linkedin.com",
   },
   {
+    name: "Praveen Kumar VS",
+    role: "Strategy & Growth",
+    bio: "Scaling brand operations and leading growth initiatives with measurable impact.",
+    image: "/team/Praveen Kumar VS.png",
+    linkedin: "https://linkedin.com",
+  },
+  {
     name: "Nikhil Singh Rajawat",
     role: "Marketing Head",
     bio: "Streamlining agency workflows and project delivery with surgical precision and efficiency.",
@@ -1549,24 +1557,151 @@ function Header() {
             </Link>
           </div>
           <nav 
-            className="hidden items-center justify-center gap-8 text-sm tracking-wide md:flex flex-1"
+            className="hidden items-center justify-center gap-8 text-sm tracking-wide md:flex flex-1 h-full relative"
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}
           >
             {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `relative flex items-center gap-1.5 transition-colors duration-200 hover:text-[#F23030] ${
-                    isActive ? "text-[#F23030]" : (isLanding ? "text-[#1E1E21]" : "text-white/70")
-                  } after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#F23030] after:transition-all after:duration-300 hover:after:w-full`
-                }
-              >
-                {item.label}
-                {(item.label === "About" || item.label === "Services") && (
-                  <ChevronDown size={16} strokeWidth={3} className="opacity-70 mt-0.5" />
+              <div key={item.to} className="group flex items-center relative py-2 after:absolute after:top-full after:left-0 after:w-full after:h-12 after:bg-transparent">
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `relative flex items-center gap-1.5 transition-colors duration-200 py-2 hover:text-[#F23030] ${
+                      isActive ? "text-[#F23030]" : (isLanding ? "text-[#1E1E21]" : "text-white/70")
+                    } after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#F23030] after:transition-all after:duration-300 hover:after:w-full`
+                  }
+                >
+                  {item.label}
+                  {(item.label === "About" || item.label === "Services") && (
+                    <ChevronDown size={16} strokeWidth={3} className="opacity-70 mt-0.5 transition-transform duration-300 group-hover:-rotate-180" />
+                  )}
+                </NavLink>
+
+                {/* About Mega Menu */}
+                {item.label === "About" && (
+                  <div className="fixed top-20 md:top-24 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
+                    <div className="bg-white border-t border-b border-zinc-200 shadow-2xl h-[270px] flex justify-center w-full">
+                      <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between text-[#1E1E21] h-full px-6 md:px-16">
+                        {/* Left: Links */}
+                        <div className="flex flex-col gap-4 w-[400px]">
+                          <Link to="/how-we-work" className="text-zinc-400 font-semibold uppercase tracking-widest text-xs mb-1 hover:text-[#F23030] transition-colors inline-block w-fit" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>How We Work</Link>
+                          <Link to="/partnerships" className="font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Our Partnerships</Link>
+                          <Link to="/team" className="font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Meet The Team</Link>
+                        </div>
+
+                        <div className="flex items-center gap-16">
+                          {/* Divider */}
+                          <div className="w-[2px] h-[170px] bg-zinc-200 hidden lg:block"></div>
+
+                          {/* Right: Testimonial */}
+                          <div className="bg-[#F8F8F8] rounded-[20px] p-6 w-[520px] h-[190px] relative group/test flex flex-col justify-between" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                          <div>
+                            <div className="flex gap-1 mb-2.5 text-[#F2C94C]">
+                              {[...Array(5)].map((_, i) => (
+                                <svg key={i} className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                              ))}
+                            </div>
+                            <p className="text-[12.5px] font-medium leading-relaxed text-[#1E1E21]/80 pr-4">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                          </div>
+                          
+                          <div className="flex items-center justify-between mt-auto">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-full bg-zinc-200"></div>
+                              <div>
+                                <p className="text-xs font-bold leading-tight">John Doe</p>
+                                <p className="text-[10px] text-zinc-500 font-medium">Founder, OMVERAA</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-center gap-5">
+                              <Link to="/portfolio" className="text-[11px] font-bold flex items-center gap-1 hover:text-[#F23030] transition-colors">
+                                More customer stories <ArrowRight size={13} />
+                              </Link>
+                              <div className="flex gap-2">
+                                <button className="w-5 h-5 flex items-center justify-center text-zinc-400 hover:text-black transition-colors"><ArrowLeft size={13} /></button>
+                                <button className="w-5 h-5 flex items-center justify-center text-zinc-400 hover:text-black transition-colors"><ArrowRight size={13} /></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </NavLink>
+
+                {/* Services Mega Menu */}
+                {item.label === "Services" && (
+                  <div className="fixed top-20 md:top-24 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
+                    <div className="bg-white border-t border-b border-zinc-200 shadow-2xl h-[351px] flex justify-center w-full">
+                      <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between text-[#1E1E21] h-full px-6 md:px-16">
+                        {/* Left: Links in two columns */}
+                        <div className="flex gap-12">
+                          {/* Column 1 */}
+                          <div className="flex flex-col gap-5">
+                            <Link to="/services#branding" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none text-zinc-400" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Branding</Link>
+                            <Link to="/services#digital-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Digital Marketing</Link>
+                            <Link to="/services#web-solutions" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Web Solutions</Link>
+                            <Link to="/services#software-development" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Software Development</Link>
+                            <Link to="/services#social-media" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Social Media Management</Link>
+                          </div>
+
+                          {/* Inner Divider */}
+                          <div className="w-[2px] h-[220px] bg-zinc-200 hidden lg:block"></div>
+
+                          {/* Column 2 */}
+                          <div className="flex flex-col gap-5">
+                            <Link to="/services#performance-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Performance Marketing</Link>
+                            <Link to="/services#graphic-design" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Graphic Design</Link>
+                            <Link to="/services#influencer-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Influencer Marketing</Link>
+                            <Link to="/services#product-video" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Model Based Product Video</Link>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-16">
+                          {/* Main Divider */}
+                          <div className="w-[2px] h-[220px] bg-zinc-200 hidden lg:block"></div>
+
+                          {/* Right: Testimonial */}
+                          <div className="bg-[#F8F8F8] rounded-[24px] p-8 w-[550px] h-[240px] relative group/test flex flex-col justify-between" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                            <div>
+                              <div className="flex gap-1 mb-4 text-[#F2C94C]">
+                                {[...Array(5)].map((_, i) => (
+                                  <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                ))}
+                              </div>
+                              <p className="text-[13px] font-medium leading-relaxed text-[#1E1E21]/80 pr-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                              </p>
+                            </div>
+                            
+                            <div className="flex items-center justify-between mt-auto">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-zinc-200"></div>
+                                <div>
+                                  <p className="text-sm font-bold leading-tight">John Doe</p>
+                                  <p className="text-[11px] text-zinc-500 font-medium">Founder, OMVERAA</p>
+                                </div>
+                              </div>
+                              
+                              <div className="flex items-center gap-6">
+                                <Link to="/portfolio" className="text-xs font-bold flex items-center gap-1 hover:text-[#F23030] transition-colors">
+                                  More customer stories <ArrowRight size={14} />
+                                </Link>
+                                <div className="flex gap-2">
+                                  <button className="w-6 h-6 flex items-center justify-center text-zinc-400 hover:text-black transition-colors"><ArrowLeft size={14} /></button>
+                                  <button className="w-6 h-6 flex items-center justify-center text-zinc-400 hover:text-black transition-colors"><ArrowRight size={14} /></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
           <div className="hidden md:flex flex-1 justify-end">
@@ -2511,57 +2646,77 @@ function PortfolioPage() {
 
 function BlogPage() {
   return (
-    <main className="mx-auto max-w-7xl px-4 pt-32 pb-20 md:px-6 md:pt-40">
-      <div className="mb-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#F23030]">The Archive</p>
-        <h1 className="mt-4 font-['Inter'] text-4xl font-extrabold text-white md:text-6xl tracking-tight">Strategy & Insights.</h1>
-        <p className="mt-6 max-w-2xl text-zinc-400 text-lg leading-relaxed">
-          Deep dives into growth engineering, creative strategy, and the mechanics of market dominance.
-        </p>
-      </div>
+    <main className="min-h-screen bg-white pt-32 pb-20">
+      <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+        
+        {/* Header */}
+        <h1 
+          className="text-[40px] md:text-[56px] font-semibold text-[#1E1E21] mb-8"
+          style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+        >
+          Our Informative Blog
+        </h1>
 
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <Link
-            key={post.slug}
-            to={`/blog/${post.slug}`}
-            className="group flex flex-col bg-zinc-900/30 border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 hover:border-[#F23030]/20 hover:bg-zinc-900/50 hover:shadow-[0_20px_50px_-20px_rgba(242,48,48,0.1)]"
-          >
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute top-6 left-6">
-                <span className="bg-[#F23030] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full backdrop-blur-md">
-                  {post.category}
-                </span>
-              </div>
-            </div>
+        {/* Filter Section */}
+        <div className="border-t border-b border-zinc-300 py-4 mb-12 flex justify-end gap-4">
+          <button className="px-6 py-2 bg-[#1E1E21] text-white text-sm font-semibold rounded-full hover:bg-black transition-colors" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+            Latest Blog
+          </button>
+          <button className="px-6 py-2 bg-transparent text-[#1E1E21] text-sm font-semibold rounded-full border border-zinc-300 hover:border-[#1E1E21] transition-colors" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+            All Blog
+          </button>
+        </div>
 
-            <div className="p-8 flex flex-col flex-grow">
-              <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">
-                <span>{post.date}</span>
-                <span className="w-1 h-1 rounded-full bg-zinc-700" />
-                <span>{Math.ceil(post.readingTime / 60)} min read</span>
+        {/* Grid */}
+        <div className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              className="group flex flex-col cursor-pointer"
+            >
+              {/* Image */}
+              <div className="w-full aspect-[16/10] bg-zinc-200 rounded-lg overflow-hidden mb-4 relative">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/90 text-[#1E1E21] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md shadow-sm">
+                    {post.category}
+                  </span>
+                </div>
               </div>
-              
-              <h2 className="font-['Inter'] text-2xl font-bold text-white leading-tight mb-4 group-hover:text-[#F23030] transition-colors line-clamp-2">
-                {post.title}
-              </h2>
-              
-              <p className="text-sm text-zinc-400 line-clamp-3 mb-8 leading-relaxed">
-                {post.excerpt}
-              </p>
 
-              <div className="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#F23030] group/link">
-                <span>Read Full Analysis</span>
-                <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
+              {/* Content */}
+              <div className="flex flex-col gap-1.5" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-semibold text-[#1E1E21] opacity-60">
+                    {post.date}
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-zinc-300"></span>
+                  <span className="text-[11px] font-semibold text-[#1E1E21] opacity-60">
+                    {Math.ceil(post.readingTime / 60)} min read
+                  </span>
+                </div>
+                <h2 
+                  className="text-[18px] text-[#1E1E21] font-semibold leading-snug line-clamp-2 mt-1"
+                  style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+                >
+                  {post.title}
+                </h2>
+                <p 
+                  className="text-[14px] text-[#1E1E21] font-normal opacity-80 line-clamp-2 leading-relaxed"
+                  style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}
+                >
+                  {post.excerpt}
+                </p>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
+
       </div>
     </main>
   );
@@ -2573,9 +2728,9 @@ function BlogSinglePage() {
 
   if (!post) {
     return (
-      <main className="mx-auto max-w-6xl px-4 py-20 md:px-6">
-        <h1 className="font-['Inter'] text-4xl font-bold">Post not found.</h1>
-        <Link to="/blog" className="mt-4 inline-block text-[#F23030]">
+      <main className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-20">
+        <h1 className="text-4xl font-semibold text-[#1E1E21]" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Post not found.</h1>
+        <Link to="/blog" className="mt-4 inline-block text-[#F23030] font-semibold" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
           Back to Blog
         </Link>
       </main>
@@ -2583,126 +2738,226 @@ function BlogSinglePage() {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 pt-32 pb-20 md:px-6 md:pt-48">
-      {/* Header */}
-      <div className="mb-16 text-center">
-        <div className="flex justify-center items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-8">
-          <span>{post.category}</span>
-          <span className="w-1 h-1 rounded-full bg-zinc-700" />
-          <span>{post.date}</span>
-        </div>
-        <h1 className="font-['Inter'] text-4xl font-extrabold text-white md:text-6xl tracking-tight leading-[1.1] max-w-3xl mx-auto">
+    <main className="min-h-screen bg-white pt-32 pb-20" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+      <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+        
+        {/* Header / Title */}
+        <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-semibold text-[#1E1E21] tracking-tight leading-[1.1] mb-8" style={{ fontWeight: 600 }}>
           {post.title}
         </h1>
-        <div className="mt-10 flex flex-col items-center gap-2">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">WRITTEN BY</p>
-          <p className="text-sm font-semibold text-zinc-300">{post.author}</p>
+
+        {/* Meta Info & Socials */}
+        <div className="flex items-center justify-between border-t border-b border-zinc-300 py-6 mb-12">
+          <div className="flex items-center gap-2 text-[12px] md:text-[14px] font-semibold text-[#1E1E21]">
+            <span>{post.date}</span>
+            <span className="w-1 h-1 rounded-full bg-[#1E1E21]" />
+            <span>{Math.ceil(post.readingTime / 60)} mins</span>
+          </div>
+          
+          <div className="flex items-center gap-6 text-[#1E1E21]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer hover:text-[#F23030] transition-colors"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer hover:text-[#F23030] transition-colors"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer hover:text-[#F23030] transition-colors"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
         </div>
-      </div>
 
-      {/* Featured Image */}
-      <div className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl mb-16 border border-white/5">
-        <img
-          src={post.image}
-          alt={post.title}
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 to-transparent" />
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12">
-        {/* Sidebar / TOC */}
-        <aside className="hidden lg:block sticky top-32 h-fit">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">Inside this analysis</p>
-          <nav className="space-y-4">
-            <a href="#intro" className="block text-xs font-semibold text-[#F23030] hover:text-white transition-colors">Introduction</a>
-            <a href="#insight" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">The Insight</a>
-            <a href="#strategy" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">The Strategy</a>
-            <a href="#faq" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">FAQ</a>
-            <a href="#conclusion" className="block text-xs font-semibold text-zinc-500 hover:text-white transition-colors">Conclusion</a>
-          </nav>
-        </aside>
+        {/* Featured Image */}
+        <div className="w-full h-[800px] overflow-hidden rounded-[20px] mb-16">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
         {/* Content Area */}
-        <article id="intro" className="max-w-2xl mx-auto lg:mx-0">
-          <div className="prose prose-zinc prose-invert max-w-none">
-            <div className="text-xl leading-relaxed text-zinc-300 font-medium mb-12 first-letter:text-5xl first-letter:font-bold first-letter:text-[#F23030] first-letter:mr-3 first-letter:float-left">
-              {post.metaDescription || post.excerpt}
-            </div>
+        <div className="mx-auto max-w-[1100px]">
+          <article className="max-w-none space-y-6">
+            {post.content.split('\n\n').map((paragraph, index) => {
+              const trimmed = paragraph.trim();
+              if (!trimmed) return null;
+              
+              // Detect headings: numbered list, markdown bold, or all caps
+              const isHeading = trimmed.match(/^[0-9]+\.\s/) || trimmed.startsWith('**') || (trimmed === trimmed.toUpperCase() && trimmed.length > 3);
+              
+              // Strip markdown bold characters for clean output
+              const text = trimmed.replace(/\*\*/g, '');
 
-            <div className="whitespace-pre-wrap text-zinc-300 leading-[1.8] text-lg space-y-8">
-              {post.content}
-            </div>
-          </div>
+              if (isHeading) {
+                return (
+                  <h2 key={index} className="text-[#1E1E21] font-semibold text-[18px] md:text-[22px] mt-10 mb-2" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
+                    {text}
+                  </h2>
+                );
+              }
+              
+              return (
+                <p key={index} className="text-[#1E1E21] font-normal opacity-80 leading-[1.8] text-[16px] md:text-[18px]" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}>
+                  {text}
+                </p>
+              );
+            })}
+          </article>
+        </div>
 
-          {/* FAQ Section */}
-          <section id="faq" className="mt-20 pt-20 border-t border-white/5">
-            <h2 className="text-2xl font-bold text-white mb-10">Frequently Asked Questions</h2>
-            <div className="space-y-8">
-              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-2xl">
-                <h3 className="text-white font-bold mb-4">How long does it take to see results?</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">Most systems show initial engagement improvements within 14 days, with full CAC stabilization occurring over a 60-90 day window.</p>
-              </div>
-              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-2xl">
-                <h3 className="text-white font-bold mb-4">What is the ideal ad budget for testing?</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">We recommend starting with a minimum of $50-$100 per variable per day to reach statistical significance quickly.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* CTA Footer */}
-          <section id="conclusion" className="mt-20 p-10 bg-[#F23030] rounded-3xl text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Ready to dominate your market?</h2>
-            <p className="text-white/80 mb-8 text-sm">Join the elite brands using Digizinc’s growth systems to establish authority and drive measurable ROI.</p>
-            <Link to="/contact#enquiry" className="inline-flex items-center gap-2 bg-white text-black font-bold uppercase tracking-widest text-xs px-8 py-4 rounded-full hover:bg-zinc-100 transition-all">
-              Book Your Strategy Call
-              <ArrowRight size={16} />
-            </Link>
-          </section>
-        </article>
       </div>
     </main>
   );
 }
 
 function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    org: "",
+    email: "",
+    number: "",
+    website: "",
+    services: [] as string[],
+    office: "",
+    message: "",
+    source: ""
+  });
+  const [status, setStatus] = useState("idle");
+
+  const toggleService = (s: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: prev.services.includes(s) 
+        ? prev.services.filter(x => x !== s) 
+        : [...prev.services, s]
+    }));
+  };
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    // simulate submit
+    setTimeout(() => {
+      setStatus("success");
+      setFormData({ name: "", org: "", email: "", number: "", website: "", services: [], office: "", message: "", source: "" });
+      setTimeout(() => setStatus("idle"), 3000);
+    }, 1500);
+  };
+
+  const offices = ["Mumbai", "Bangalore", "Delhi", "UK (London)", "Amsterdam"];
+  const sources = ["Referral", "Media & News", "LinkedIn", "Instagram/Facebook", "Emails/Newsletter", "Search", "Other Sources"];
+  const serviceOpts = [
+    "Branding", 
+    "Social Media Management", 
+    "Content Creation & Marketing", 
+    "Ad Film/Video Production"
+  ];
+  // Adding more dummy options to match the visual weight of the mockup if needed
+  const serviceOptsRow2 = [
+    "Ad Film/Video Production", "Ad Film/Video Production", "Ad Film/Video Production", "Ad Film/Video Production"
+  ];
+
   return (
-    <main className="mx-auto max-w-6xl px-4 pt-32 pb-14 md:px-6 md:pt-40 md:pb-18">
-      <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
-        <section>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">Contact</p>
-          <h1 className="mt-3 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Let&apos;s discuss your growth targets.</h1>
-          <p className="mt-4 text-zinc-400">Share your goals and we will map the highest-impact opportunities for your brand.</p>
-          <div className="mt-8 space-y-4 text-sm text-zinc-400">
-            <p className="flex items-center gap-2">
-              <Mail size={16} className="text-[#F23030]" />
-              hello@digizinc.com
-            </p>
-            <p className="flex items-center gap-2">
-              <Phone size={16} className="text-[#F23030]" />
-              +91 97015 63362
-            </p>
-            <p className="flex items-start gap-2">
-              <MapPin size={16} className="mt-1 shrink-0 text-[#F23030]" />
-              <span>
-                H. No. 1-98/9/3/32T, Plot No. 50, 4th Floor,<br />
-                Sai Dham Building, Madhapur, Hyderabad,<br />
-                Telangana, 500081, India
-              </span>
-            </p>
+    <main className="min-h-screen bg-white pt-32 pb-20" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+      <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+        
+        {/* Header */}
+        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight" style={{ fontWeight: 600 }}>
+          Drop us a Message
+        </h1>
+
+        {/* Intro Section */}
+        <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-12 mb-16 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 md:gap-24 items-start">
+          <h2 className="text-sm md:text-base font-medium text-[#1E1E21] whitespace-nowrap tracking-wider" style={{ fontWeight: 500 }}>(GOT AN IDEA?)</h2>
+          <p className="text-[#1E1E21] text-[12px] md:text-[13px] leading-[1.8] font-normal opacity-90" style={{ fontWeight: 400 }}>
+            <span className="md:whitespace-nowrap">We're excited to work with you soon! Please drop an email with your details & requirements to <a href="mailto:hello@digizinc.com" className="font-semibold">hello@digizinc.com</a>.</span>
+            <span className="mt-4 block">You can also fill this form & we'll get back in 2 business days.</span>
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-16 md:gap-24">
+          {/* Left Column - Form */}
+          <div className="pt-2">
+            <form onSubmit={submit} className="space-y-12">
+              
+              <div className="space-y-1">
+                <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+              
+              <div className="space-y-1">
+                <input type="text" placeholder="Your Organization's Name" value={formData.org} onChange={e => setFormData({...formData, org: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+
+              <div className="space-y-1">
+                <input required type="email" placeholder="Your Email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+
+              <div className="space-y-1">
+                <input required type="tel" placeholder="Your Number" value={formData.number} onChange={e => setFormData({...formData, number: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+
+              <div className="space-y-1">
+                <input type="url" placeholder="Website/Social Media Link" value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+
+              <div className="space-y-5 pt-4">
+                <p className="text-[13px] font-medium text-[#1E1E21] mb-4">Which Services Are You Interested in?</p>
+                <div className="flex flex-wrap gap-2.5">
+                  {serviceOpts.map(s => (
+                    <button key={s} type="button" onClick={() => toggleService(s)} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.services.includes(s) ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2.5 mt-2">
+                  {serviceOptsRow2.map((s, i) => (
+                    <button key={i + s} type="button" onClick={() => toggleService(s + i)} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.services.includes(s + i) ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-5 pt-4">
+                <p className="text-[13px] font-medium text-[#1E1E21] mb-4">Please Select Our Closest Preferred Office For Servicing You?</p>
+                <div className="flex flex-wrap gap-2.5">
+                  {offices.map(o => (
+                    <button key={o} type="button" onClick={() => setFormData({...formData, office: o})} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.office === o ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                      {o}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-1 pt-6">
+                <input type="text" placeholder="What's on Your Mind?" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              </div>
+
+              <div className="space-y-5 pt-4">
+                <p className="text-[13px] font-medium text-[#1E1E21] mb-4">How Did You Hear About Us?</p>
+                <div className="flex flex-wrap gap-2.5">
+                  {sources.map(s => (
+                    <button key={s} type="button" onClick={() => setFormData({...formData, source: s})} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.source === s ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-8">
+                <button type="submit" disabled={status === "sending"} className="bg-[#1E1E21] text-white px-20 py-4 rounded-full text-[13px] font-semibold hover:bg-[#F23030] transition-colors disabled:opacity-50 min-w-[240px]">
+                  {status === "idle" ? "Submit" : status === "sending" ? "Sending..." : "Message Sent!"}
+                </button>
+              </div>
+
+            </form>
           </div>
-          <div className="mt-8 h-72 overflow-hidden border border-white/10">
-            <iframe
-              title="Agency Location"
-              src="https://www.google.com/maps?q=H.+No.+1-98%2F9%2F3%2F32T,+Plot+No.+50,+Sai+Dham+Building,+Madhapur,+Hyderabad&output=embed"
-              className="h-full w-full"
-              loading="lazy"
-            />
+
+          {/* Right Column - Images */}
+          <div className="hidden lg:flex flex-col h-full rounded-2xl overflow-hidden shadow-sm">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 1" className="w-full object-cover flex-1 min-h-[300px]" />
+            <div className="w-full h-[1px] bg-white/20"></div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 2" className="w-full object-cover flex-1 min-h-[300px]" />
+            <div className="w-full h-[1px] bg-white/20"></div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 3" className="w-full object-cover flex-1 min-h-[300px]" />
           </div>
-        </section>
-        <section>
-          <InquiryForm />
-        </section>
+
+        </div>
       </div>
     </main>
   );
@@ -2773,6 +3028,242 @@ function Footer() {
   );
 }
 
+function HowWeWorkPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="w-full bg-white relative">
+      {/* Light Section */}
+      <div className="pt-32 pb-16 md:pt-40 md:pb-24">
+        <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+          <h1 className="text-4xl md:text-5xl lg:text-[60px] font-semibold text-[#1E1E21] mb-12 tracking-tight" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
+            We Bring The Whole Digizinc!
+          </h1>
+          
+          <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-12 mb-16 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-16 md:gap-24 items-start">
+            <h2 className="text-lg md:text-xl font-medium text-[#1E1E21] tracking-normal leading-snug" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}>
+              (Our mission - taking the best of<br />Indian Creative Talent to the World!)
+            </h2>
+            <div className="text-[#1E1E21] text-[12px] md:text-[13px] leading-[1.6] font-normal opacity-90 space-y-4" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}>
+              <p>DigiZinc wasn't born in a boardroom. It was born from a simple, stubborn observation: that in a crowded market, creativity without a strategy is just expensive noise.</p>
+              <p>We started as a small strategy boutique with a singular focus to stop being 'just another agency' and start being a growth engine. We never measured our success by the size of our office, but by the scale of the impact we delivered for our partners.</p>
+              <p>Today, we don't just build projects; we architect digital ecosystems. High-performance environments engineered to seize attention, influence decision-making, and turn market share into market dominance.</p>
+              <p>Our work sits at the intersection of branding, design, development, and marketing. By combining creativity with data-driven thinking, we help businesses launch stronger identities, build better digital products, and connect with the people who matter most.</p>
+            </div>
+          </div>
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-[#1E1E21] mb-8" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Our Principles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {[
+                { title: "Forensic Audit", text: "We don't guess. We perform a deep-tissue search of your current infrastructure to identify every leak and lost opportunity." },
+                { title: "Market Strategy", text: "A tailored roadmap engineered for dominance. We define the exact moves required to bend the market in your favor." },
+                { title: "Cinematic Creative", text: "High-fidelity production that commands attention. We build visuals that don't just look good—they convert." },
+                { title: "Precision Launch", text: "Targeted deployment across the digital wild. We move with surgical precision to reach the right people at the right time." },
+                { title: "Scale & Dominate", text: "Continuous performance tracking and aggressive scaling. We optimize until your authority is unquestioned." }
+              ].map((card, i) => (
+                <div key={i} className="bg-zinc-200/50 p-8 flex flex-col items-center text-center">
+                  <div className="h-48 w-full bg-zinc-300/50 mb-6 rounded-sm"></div>
+                  <h4 className="text-sm font-semibold text-[#1E1E21] mb-4 h-10 flex items-center justify-center" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>{card.title}</h4>
+                  <p className="text-[11px] leading-[1.6] font-normal text-[#1E1E21]/80" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}>{card.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  );
+}
+
+function PartnershipsPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const partners = [
+    {
+      name: "Aspire",
+      logo: "/logos/partners/aspire.png",
+      title: "Aspire Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "OneGrasp",
+      logo: "/logos/partners/Asset_1onegrasp1.png",
+      title: "OneGrasp Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Sobha Townpark",
+      logo: "/logos/partners/Sobha-Town-Park-Logo-1.png",
+      title: "Sobha Townpark",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Porch Studio",
+      logo: "/logos/partners/asset.png",
+      title: "Porch Studio",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Theja Infracon",
+      logo: "/logos/partners/theja-infracon-logo_white.png",
+      title: "Theja Infracon",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "ISMT",
+      logo: "/logos/partners/Asset_1broken.png",
+      title: "ISMT Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Sobha Magnus",
+      logo: "/logos/partners/Asset_2magnus.png",
+      title: "Sobha Magnus",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "I Am Here",
+      logo: "/logos/partners/Group_58.png",
+      title: "I Am Here (#NearYouNow)",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Aura",
+      logo: "/logos/partners/Aura_white.png",
+      title: "Aura Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "ReWiser",
+      logo: "/logos/partners/ReWiser_Logo_1.png",
+      title: "ReWiser Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Ebisu Grandeur",
+      logo: "/logos/partners/Ebisu_90_White.png",
+      title: "Ebisu Grandeur",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "CMPS",
+      logo: "/logos/partners/Updated-logo-CMPS1.png",
+      title: "CMPS Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Skyven",
+      logo: "/logos/partners/logo_skyven_updated-02(1)_copy.png",
+      title: "Skyven Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    },
+    {
+      name: "Jayanthi",
+      logo: "/logos/partners/jayanthi-logo-2.webp",
+      title: "Jayanthi Partner",
+      description: "Complete e-commerce solutions to meet your business goals."
+    }
+  ];
+
+  return (
+    <div className="w-full bg-white min-h-screen relative text-[#1E1E21]">
+      <div className="pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight max-w-5xl leading-[1.15]" 
+            style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+          >
+            Proudly Collaborating With the Most Cutting-edge Platforms in the Industry
+          </h1>
+          
+          <div className="border-t-[2px] border-[#1E1E21]/30 pt-16 md:pt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20 md:gap-y-24">
+              {partners.map((partner, i) => (
+                <div key={i} className="flex flex-col items-center text-center group">
+                  <div className="h-20 flex items-center justify-center mb-6">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name} 
+                      className="max-h-12 md:max-h-14 max-w-[190px] w-auto object-contain filter brightness-0 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" 
+                    />
+                  </div>
+                  <h3 
+                    className="text-[17px] md:text-[18px] font-semibold text-[#1E1E21] mb-2" 
+                    style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+                  >
+                    {partner.title}
+                  </h3>
+                  <p 
+                    className="text-[13px] md:text-[14px] text-[#1E1E21]/70 leading-relaxed max-w-[280px] mx-auto font-normal" 
+                    style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}
+                  >
+                    {partner.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TeamPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="w-full bg-white min-h-screen relative text-[#1E1E21]">
+      <div className="pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight max-w-5xl leading-[1.15]" 
+            style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+          >
+            Meet The Team
+          </h1>
+          
+          <div className="border-t-[2px] border-[#1E1E21]/30 pt-16 md:pt-20 flex justify-center w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-14 md:gap-y-16 w-full max-w-[1100px]">
+              {team.map((member, i) => (
+                <div key={i} className="flex flex-col group max-w-[320px] w-full mx-auto">
+                  <div className="w-full max-w-[320px] h-[320px] sm:h-[360px] md:h-[384px] rounded-[20px] overflow-hidden bg-zinc-100 mb-5 relative">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                    />
+                  </div>
+                  <h3 
+                    className="text-[18px] md:text-[20px] font-semibold text-[#1E1E21] mb-1 leading-snug" 
+                    style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
+                  >
+                    {member.name}
+                  </h3>
+                  <p 
+                    className="text-[13px] md:text-[14px] text-zinc-500 font-medium" 
+                    style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}
+                  >
+                    {member.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
@@ -2815,6 +3306,9 @@ export default function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/:slug" element={<ServiceDetailPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/how-we-work" element={<HowWeWorkPage />} />
+              <Route path="/partnerships" element={<PartnershipsPage />} />
+              <Route path="/team" element={<TeamPage />} />
               <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/portfolio/:slug" element={<ProjectDetailPage />} />
               <Route path="/blog" element={<BlogPage />} />
