@@ -1561,7 +1561,7 @@ function Header() {
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}
           >
             {navItems.map((item) => (
-              <div key={item.to} className="group flex items-center relative py-2 after:absolute after:top-full after:left-0 after:w-full after:h-12 after:bg-transparent">
+              <div key={item.to} className="group flex items-center relative py-2 px-1">
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
@@ -1578,14 +1578,14 @@ function Header() {
 
                 {/* About Mega Menu */}
                 {item.label === "About" && (
-                  <div className="fixed top-20 md:top-24 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
+                  <div className="fixed top-10 md:top-12 pt-10 md:pt-12 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
                     <div className="bg-white border-t border-b border-zinc-200 shadow-2xl h-[270px] flex justify-center w-full">
                       <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between text-[#1E1E21] h-full px-6 md:px-16">
                         {/* Left: Links */}
                         <div className="flex flex-col gap-4 w-[400px]">
-                          <Link to="/how-we-work" className="text-zinc-400 font-semibold uppercase tracking-widest text-xs mb-1 hover:text-[#F23030] transition-colors inline-block w-fit" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>How We Work</Link>
-                          <Link to="/partnerships" className="font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Our Partnerships</Link>
-                          <Link to="/team" className="font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Meet The Team</Link>
+                          <NavLink to="/how-we-work" className={({ isActive }) => `font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>How We Work</NavLink>
+                          <NavLink to="/partnerships" className={({ isActive }) => `font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Our Partnerships</NavLink>
+                          <NavLink to="/team" className={({ isActive }) => `font-semibold text-[20px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Meet The Team</NavLink>
                         </div>
 
                         <div className="flex items-center gap-16">
@@ -1633,18 +1633,18 @@ function Header() {
 
                 {/* Services Mega Menu */}
                 {item.label === "Services" && (
-                  <div className="fixed top-20 md:top-24 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
+                  <div className="fixed top-10 md:top-12 pt-10 md:pt-12 left-0 w-full opacity-0 pointer-events-none translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 z-[90] cursor-default">
                     <div className="bg-white border-t border-b border-zinc-200 shadow-2xl h-[351px] flex justify-center w-full">
                       <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between text-[#1E1E21] h-full px-6 md:px-16">
                         {/* Left: Links in two columns */}
                         <div className="flex gap-12">
                           {/* Column 1 */}
                           <div className="flex flex-col gap-5">
-                            <Link to="/services#branding" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none text-zinc-400" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Branding</Link>
-                            <Link to="/services#digital-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Digital Marketing</Link>
-                            <Link to="/services#web-solutions" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Web Solutions</Link>
-                            <Link to="/services#software-development" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Software Development</Link>
-                            <Link to="/services#social-media" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Social Media Management</Link>
+                            <NavLink to="/services/branding" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Branding</NavLink>
+                            <NavLink to="/services/digital-marketing" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Digital Marketing</NavLink>
+                            <NavLink to="/services/web-solutions" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Web Solutions</NavLink>
+                            <NavLink to="/services/software-development" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Software Development</NavLink>
+                            <NavLink to="/services/social-media-management" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Social Media Management</NavLink>
                           </div>
 
                           {/* Inner Divider */}
@@ -1652,10 +1652,10 @@ function Header() {
 
                           {/* Column 2 */}
                           <div className="flex flex-col gap-5">
-                            <Link to="/services#performance-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Performance Marketing</Link>
-                            <Link to="/services#graphic-design" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Graphic Design</Link>
-                            <Link to="/services#influencer-marketing" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Influencer Marketing</Link>
-                            <Link to="/services#product-video" className="font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Model Based Product Video</Link>
+                            <NavLink to="/services/performance-marketing" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Performance Marketing</NavLink>
+                            <NavLink to="/services/graphic-design" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Graphic Design</NavLink>
+                            <NavLink to="/services/influencer-marketing" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Influencer Marketing</NavLink>
+                            <NavLink to="/services/model-product-video" className={({ isActive }) => `font-semibold text-[22px] hover:text-[#F23030] transition-colors leading-none ${isActive ? 'text-zinc-400' : ''}`} style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Model Based Product Video</NavLink>
                           </div>
                         </div>
 
@@ -2309,165 +2309,93 @@ function ServiceDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const service = useMemo(() => services.find((item) => item.slug === slug), [slug]);
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+
+  const toggleAccordion = (idx: number) => {
+    setOpenAccordion(openAccordion === idx ? null : idx);
+  };
 
   if (!service) {
     return (
-      <main className="mx-auto max-w-6xl px-4 py-20 md:px-6">
-        <h1 className="font-['Inter'] text-4xl font-bold">Service not found.</h1>
-        <Link to="/services" className="mt-4 inline-block text-[#F23030]">
-          Back to Services
-        </Link>
+      <main className="bg-white min-h-screen w-full pt-32 pb-24 md:pt-48 md:pb-32 font-['Sofia_Pro',sans-serif]">
+        <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+          <h1 className="text-4xl md:text-[72px] text-[#1E1E21] font-semibold">Service not found.</h1>
+          <Link to="/services" className="mt-8 inline-block text-[#F23030] font-semibold uppercase tracking-widest text-sm">
+            Back to Services
+          </Link>
+        </div>
       </main>
     );
   }
 
-  const Icon = service.icon;
-
   return (
-    <main className="bg-transparent min-h-screen">
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(242,48,48,0.12),_transparent_60%)] pointer-events-none" />
-        <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F23030]/10 border border-[#F23030]/30 text-[#F23030]">
-                <Icon size={20} />
-              </div>
-              <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.25em] text-[#F23030]">Service</p>
-            </div>
-            <h1 className="font-['Inter'] text-5xl md:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-6">
-              {service.title}
-            </h1>
-            <div className="h-1 w-16 bg-[#F23030] mb-8" />
-            <p className="text-zinc-300 text-lg md:text-xl font-['Inter'] leading-relaxed max-w-2xl">
-              {service.short}
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <button
-                onClick={() => navigate('/contact#enquiry')}
-                className="inline-flex h-14 items-center gap-2 bg-[#F23030] px-8 rounded-full text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#A61F1F] hover:shadow-lg hover:shadow-red-900/30"
-              >
-                Start Your Project <ArrowRight size={16} />
-              </button>
-              <Link
-                to="/services"
-                className="inline-flex h-14 items-center gap-2 border border-white/20 px-8 rounded-full text-sm font-semibold text-zinc-300 transition hover:border-white/50 hover:text-white"
-              >
-                All Services
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    <main className="bg-white w-full min-h-screen font-['Sofia_Pro',sans-serif] pt-32 pb-24 md:pt-40 md:pb-32 text-[#1E1E21]">
+      <div className="mx-auto max-w-[1920px] px-6 md:px-16">
+        
+        {/* TITLE */}
+        <h1 className="text-4xl md:text-[56px] lg:text-[72px] font-semibold mb-8 leading-tight">
+          {service.title}
+        </h1>
 
-      {/* ── DETAILED DESCRIPTION ─────────────────────────────── */}
-      <section className="bg-zinc-950 py-16 md:py-24 border-y border-white/5">
-        <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:items-start">
-            <div>
-              <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Overview</p>
-              <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white leading-tight">
-                Engineered <span className="text-[#F23030]">For Scale</span>
-              </h2>
-            </div>
-            <div>
-              <p className="text-zinc-300 text-base md:text-lg font-['Inter'] leading-relaxed">
-                {service.detail}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="w-full h-[2px] bg-[#1E1E21] mb-12 md:mb-16"></div>
 
-      {/* ── KEY OFFERINGS ────────────────────────────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Key Offerings</p>
-          <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-12">
-            What We Deliver
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {service.bullets.map((bullet, idx) => (
-              <motion.div
-                key={bullet}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="flex items-start gap-4 border border-white/10 bg-white/[0.02] rounded-2xl p-6 hover:border-[#F23030]/40 transition-colors duration-300"
-              >
-                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F23030]/10 border border-[#F23030]/30">
-                  <div className="h-2 w-2 rounded-full bg-[#F23030]" />
-                </div>
-                <div>
-                  <p className="font-['Inter'] font-bold text-white text-base">{bullet}</p>
-                  <p className="text-zinc-500 text-xs mt-1 font-['Inter']">Built for dominance. Designed for conversion.</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY CHOOSE US ────────────────────────────────────── */}
-      <section className="bg-zinc-950 py-16 md:py-24 border-y border-white/5">
-        <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Why Digizinc</p>
-          <h2 className="font-['Inter'] text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-12">
-            Performance-First. <span className="text-[#F23030]">Authority-Driven.</span>
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {[
-              { title: "B2B Focused", desc: "Every strategy is calibrated for enterprise pipelines, high-value clients, and scalable revenue growth." },
-              { title: "Data-Led Execution", desc: "We combine market intelligence with creative precision to ensure measurable outcomes at every stage." },
-              { title: "Premium Delivery", desc: "From brief to launch, we operate with speed, transparency, and a relentless focus on business outcomes." },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="border-l-2 border-[#F23030] pl-6"
-              >
-                <h3 className="font-['Inter'] font-black text-lg uppercase tracking-tight text-white mb-2">{item.title}</h3>
-                <p className="text-zinc-400 text-sm font-['Inter'] leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-3xl px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-xs font-['Inter'] font-bold uppercase tracking-[0.2em] text-[#F23030] mb-4">Ready to Scale?</p>
-            <h2 className="font-['Inter'] text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-tight mb-6">
-              Let's Build Something <span className="text-[#F23030]">Dominant.</span>
+        {/* SPLIT SECTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 mb-16 md:mb-24 items-start">
+          {/* LEFT SIDE: Overview */}
+          <div className="flex flex-col gap-6 pr-0 lg:pr-12">
+            <h2 className="text-xl md:text-[24px] font-medium leading-[1.3]">
+              ({service.short})
             </h2>
-            <p className="text-zinc-400 text-base md:text-lg font-['Inter'] leading-relaxed mb-10 max-w-xl mx-auto">
-              Get a custom strategy session and actionable plan for your business — delivered within 48 hours.
+            <p className="text-[#3D3D3D] text-[15px] md:text-[16px] leading-[1.6] font-normal">
+              {service.detail}
             </p>
-            <button
-              onClick={() => navigate('/contact#enquiry')}
-              className="inline-flex h-14 items-center gap-2 bg-[#F23030] px-10 rounded-full text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#A61F1F] hover:shadow-xl hover:shadow-red-900/30 active:scale-95"
-            >
-              Start Your Project <ArrowRight size={16} />
-            </button>
-          </motion.div>
+          </div>
+
+          {/* RIGHT SIDE: Offerings Accordion */}
+          <div className="flex flex-col border-t-2 border-[#1E1E21]/20">
+            {service.bullets.map((bullet, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => toggleAccordion(idx)}
+                className="flex flex-col py-5 border-b-2 border-[#1E1E21]/20 cursor-pointer group hover:bg-zinc-50 px-2 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[15px] md:text-[16px] font-medium text-[#1E1E21]">{bullet}</span>
+                  <ChevronDown 
+                    size={20} 
+                    className={`transition-transform duration-300 text-[#1E1E21] ${openAccordion === idx ? 'rotate-180 text-[#F23030]' : 'group-hover:text-[#F23030]'}`} 
+                  />
+                </div>
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${openAccordion === idx ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-[#3D3D3D] text-[14px] md:text-[15px] leading-relaxed pr-8">
+                    We deliver exceptional results by optimizing campaigns and maximizing ROI across all relevant channels. Our approach guarantees efficient scaling and long-term success.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+
+        <div className="w-full h-[2px] bg-[#1E1E21] mb-16 md:mb-24"></div>
+
+        {/* WHY CHOOSE US - styled as cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {[
+            { title: "B2B Focused", desc: "Every strategy is calibrated for enterprise pipelines, high-value clients, and scalable revenue growth." },
+            { title: "Data-Led Execution", desc: "We combine market intelligence with creative precision to ensure measurable outcomes at every stage." },
+            { title: "Premium Delivery", desc: "From brief to launch, we operate with speed, transparency, and a relentless focus on business outcomes." },
+          ].map((item, idx) => (
+            <div key={idx} className="flex flex-col bg-zinc-50 border border-[#1E1E21]/5 p-8 md:p-10 rounded-[10px] hover:shadow-lg transition-shadow duration-300">
+              <h3 className="text-[18px] md:text-[20px] font-bold mb-4 text-[#1E1E21]">{item.title}</h3>
+              <p className="text-[15px] text-[#3D3D3D] leading-[1.6]">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+
+      </div>
     </main>
   );
 }
