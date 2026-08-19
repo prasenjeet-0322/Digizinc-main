@@ -949,8 +949,8 @@ The game has changed. Traditional marketing is a race to the bottom of rising CP
 
 const navItems = [
   { label: "Portfolio", to: "/portfolio" },
-  { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
+  { label: "About", to: "#" },
+  { label: "Services", to: "#" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
@@ -1564,6 +1564,11 @@ function Header() {
               <div key={item.to} className="group flex items-center relative py-2 px-1">
                 <NavLink
                   to={item.to}
+                  onClick={(e) => {
+                    if (item.label === "About" || item.label === "Services") {
+                      e.preventDefault();
+                    }
+                  }}
                   className={({ isActive }) =>
                     `relative flex items-center gap-1.5 transition-colors duration-200 py-2 hover:text-[#F23030] ${
                       isActive ? "text-[#F23030]" : (isLanding ? "text-[#1E1E21]" : "text-white/70")
@@ -2020,288 +2025,6 @@ function LandingPage() {
          </div>
       </section>
     </div>
-  );
-}
-
-function ServicesPage() {
-  return (
-    <div className="min-h-screen bg-transparent">
-      <header className="bg-zinc-950 pt-32 pb-16 text-white md:pt-40 md:pb-24">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#A61F1F]">Comprehensive Solutions</p>
-          <h1 className="mt-4 font-['Inter'] text-4xl font-bold md:text-7xl">Capabilities that drive impact.</h1>
-          <p className="mt-6 max-w-2xl text-base text-zinc-400 md:text-xl">
-            From strategic branding to technical SEO, we deploy premium digital expertise to help brands scale in the modern digital landscape.
-          </p>
-        </div>
-      </header>
-
-      <main className="mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-32">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {services.map((service, index) => {
-            const isLight = index % 2 === 0;
-            const cardImages: Record<string, string> = {
-              'branding': 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
-              'digital-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-              'web-solutions': 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
-              'software-development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-              'social-media-management': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
-              'performance-marketing': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-              'graphic-design': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-              'influencer-marketing': 'https://www.aimtechnologies.co/wp-content/uploads/2024/01/Social-Media-Influencer.png',
-              'model-product-video': 'https://mattnawrot.com/wp-content/uploads/2023/04/The-Beginners-Guide-to-Becoming-a-UGC-Creator-1024x576.jpg',
-            };
-
-            return (
-              <motion.article
-                key={service.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="relative h-[360px] md:h-[450px] flex flex-col items-start justify-center overflow-hidden rounded-2xl p-8 md:p-10 transition-all duration-500 hover:scale-[1.02] group shadow-2xl"
-                style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(242, 48, 48, 0.7), rgba(166, 31, 31, 0.85), rgba(13, 13, 13, 0.95)), url('${cardImages[service.slug] || cardImages['branding']}')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: (service.slug === 'influencer-marketing' || service.slug === 'model-product-video') ? 'right' : 'center',
-                }}
-              >
-                <div className="relative z-10 w-full">
-                  <h3 className="font-['Inter'] text-2xl font-[900] leading-[0.95] tracking-tighter text-white md:text-3xl lg:text-[2.25rem] uppercase mb-4 drop-shadow-xl">
-                    {service.title.replace(' & ', ',\n')}
-                  </h3>
-                  <p className="max-w-[280px] text-[13px] font-normal leading-relaxed text-white/80 md:text-sm lg:text-[15px]">
-                    {service.short}
-                  </p>
-                </div>
-
-                <Link
-                  to={`/services/${service.slug}`}
-                  className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 hover:scale-110 active:scale-95"
-                >
-                  <ArrowUpRight size={24} />
-                </Link>
-
-                {/* Animated Grain Overlay */}
-                <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              </motion.article>
-            );
-          })}
-        </div>
-      </main>
-    </div>
-  );
-}
-
-function TeamSlider() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLDivElement;
-    const maxScroll = target.scrollWidth - target.clientWidth;
-    if (maxScroll > 0) {
-      setScrollProgress((target.scrollLeft / maxScroll) * 100);
-    }
-  };
-
-  return (
-    <div className="relative">
-      <div 
-        className="mt-16 flex overflow-x-auto pb-8 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden touch-auto"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        onScroll={handleScroll}
-      >
-        {team.map((member) => (
-          <a 
-            key={member.name}
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex flex-col items-start text-left w-[85vw] sm:w-[320px] md:w-auto shrink-0 snap-center mr-6 md:mr-0 cursor-pointer"
-          >
-            {/* Desktop Image with Hover Overlay */}
-            <div className="relative overflow-hidden w-full aspect-[4/5] bg-zinc-900 border border-white/5 hidden md:block">
-              <img
-                src={member.image}
-                alt={member.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
-              />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="bg-[#F23030] text-white text-xs font-bold uppercase tracking-[0.2em] px-6 py-4 border border-[#F23030] translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  View Profile
-                </span>
-              </div>
-            </div>
-            
-            {/* Mobile Image (No overlay, direct tap) */}
-            <div className="relative overflow-hidden w-full aspect-[4/5] bg-zinc-900 border border-white/5 md:hidden">
-              <img
-                src={member.image}
-                alt={member.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover grayscale-[10%]"
-              />
-            </div>
-
-            {/* Info Section */}
-            <div className="w-full mt-6 flex flex-col items-start">
-              <h3 className="font-['Inter'] text-2xl font-bold text-cream/90 group-hover:text-white transition-colors">{member.name}</h3>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#F23030]">{member.role}</p>
-              <div className="mt-5 h-[2px] w-0 bg-[#F23030] transition-all duration-500 group-hover:w-full hidden md:block" />
-            </div>
-          </a>
-        ))}
-      </div>
-      
-      {/* Mobile Scroll Indicator */}
-      <div className="mt-4 flex flex-col items-center justify-center md:hidden pb-4">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-          <ChevronLeft size={14} className="text-zinc-600 animate-pulse" />
-          Swipe to explore
-          <ChevronRight size={14} className="text-zinc-600 animate-pulse" />
-        </p>
-        <div className="w-32 h-[2px] bg-white/10 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-[#F23030] transition-all duration-150 ease-out rounded-full" 
-            style={{ width: `${Math.max(20, scrollProgress)}%` }} 
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AboutPage() {
-  return (
-    <main>
-      <section className="mx-auto max-w-5xl px-4 pt-32 pb-16 md:px-6 md:pt-48 md:pb-24">
-        <div className="text-left">
-          <h1 className="mt-6 font-['Inter'] text-[42px] font-bold text-cream md:text-8xl lg:text-[100px] leading-[0.95] tracking-tighter">
-            We engineer brands people <br className="md:hidden" /> <span className="text-zinc-500 whitespace-nowrap">can’t ignore.</span>
-          </h1>
-          <div className="mt-12 max-w-3xl space-y-10">
-            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
-              <strong className="text-white">DigiZinc</strong> wasn't born in a boardroom. It was born from a simple, stubborn observation: that in a crowded market, <span className="text-cream italic">creativity without a strategy is just expensive noise.</span>
-            </p>
-            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
-              We started as a small strategy boutique with a singular focus to stop being 'just another agency' and start being a growth engine. We never measured our success by the size of our office, but by the scale of the impact we delivered for our partners.
-            </p>
-            <p className="text-xl md:text-2xl leading-relaxed text-zinc-400">
-              Today, we don’t just build projects; we architect digital ecosystems. High-performance environments engineered to seize attention, influence decision-making, and turn market share into market dominance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Story / Message from Founder Section */}
-      <section className="py-24 md:py-32 bg-black relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-4 md:px-6 relative z-10">
-          <div className="grid gap-16 md:grid-cols-2 md:items-center">
-            <div className="relative group">
-              <div className="relative overflow-hidden rounded-none bg-zinc-900 border border-white/10 aspect-[4/5]">
-                <img
-                  src="/team/bhargava-raj.png"
-                  alt="Bhargava Raj"
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center">
-              <h3 className="font-['Inter'] text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-8 leading-[1.1] tracking-tight">
-                A Message from <br /><span className="text-zinc-500">Our Founder</span>
-              </h3>
-
-              <div className="relative">
-                <p className="font-['Instrument_Serif'] text-2xl md:text-3xl lg:text-4xl leading-[1.4] text-cream/90 italic">
-                  We don’t spend our time chasing trends; we spend it building leverage. For us, AI has never been just a tool. It’s the unfair advantage we use to move faster and deliver at a higher intensity. We have zero interest in building brands that just exist. We engineer systems that are built to scale, dominate their space, and drive growth you can actually measure.
-                </p>
-
-                <div className="mt-10 flex items-center">
-                  <p className="text-sm font-bold uppercase tracking-widest text-zinc-400 whitespace-nowrap">
-                    Bhargava Raj <span className="text-[#F23030]/60 ml-2">— Founder & CEO</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-zinc-950 py-16 text-white md:py-24">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="grid gap-12 md:grid-cols-2">
-            <div>
-              <h2 className="font-['Inter'] text-3xl font-bold text-[#A61F1F]">The Mission</h2>
-              <p className="mt-4 text-xl leading-relaxed text-zinc-300">
-                Markets are louder than ever, but they've never been more hollow. We’re here to bridge that gap by using human psychology to trigger real emotion and data intelligence to back it up. We give brands the authority to speak with conviction and the infrastructure to scale without the guesswork.
-              </p>
-            </div>
-            <div>
-              <h2 className="font-['Inter'] text-3xl font-bold text-[#A61F1F]">The Vision</h2>
-              <p className="mt-4 text-xl leading-relaxed text-zinc-300">
-                We’re building the global gold standard for what a growth partner should actually be. Our vision is a world where cinematic storytelling and forensic data aren't separate departments, but a single, lethal weapon for our partners. We intend to be the reason the next generation of premium brands command their markets.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-transparent/40 md:bg-transparent py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#F23030]">Methodology</p>
-            <h2 className="mt-6 font-['Inter'] text-4xl md:text-6xl font-black text-cream leading-tight">
-              Our Proven <span className="text-zinc-500">Process.</span>
-            </h2>
-          </div>
-          
-          <div className="mt-20 flex flex-col border-t border-white/10">
-            {[
-              { step: "01", title: "Forensic Audit", desc: "We don't guess. We perform a deep-tissue search of your current infrastructure to identify every leak and lost opportunity." },
-              { step: "02", title: "Market Strategy", desc: "A tailored roadmap engineered for dominance. We define the exact moves required to bend the market in your favor." },
-              { step: "03", title: "Cinematic Creative", desc: "High-fidelity production that commands attention. We build visuals that don't just look good—they convert." },
-              { step: "04", title: "Precision Launch", desc: "Targeted deployment across the digital wild. We move with surgical precision to reach the right people at the right time." },
-              { step: "05", title: "Scale & Dominate", desc: "Continuous performance tracking and aggressive scaling. We optimize until your authority is unquestioned." },
-            ].map((p, i) => (
-              <div key={p.step} className="group relative flex flex-col md:flex-row md:items-center gap-6 md:gap-16 border-b border-white/10 py-10 md:py-16 px-4 md:px-8 transition-all duration-500 hover:bg-white/[0.02]">
-                {/* Massive Number */}
-                <div className="text-5xl md:text-7xl font-['Instrument_Serif'] text-zinc-700 transition-colors duration-500 group-hover:text-[#F23030]">
-                  {p.step}
-                </div>
-                
-                {/* Title */}
-                <div className="flex-1">
-                  <h3 className="font-['Inter'] text-3xl md:text-5xl font-bold text-cream tracking-tight transition-transform duration-500 group-hover:translate-x-4">
-                    {p.title}
-                  </h3>
-                </div>
-                
-                {/* Description */}
-                <div className="md:w-[40%]">
-                  <p className="text-zinc-400 text-base md:text-lg leading-relaxed transition-colors duration-500 group-hover:text-zinc-300">
-                    {p.desc}
-                  </p>
-                </div>
-                
-                {/* Red accent bar on hover */}
-                <div className="absolute left-0 bottom-0 h-[2px] w-0 bg-[#F23030] transition-all duration-700 group-hover:w-full" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#F23030]">The Team</p>
-          <h2 className="mt-4 font-['Inter'] text-4xl font-bold text-cream/80 md:text-5xl">Meet the Strategists.</h2>
-        </div>
-        <TeamSlider />
-      </section>
-
-    </main>
   );
 }
 
@@ -3231,9 +2954,7 @@ export default function App() {
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
-              <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/:slug" element={<ServiceDetailPage />} />
-              <Route path="/about" element={<AboutPage />} />
               <Route path="/how-we-work" element={<HowWeWorkPage />} />
               <Route path="/partnerships" element={<PartnershipsPage />} />
               <Route path="/team" element={<TeamPage />} />
