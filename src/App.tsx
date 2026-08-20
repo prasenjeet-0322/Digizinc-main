@@ -1,4 +1,4 @@
-import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState, lazy, Suspense } from "react";
+import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState, lazy, Suspense, useRef } from "react";
 const ZoomParallax = lazy(() => import("@/components/ui/zoom-parallax").then(m => ({ default: m.ZoomParallax })));
 import SplashLoader from "@/components/ui/SplashLoader";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
@@ -1834,6 +1834,21 @@ function Header() {
 
 function LandingPage() {
   const navigate = useNavigate();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.innerWidth < 768 && scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollRef.current.scrollBy({ left: 280, behavior: 'smooth' });
+        }
+      }
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="bg-white text-[#1E1E21] min-h-screen font-sofia relative z-10 w-full overflow-hidden">
@@ -1936,9 +1951,9 @@ function LandingPage() {
 
       {/* Services Grid (Horizontal Marquee) */}
       <section className="w-full bg-white border-y border-[#1E1E21]/10 overflow-hidden relative">
-         <div className="flex flex-nowrap w-max animate-scroll-right min-h-[500px] md:min-h-[700px]">
+         <div ref={scrollRef} className="flex flex-nowrap w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:animate-scroll-right min-h-[500px] md:min-h-[700px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
            {[...Array(2)].map((_, groupIndex) => (
-             <div key={`service-group-${groupIndex}`} className="flex flex-nowrap shrink-0">
+             <div key={`service-group-${groupIndex}`} className={`flex flex-nowrap shrink-0 ${groupIndex === 1 ? 'hidden md:flex' : ''}`}>
                {[
                  {
                    title: <>Brand<br/>Solutions</>,
@@ -1966,9 +1981,9 @@ function LandingPage() {
                    link: "/services/social-media"
                  }
                ].map((service, i) => (
-                 <div key={`service-${groupIndex}-${i}`} className="w-full md:w-[520px] shrink-0 border-r border-[#1E1E21]/10 flex flex-col items-center justify-center p-8 md:p-12 transition-colors duration-500 hover:bg-[#39FF14] group overflow-hidden">
+                 <div key={`service-${groupIndex}-${i}`} onClick={() => navigate(service.link)} className="cursor-pointer w-[280px] sm:w-[320px] md:w-[520px] shrink-0 border-r border-[#1E1E21]/10 flex flex-col items-center justify-center p-6 md:p-12 transition-colors duration-500 hover:bg-[#39FF14] group overflow-hidden snap-center">
                      <div className="flex flex-col items-center justify-center transition-transform duration-500 group-hover:-translate-y-4 w-full">
-                       <h3 className="text-5xl md:text-[56px] font-semibold text-[#1E1E21]/20 group-hover:text-white transition-colors duration-500 text-center tracking-tight leading-[1.1]">
+                       <h3 className="text-4xl md:text-[56px] font-semibold text-[#1E1E21]/20 group-hover:text-white transition-colors duration-500 text-center tracking-tight leading-[1.1]">
                          {service.title}
                        </h3>
                        
@@ -2028,8 +2043,8 @@ function LandingPage() {
                "Aura_white.png",
                "aspire.png"
              ].map((img, i) => (
-               <div key={`r1-${i}`} className="flex-shrink-0 w-48 md:w-64 mx-6 md:mx-8 flex items-center justify-center">
-                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-8 md:max-h-12 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" />
+               <div key={`r1-${i}`} className="flex-shrink-0 w-40 md:w-64 mx-4 md:mx-8 flex items-center justify-center">
+                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-12 md:max-h-16 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" />
                </div>
              ))}
            </div>
@@ -2433,7 +2448,7 @@ function BlogSinglePage() {
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header / Title */}
-        <h1 className="text-[40px] md:text-[56px] lg:text-[64px] font-semibold text-[#1E1E21] tracking-tight leading-[1.1] mb-8" style={{ fontWeight: 600 }}>
+        <h1 className="text-[32px] md:text-[56px] lg:text-[64px] font-semibold text-[#1E1E21] tracking-tight leading-[1.2] mb-6 md:mb-8" style={{ fontWeight: 600 }}>
           {post.title}
         </h1>
 
@@ -2453,7 +2468,7 @@ function BlogSinglePage() {
         </div>
 
         {/* Featured Image */}
-        <div className="w-full h-[800px] overflow-hidden rounded-[20px] mb-16">
+        <div className="w-full h-[300px] md:h-[500px] lg:h-[800px] overflow-hidden rounded-[20px] mb-12 md:mb-16">
           <img
             src={post.image}
             alt={post.title}
@@ -2662,7 +2677,7 @@ function Footer() {
         <img 
           src="/bento-grid/Frame 203.svg" 
           alt="Let's Get Started" 
-          className="w-full max-w-[1920px] object-contain"
+          className="w-[200%] sm:w-[150%] md:w-full max-w-none md:max-w-[1920px] object-contain"
         />
       </section>
 
