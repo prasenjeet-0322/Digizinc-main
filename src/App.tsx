@@ -1572,7 +1572,7 @@ function Header() {
                   }}
                   className={({ isActive }) =>
                     `relative flex items-center gap-1.5 transition-colors duration-200 py-2 hover:text-[#F23030] ${
-                      isActive ? "text-[#F23030]" : (isLanding ? "text-[#1E1E21]" : "text-white/70")
+                      (isActive && item.to !== '#') ? "text-[#F23030]" : (isLanding ? "text-[#1E1E21]" : "text-white/70")
                     } after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[#F23030] after:transition-all after:duration-300 hover:after:w-full`
                   }
                 >
