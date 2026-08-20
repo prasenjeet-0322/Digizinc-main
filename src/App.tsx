@@ -1491,6 +1491,7 @@ function Header() {
   const { pathname } = useLocation();
   const { openAudit } = useModal();
   const [open, setOpen] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const [isHidden, setIsHidden] = useState(false);
 
   const isLanding = true; // Use home page header style globally
@@ -1742,27 +1743,66 @@ function Header() {
           >
             <div className={`flex h-18 items-center justify-between px-4 border-b ${isLanding ? "border-zinc-200" : "border-white/5"}`}>
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center">
-                <img src="/logo.svg" alt={brand} className={`h-10 w-auto object-contain ${isLanding ? 'brightness-0' : ''}`} />
+                <img src={isLanding ? "/logo-dark.svg" : "/logo.svg"} alt={brand} className="h-10 w-auto object-contain" />
               </Link>
               <button onClick={() => setOpen(false)} className={`p-2 ${isLanding ? "text-[#1E1E21]" : "text-cream"}`}>
                 <X size={32} />
               </button>
             </div>
-            <div className="flex flex-1 flex-col items-center justify-center gap-10">
+            <div className="flex flex-col items-center justify-start gap-8 pt-12 pb-24 overflow-y-auto w-full h-full">
               {navItems.map((item, idx) => (
                 <motion.div
                   key={item.to}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + idx * 0.1 }}
+                  className="flex flex-col items-center w-full"
                 >
                   <NavLink
                     to={item.to}
-                    onClick={() => setOpen(false)}
-                    className={`font-['Inter'] text-4xl font-bold transition hover:text-[#F23030] ${isLanding ? "text-[#1E1E21]" : "text-cream"}`}
+                    onClick={(e) => {
+                      if (item.label === 'About' || item.label === 'Services') {
+                         e.preventDefault();
+                         setOpenMobileDropdown(openMobileDropdown === item.label ? null : item.label);
+                      } else {
+                         setOpen(false);
+                      }
+                    }}
+                    className={`font-['Inter'] text-[28px] font-bold transition flex items-center gap-2 hover:text-[#F23030] ${isLanding ? "text-[#1E1E21]" : "text-cream"}`}
                   >
                     {item.label}
+                    {(item.label === "About" || item.label === "Services") && (
+                      <ChevronDown size={24} className={`transition-transform duration-300 ${openMobileDropdown === item.label ? 'rotate-180' : ''}`} />
+                    )}
                   </NavLink>
+                  
+                  <AnimatePresence>
+                    {openMobileDropdown === item.label && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="flex flex-col items-center gap-5 mt-5 overflow-hidden w-full"
+                      >
+                         {item.label === "About" && (
+                           <>
+                             <Link to="/how-we-work" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>How We Work</Link>
+                             <Link to="/partnerships" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Our Partnerships</Link>
+                             <Link to="/team" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Meet The Team</Link>
+                           </>
+                         )}
+                         {item.label === "Services" && (
+                           <>
+                             <Link to="/services/branding" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Branding</Link>
+                             <Link to="/services/digital-marketing" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Digital Marketing</Link>
+                             <Link to="/services/web-solutions" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Web Solutions</Link>
+                             <Link to="/services/software-development" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Software Development</Link>
+                             <Link to="/services/social-media-management" onClick={() => setOpen(false)} className={`text-[17px] font-semibold hover:text-[#F23030] ${isLanding ? 'text-zinc-600' : 'text-zinc-400'}`}>Social Media</Link>
+                           </>
+                         )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
               <motion.button
