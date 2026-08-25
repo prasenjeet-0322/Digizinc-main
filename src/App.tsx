@@ -1952,9 +1952,9 @@ function LandingPage() {
 
       {/* Services Grid (Horizontal Marquee) */}
       <section className="w-full bg-white border-y border-[#1E1E21]/10 overflow-hidden relative">
-         <div ref={scrollRef} className="flex flex-nowrap w-full md:w-max overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none md:animate-scroll-right min-h-[500px] md:min-h-[700px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+         <div ref={scrollRef} className="flex flex-nowrap w-max animate-scroll-right min-h-[500px] md:min-h-[700px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
            {[...Array(2)].map((_, groupIndex) => (
-             <div key={`service-group-${groupIndex}`} className={`flex flex-nowrap shrink-0 ${groupIndex === 1 ? 'hidden md:flex' : ''}`}>
+             <div key={`service-group-${groupIndex}`} className="flex flex-nowrap shrink-0">
                {[
                  {
                    title: <>Brand<br/>Solutions</>,
