@@ -7,6 +7,7 @@ import { ArticleCard } from "@/components/ui/blog-post-card";
 import { HeroSection } from "@/components/ui/glass-video-hero";
 const IntegrationHero = lazy(() => import("@/components/ui/integration-hero"));
 import { ProductRevealCard } from "@/components/ui/product-reveal-card";
+import { FaLinkedin } from "react-icons/fa";
 import {
   ArrowLeft,
   ArrowRight,
@@ -1768,11 +1769,11 @@ function Header() {
                          setOpen(false);
                       }
                     }}
-                    className={`font-['Inter'] text-[28px] font-bold transition flex items-center gap-2 hover:text-[#F23030] ${isLanding ? "text-[#1E1E21]" : "text-cream"}`}
+                    className={`relative font-['Inter'] text-[28px] font-bold transition flex items-center justify-center hover:text-[#F23030] ${isLanding ? "text-[#1E1E21]" : "text-cream"}`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
                     {(item.label === "About" || item.label === "Services") && (
-                      <ChevronDown size={24} className={`transition-transform duration-300 ${openMobileDropdown === item.label ? 'rotate-180' : ''}`} />
+                      <ChevronDown size={28} className={`absolute -right-10 transition-transform duration-300 ${openMobileDropdown === item.label ? 'rotate-180' : ''}`} />
                     )}
                   </NavLink>
                   
@@ -1864,7 +1865,7 @@ function LandingPage() {
           <span className="text-sm font-medium text-[#1E1E21]">Trusted by 400+ fast moving founders</span>
         </div>
 
-        <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-[84px] leading-[1.1] uppercase max-w-[1787px] tracking-normal text-[#1E1E21]">
+        <h1 className="font-bold text-[28px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[84px] leading-[1.1] uppercase max-w-[1787px] tracking-normal text-[#1E1E21]">
           We Build Digital <br className="hidden md:block"/>
           Experiences That Define <br className="hidden md:block"/>
           <span className="text-[#EF2F2F]">BRANDS<span className="inline-block rounded-full bg-[#EF2F2F]" style={{ width: '0.18em', height: '0.18em', marginBottom: '0.02em', marginLeft: '0.03em' }}></span></span>
@@ -2097,7 +2098,7 @@ function ServiceDetailPage() {
     return (
       <main className="bg-white min-h-screen w-full pt-32 pb-24 md:pt-48 md:pb-32 font-['Sofia_Pro',sans-serif]">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
-          <h1 className="text-4xl md:text-[72px] text-[#1E1E21] font-semibold">Service not found.</h1>
+          <h1 className="text-[28px] sm:text-4xl md:text-[72px] text-[#1E1E21] font-semibold">Service not found.</h1>
           <Link to="/services" className="mt-8 inline-block text-[#F23030] font-semibold uppercase tracking-widest text-sm">
             Back to Services
           </Link>
@@ -2111,16 +2112,16 @@ function ServiceDetailPage() {
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* TITLE */}
-        <h1 className="text-4xl md:text-[56px] lg:text-[72px] font-semibold mb-8 leading-tight">
+        <h1 className="text-[28px] min-[375px]:text-3xl sm:text-4xl md:text-[56px] lg:text-[72px] font-semibold mb-6 md:mb-8 leading-tight">
           {service.title}
         </h1>
 
-        <div className="w-full h-[2px] bg-[#1E1E21] mb-12 md:mb-16"></div>
+        <div className="w-full h-[2px] bg-[#1E1E21] mb-6 md:mb-16"></div>
 
         {/* SPLIT SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-24 mb-16 md:mb-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-12 lg:gap-24 mb-16 md:mb-24 items-start">
           {/* LEFT SIDE: Overview */}
-          <div className="flex flex-col gap-6 pr-0 lg:pr-12">
+          <div className="flex flex-col gap-4 md:gap-6 pr-0 lg:pr-12">
             <h2 className="text-xl md:text-[24px] font-medium leading-[1.3]">
               ({service.short})
             </h2>
@@ -2156,10 +2157,10 @@ function ServiceDetailPage() {
           </div>
         </div>
 
-        <div className="w-full h-[2px] bg-[#1E1E21] mb-16 md:mb-24"></div>
+        <div className="w-full h-[2px] bg-[#1E1E21] mb-10 md:mb-24"></div>
 
         {/* WHY CHOOSE US - styled as cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4 md:mb-24">
           {[
             { title: "B2B Focused", desc: "Every strategy is calibrated for enterprise pipelines, high-value clients, and scalable revenue growth." },
             { title: "Data-Led Execution", desc: "We combine market intelligence with creative precision to ensure measurable outcomes at every stage." },
@@ -2187,7 +2188,7 @@ function ProjectDetailPage() {
     return (
       <main className="bg-white min-h-screen w-full pt-32 pb-24 md:pt-48 md:pb-32 font-['Sofia_Pro',sans-serif]">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
-          <h1 className="text-4xl md:text-[72px] text-[#1E1E21] font-semibold">Project not found.</h1>
+          <h1 className="text-[28px] sm:text-4xl md:text-[72px] text-[#1E1E21] font-semibold">Project not found.</h1>
           <Link to="/portfolio" className="mt-8 inline-block text-[#F23030] font-semibold uppercase tracking-widest text-sm">
             Back to Portfolio
           </Link>
@@ -2205,7 +2206,7 @@ function ProjectDetailPage() {
               {project.company}
             </p>
             <h1 
-              className="text-4xl md:text-[56px] text-[#1E1E21] leading-[1.1]"
+              className="text-[28px] sm:text-4xl md:text-[56px] text-[#1E1E21] leading-[1.1]"
               style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
             >
               {(project as any).headline || project.company}
@@ -2252,14 +2253,14 @@ function ProjectDetailPage() {
             <div className="border-t-2 border-[#1E1E21] pt-8 mt-12">
               <h3 className="text-2xl font-bold text-[#1E1E21]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>Scale Your Brand</h3>
               <p className="mt-4 text-base text-[#3D3D3D]">Get similar results for your business. Book a discovery call today.</p>
-              <Link to="/contact" className="mt-6 inline-flex h-12 items-center justify-center bg-[#F23030] rounded-full px-8 text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#1E1E21] shadow-lg hover:shadow-red-900/20">
+              <Link to="/contact" className="mt-6 inline-flex h-10 md:h-12 items-center justify-center bg-[#F23030] rounded-full px-6 md:px-8 text-xs md:text-sm font-bold uppercase tracking-widest text-white transition hover:bg-[#1E1E21] shadow-lg hover:shadow-red-900/20">
                 Start Your Project
               </Link>
             </div>
           </aside>
         </div>
 
-        <div className="mt-32 pt-16 border-t-2 border-[#1E1E21]">
+        <div className="mt-8 md:mt-32 pt-8 md:pt-16 border-t-2 border-[#1E1E21]">
           <h2 className="text-4xl md:text-[56px] text-[#1E1E21] leading-[1.1]" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Project Gallery</h2>
           <div className="mt-12 columns-1 gap-6 space-y-6 sm:columns-2 lg:columns-3">
             {(project.gallery || [1, 2, 3, 4, 5, 6]).map((item, i) => (
@@ -2289,9 +2290,9 @@ function PortfolioPage() {
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header Section */}
-        <div className="mb-12 md:mb-20">
+        <div className="mb-6 md:mb-20">
           <h1 
-            className="text-4xl md:text-[72px] text-[#1E1E21] leading-[1.1]"
+            className="text-[28px] min-[375px]:text-3xl sm:text-4xl md:text-[72px] text-[#1E1E21] leading-[1.1] tracking-tight md:tracking-normal"
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
           >
             Explore Our Latest Work
@@ -2299,7 +2300,7 @@ function PortfolioPage() {
         </div>
 
         {/* Divider and Filters */}
-        <div className="border-t-2 border-[#1E1E21] pt-6 md:pt-8 flex flex-col md:flex-row justify-end items-center gap-4 mb-16 md:mb-24">
+        <div className="border-t-2 border-[#1E1E21] pt-6 md:pt-8 flex flex-col md:flex-row justify-end items-start md:items-center gap-4 mb-16 md:mb-24">
           <div className="flex items-center gap-2 md:gap-4">
             <button 
               className="bg-[#1E1E21] text-white px-6 py-3 rounded-full text-sm md:text-[16px] hover:bg-black transition-colors"
@@ -2357,14 +2358,14 @@ function BlogPage() {
         
         {/* Header */}
         <h1 
-          className="text-[40px] md:text-[56px] font-semibold text-[#1E1E21] mb-8"
+          className="text-[28px] sm:text-[40px] md:text-[56px] font-semibold text-[#1E1E21] mb-8"
           style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
         >
           Our Informative Blog
         </h1>
 
         {/* Filter Section */}
-        <div className="border-t border-b border-zinc-300 py-4 mb-12 flex justify-end gap-4">
+        <div className="border-t border-b border-zinc-300 py-4 mb-12 flex justify-start gap-4">
           <button className="px-6 py-2 bg-[#1E1E21] text-white text-sm font-semibold rounded-full hover:bg-black transition-colors" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
             Latest Blog
           </button>
@@ -2435,7 +2436,7 @@ function BlogSinglePage() {
   if (!post) {
     return (
       <main className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-20">
-        <h1 className="text-4xl font-semibold text-[#1E1E21]" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Post not found.</h1>
+        <h1 className="text-[28px] sm:text-4xl font-semibold text-[#1E1E21]" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>Post not found.</h1>
         <Link to="/blog" className="mt-4 inline-block text-[#F23030] font-semibold" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
           Back to Blog
         </Link>
@@ -2448,7 +2449,7 @@ function BlogSinglePage() {
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header / Title */}
-        <h1 className="text-[32px] md:text-[56px] lg:text-[64px] font-semibold text-[#1E1E21] tracking-tight leading-[1.2] mb-6 md:mb-8" style={{ fontWeight: 600 }}>
+        <h1 className="text-[28px] sm:text-[32px] md:text-[56px] lg:text-[64px] font-semibold text-[#1E1E21] tracking-tight leading-[1.2] mb-6 md:mb-8" style={{ fontWeight: 600 }}>
           {post.title}
         </h1>
 
@@ -2488,6 +2489,10 @@ function BlogSinglePage() {
               
               // Strip markdown bold characters for clean output
               const text = trimmed.replace(/\*\*/g, '');
+
+              if (text === '---') {
+                return <div key={index} className="py-4 md:py-8" />;
+              }
 
               if (isHeading) {
                 return (
@@ -2563,90 +2568,105 @@ function ContactPage() {
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header */}
-        <h1 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight" style={{ fontWeight: 600 }}>
+        <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-8 md:mb-12 tracking-tight" style={{ fontWeight: 600 }}>
           Drop us a Message
         </h1>
 
         {/* Intro Section */}
-        <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-12 mb-16 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-16 md:gap-24 items-start">
-          <h2 className="text-sm md:text-base font-medium text-[#1E1E21] whitespace-nowrap tracking-wider" style={{ fontWeight: 500 }}>(GOT AN IDEA?)</h2>
+        <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-8 lg:py-12 mb-10 lg:mb-16 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-6 lg:gap-16 xl:gap-24 items-start">
+          <h2 className="text-sm md:text-base font-medium text-[#1E1E21] tracking-wider" style={{ fontWeight: 500 }}>(GOT AN IDEA?)</h2>
           <p className="text-[#1E1E21] text-[12px] md:text-[13px] leading-[1.8] font-normal opacity-90" style={{ fontWeight: 400 }}>
-            <span className="md:whitespace-nowrap">We're excited to work with you soon! Please drop an email with your details & requirements to <a href="mailto:hello@digizinc.com" className="font-semibold">hello@digizinc.com</a>.</span>
+            <span>We're excited to work with you soon! Please drop an email with your details & requirements to <a href="mailto:hello@digizinc.com" className="font-semibold">hello@digizinc.com</a>.</span>
             <span className="mt-4 block">You can also fill this form & we'll get back in 2 business days.</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-16 md:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 md:gap-24">
           {/* Left Column - Form */}
           <div className="pt-2">
-            <form onSubmit={submit} className="space-y-12">
+            <form onSubmit={submit} className="space-y-8 md:space-y-12">
               
-              <div className="space-y-1">
-                <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">Your Name *</label>
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors" />
               </div>
               
-              <div className="space-y-1">
-                <input type="text" placeholder="Your Organization's Name" value={formData.org} onChange={e => setFormData({...formData, org: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">Your Organization's Name</label>
+                <input type="text" value={formData.org} onChange={e => setFormData({...formData, org: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors" />
               </div>
 
-              <div className="space-y-1">
-                <input required type="email" placeholder="Your Email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">Your Email *</label>
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors" />
               </div>
 
-              <div className="space-y-1">
-                <input required type="tel" placeholder="Your Number" value={formData.number} onChange={e => setFormData({...formData, number: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">Your Number *</label>
+                <input required type="tel" value={formData.number} onChange={e => setFormData({...formData, number: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors" />
               </div>
 
-              <div className="space-y-1">
-                <input type="url" placeholder="Website/Social Media Link" value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">Website/Social Media Link</label>
+                <input type="url" value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors" />
               </div>
 
-              <div className="space-y-5 pt-4">
+              <div className="space-y-2">
+                <label className="text-[13px] font-medium text-[#1E1E21] block">What Are Your Growth Goals?</label>
+                <input type="text" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} placeholder="E.g. Scaling to 10k orders/mo..." className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-3 text-sm md:text-sm font-medium text-[#1E1E21] focus:outline-none focus:border-[#1E1E21] transition-colors placeholder:text-[#1E1E21]/40" />
+              </div>
+
+              <div className="space-y-5 pt-2">
                 <p className="text-[13px] font-medium text-[#1E1E21] mb-4">Which Services Are You Interested in?</p>
                 <div className="flex flex-wrap gap-2.5">
                   {serviceOpts.map(s => (
-                    <button key={s} type="button" onClick={() => toggleService(s)} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.services.includes(s) ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
-                      {s}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2.5 mt-2">
-                  {serviceOptsRow2.map((s, i) => (
-                    <button key={i + s} type="button" onClick={() => toggleService(s + i)} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.services.includes(s + i) ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                    <button 
+                      key={s} 
+                      type="button" 
+                      onClick={() => toggleService(s)} 
+                      className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.services.includes(s) ? "bg-[#1E1E21] border-[#1E1E21] text-white" : "border-[#1E1E21]/10 bg-[#1E1E21]/5 text-[#1E1E21]/60 hover:border-[#1E1E21]/20"}`}
+                    >
                       {s}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-5 pt-4">
+              <div className="space-y-5 pt-2">
                 <p className="text-[13px] font-medium text-[#1E1E21] mb-4">Please Select Our Closest Preferred Office For Servicing You?</p>
                 <div className="flex flex-wrap gap-2.5">
                   {offices.map(o => (
-                    <button key={o} type="button" onClick={() => setFormData({...formData, office: o})} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.office === o ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                    <button 
+                      key={o} 
+                      type="button" 
+                      onClick={() => setFormData({...formData, office: o})} 
+                      className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.office === o ? "bg-[#1E1E21] border-[#1E1E21] text-white" : "border-[#1E1E21]/10 bg-[#1E1E21]/5 text-[#1E1E21]/60 hover:border-[#1E1E21]/20"}`}
+                    >
                       {o}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="space-y-1 pt-6">
-                <input type="text" placeholder="What's on Your Mind?" value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full bg-transparent border-b-[2px] border-[#1E1E21]/30 pb-4 text-sm md:text-sm font-medium text-[#1E1E21] placeholder:text-[#1E1E21]/80 focus:outline-none focus:border-[#1E1E21] transition-colors" />
-              </div>
 
-              <div className="space-y-5 pt-4">
+              <div className="space-y-5 pt-2">
                 <p className="text-[13px] font-medium text-[#1E1E21] mb-4">How Did You Hear About Us?</p>
                 <div className="flex flex-wrap gap-2.5">
                   {sources.map(s => (
-                    <button key={s} type="button" onClick={() => setFormData({...formData, source: s})} className={`px-5 py-2 text-[11px] font-normal border rounded-full transition-colors ${formData.source === s ? "bg-[#1E1E21] text-white border-[#1E1E21]" : "bg-transparent text-[#1E1E21] border-[#1E1E21]/30 hover:border-[#1E1E21]"}`}>
+                    <button 
+                      key={s} 
+                      type="button" 
+                      onClick={() => setFormData({...formData, source: s})} 
+                      className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${formData.source === s ? "bg-[#1E1E21] border-[#1E1E21] text-white" : "border-[#1E1E21]/10 bg-[#1E1E21]/5 text-[#1E1E21]/60 hover:border-[#1E1E21]/20"}`}
+                    >
                       {s}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-8">
-                <button type="submit" disabled={status === "sending"} className="bg-[#1E1E21] text-white px-20 py-4 rounded-full text-[13px] font-semibold hover:bg-[#F23030] transition-colors disabled:opacity-50 min-w-[240px]">
+              <div className="pt-6">
+                <button type="submit" disabled={status === "sending"} className="bg-[#1E1E21] text-white px-10 py-3 md:px-20 md:py-4 rounded-full text-[13px] font-semibold hover:bg-[#F23030] transition-colors disabled:opacity-50 md:min-w-[240px]">
                   {status === "idle" ? "Submit" : status === "sending" ? "Sending..." : "Message Sent!"}
                 </button>
               </div>
@@ -2714,8 +2734,7 @@ function Footer() {
             className="flex items-center flex-wrap justify-center gap-6 md:gap-8 text-[10px] md:text-[11px] text-white"
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}
           >
-            <Link to="/about" className="hover:text-zinc-400 transition-colors">About</Link>
-            <Link to="/services" className="hover:text-zinc-400 transition-colors">Services</Link>
+
             <Link to="/portfolio" className="hover:text-zinc-400 transition-colors">Portfolio</Link>
             <Link to="/blog" className="hover:text-zinc-400 transition-colors">Blog</Link>
             <Link to="/contact" className="hover:text-zinc-400 transition-colors">Contact</Link>
@@ -2744,11 +2763,11 @@ function HowWeWorkPage() {
       {/* Light Section */}
       <div className="pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
-          <h1 className="text-4xl md:text-5xl lg:text-[60px] font-semibold text-[#1E1E21] mb-12 tracking-tight" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
+          <h1 className="text-[28px] min-[375px]:text-3xl sm:text-4xl lg:text-[60px] font-semibold text-[#1E1E21] mb-8 lg:mb-12 tracking-tight md:tracking-normal" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>
             We Bring The Whole Digizinc!
           </h1>
           
-          <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-12 mb-16 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-16 md:gap-24 items-start">
+          <div className="border-t-[2px] border-b-[2px] border-[#1E1E21]/30 py-8 lg:py-12 mb-10 lg:mb-16 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-6 lg:gap-16 md:gap-24 items-start">
             <h2 className="text-lg md:text-xl font-medium text-[#1E1E21] tracking-normal leading-snug" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 500 }}>
               (Our mission - taking the best of<br />Indian Creative Talent to the World!)
             </h2>
@@ -2882,7 +2901,7 @@ function PartnershipsPage() {
       <div className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
           <h1 
-            className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight max-w-5xl leading-[1.15]" 
+            className="text-[28px] sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight max-w-5xl leading-[1.15]" 
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
           >
             Proudly Collaborating With the Most Cutting-edge Platforms in the Industry
@@ -2922,6 +2941,8 @@ function PartnershipsPage() {
 }
 
 function TeamPage() {
+  const [selectedMember, setSelectedMember] = useState<typeof team[0] | null>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -2931,16 +2952,16 @@ function TeamPage() {
       <div className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
           <h1 
-            className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-12 tracking-tight max-w-5xl leading-[1.15]" 
+            className="text-[28px] sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#1E1E21] mb-8 md:mb-12 tracking-tight max-w-5xl leading-[1.15]" 
             style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
           >
             Meet The Team
           </h1>
           
-          <div className="border-t-[2px] border-[#1E1E21]/30 pt-16 md:pt-20 flex justify-center w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-14 md:gap-y-16 w-full max-w-[1100px]">
+          <div className="border-t-[2px] border-[#1E1E21]/30 pt-10 md:pt-16 lg:pt-20 flex justify-center w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-10 md:gap-y-14 lg:gap-y-16 w-full max-w-[1100px]">
               {team.map((member, i) => (
-                <div key={i} className="flex flex-col group max-w-[320px] w-full mx-auto">
+                <div key={i} className="flex flex-col group max-w-[320px] w-full mx-auto cursor-pointer" onClick={() => setSelectedMember(member)}>
                   <div className="w-full max-w-[320px] h-[320px] sm:h-[360px] md:h-[384px] rounded-[20px] overflow-hidden bg-zinc-100 mb-5 relative">
                     <img 
                       src={member.image} 
@@ -2949,7 +2970,7 @@ function TeamPage() {
                     />
                   </div>
                   <h3 
-                    className="text-[18px] md:text-[20px] font-semibold text-[#1E1E21] mb-1 leading-snug" 
+                    className="text-[18px] md:text-[20px] font-semibold text-[#1E1E21] mb-1 leading-snug group-hover:text-[#F23030] transition-colors" 
                     style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}
                   >
                     {member.name}
@@ -2966,6 +2987,64 @@ function TeamPage() {
           </div>
         </div>
       </div>
+
+      {/* Modal Overlay */}
+      <AnimatePresence>
+        {selectedMember && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+            onClick={() => setSelectedMember(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white rounded-2xl w-full max-w-3xl overflow-hidden relative shadow-2xl flex flex-col sm:flex-row max-h-[90vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedMember(null)}
+                className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-white shadow-md text-[#1E1E21] hover:text-white hover:bg-[#F23030] rounded-full transition-all"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              
+              <div className="w-full sm:w-2/5 h-[300px] sm:h-auto min-h-[400px] bg-zinc-100 shrink-0">
+                <img 
+                  src={selectedMember.image} 
+                  alt={selectedMember.name} 
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              
+              <div className="p-8 sm:p-10 flex flex-col justify-center flex-1 overflow-y-auto">
+                <h3 className="text-3xl font-bold text-[#1E1E21]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                  {selectedMember.name}
+                </h3>
+                <p className="text-[13px] font-bold text-[#F23030] mt-2 tracking-widest uppercase">
+                  {selectedMember.role}
+                </p>
+                <div className="h-px w-12 bg-zinc-200 my-3"></div>
+                <p className="text-base text-[#3D3D3D] leading-[1.8]">
+                  {selectedMember.bio}
+                </p>
+                <a 
+                  href={selectedMember.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-8 inline-flex items-center gap-2.5 text-sm font-semibold text-white bg-[#0a66c2] hover:bg-[#004182] transition-colors rounded-full px-6 py-3 w-fit"
+                >
+                  <FaLinkedin className="w-5 h-5" />
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
