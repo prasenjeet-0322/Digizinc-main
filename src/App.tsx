@@ -2674,13 +2674,48 @@ function ContactPage() {
             </form>
           </div>
 
-          {/* Right Column - Images */}
-          <div className="hidden lg:flex flex-col h-full rounded-2xl overflow-hidden shadow-sm">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 1" className="w-full object-cover flex-1 min-h-[300px]" />
-            <div className="w-full h-[1px] bg-white/20"></div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 2" className="w-full object-cover flex-1 min-h-[300px]" />
-            <div className="w-full h-[1px] bg-white/20"></div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Studio 3" className="w-full object-cover flex-1 min-h-[300px]" />
+          {/* Right Column - Contact Info */}
+          <div className="hidden lg:flex flex-col h-full bg-transparent text-[#1E1E21] pt-2">
+            <p className="text-[#F23030] text-[13px] font-bold tracking-[0.2em] uppercase mb-6" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>Contact</p>
+            <h2 className="text-4xl lg:text-[56px] font-bold mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+              Let's discuss your<br />growth targets.
+            </h2>
+            <p className="text-[#1E1E21]/70 text-lg leading-relaxed mb-8 max-w-md font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+              Share your goals and we will map the highest-impact opportunities for your brand.
+            </p>
+
+            <div className="space-y-6 mb-8">
+              <div className="flex items-center gap-4">
+                <Mail className="text-[#F23030] w-5 h-5 shrink-0" />
+                <a href="mailto:hello@digizinc.com" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>hello@digizinc.com</a>
+              </div>
+              <div className="flex items-center gap-4">
+                <Phone className="text-[#F23030] w-5 h-5 shrink-0" />
+                <a href="tel:+919701563362" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>+91 97015 63362</a>
+              </div>
+              <div className="flex items-start gap-4">
+                <MapPin className="text-[#F23030] w-5 h-5 mt-1 shrink-0" />
+                <p className="text-[#1E1E21]/80 text-[15px] leading-relaxed max-w-[280px]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                  H. No. 1-98/9/3/32T, Plot No. 50, 4th Floor,<br />
+                  Sai Dham Building, Madhapur, Hyderabad,<br />
+                  Telangana, 500081, India
+                </p>
+              </div>
+            </div>
+
+            {/* Google Map */}
+            <div className="w-full h-[280px] rounded-xl overflow-hidden bg-transparent shrink-0 border border-[#1E1E21]/10">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1520.1208456378577!2d78.3836601026069!3d17.44038901884332!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e1ef37bceb%3A0xb3cda6912c388013!2sSri%20Sai%20Nithya%20Pride!5e1!3m2!1sen!2sus!4v1787898579015!5m2!1sen!2sus" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="opacity-90 hover:opacity-100 transition-all duration-500"
+              ></iframe>
+            </div>
           </div>
 
         </div>
