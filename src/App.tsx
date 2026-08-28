@@ -1884,10 +1884,7 @@ function LandingPage() {
             Book 1:1 Call Right Now
           </button>
           <button 
-            onClick={() => {
-              const el = document.getElementById('work');
-              if(el) el.scrollIntoView({behavior: 'smooth'});
-            }}
+            onClick={() => navigate('/portfolio')}
             className="border border-[#CACAC8] bg-transparent text-[#1E1E21] rounded-full w-[179px] h-[56px] flex items-center justify-center font-semibold text-[15px] transition-all hover:bg-zinc-50 hover:scale-105"
           >
             Explore Our Work
