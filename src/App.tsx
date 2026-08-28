@@ -2839,9 +2839,8 @@ function HowWeWorkPage() {
                 { title: "Precision Launch", text: "Targeted deployment across the digital wild. We move with surgical precision to reach the right people at the right time." },
                 { title: "Scale & Dominate", text: "Continuous performance tracking and aggressive scaling. We optimize until your authority is unquestioned." }
               ].map((card, i) => (
-                <div key={i} className="bg-zinc-200/50 p-8 flex flex-col items-center text-center">
-                  <div className="h-48 w-full bg-zinc-300/50 mb-6 rounded-sm"></div>
-                  <h4 className="text-sm font-semibold text-[#1E1E21] mb-4 h-10 flex items-center justify-center" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>{card.title}</h4>
+                <div key={i} className="bg-zinc-200/50 p-8 flex flex-col items-center justify-center text-center min-h-[200px]">
+                  <h4 className="text-sm font-semibold text-[#1E1E21] mb-4" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 600 }}>{card.title}</h4>
                   <p className="text-[11px] leading-[1.6] font-normal text-[#1E1E21]/80" style={{ fontFamily: "'Sofia Pro', sans-serif", fontWeight: 400 }}>{card.text}</p>
                 </div>
               ))}
