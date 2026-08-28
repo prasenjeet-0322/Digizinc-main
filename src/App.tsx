@@ -1854,7 +1854,7 @@ function LandingPage() {
   return (
     <div className="bg-white text-[#1E1E21] min-h-screen font-sofia relative z-10 w-full overflow-hidden">
       {/* Hero Section */}
-      <section className="relative w-full pt-28 md:pt-36 lg:pt-40 pb-20 flex flex-col items-start px-4 md:px-16 max-w-[1920px] mx-auto">
+      <section className="relative w-full pt-28 md:pt-36 lg:pt-40 pb-8 md:pb-20 flex flex-col items-start px-4 md:px-16 max-w-[1920px] mx-auto">
         {/* Founders Pill */}
         <div className="flex items-center gap-3 bg-[#EAE9E7] rounded-full px-4 py-2 mb-8 border border-[#D5D5D5]">
           <div className="flex -space-x-2">
@@ -1896,7 +1896,7 @@ function LandingPage() {
       </section>
 
       {/* Hero Image */}
-      <section className="w-full pt-8">
+      <section className="w-full pt-2 md:pt-8">
         <div className="w-full h-[400px] md:h-[650px] overflow-hidden bg-zinc-900">
            <img 
              src="/bento-grid/Rectangle%20113.svg" 
@@ -1907,7 +1907,7 @@ function LandingPage() {
       </section>
 
       {/* Agency Description */}
-      <section className="px-4 md:px-16 pt-32 pb-16 max-w-[1920px] mx-auto">
+      <section className="px-4 md:px-16 pt-12 md:pt-32 pb-16 max-w-[1920px] mx-auto">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-16 justify-between items-start pb-20 border-b border-[#1E1E21]">
          <div className="md:w-[55%]">
            <h2 className="text-4xl md:text-[48px] lg:text-[60px] xl:text-[64px] font-semibold leading-[1.1] text-[#1E1E21] tracking-normal">
@@ -1917,10 +1917,10 @@ function LandingPage() {
              digital innovation.
            </h2>
          </div>
-         <div className="md:w-[45%] lg:w-[40%] flex flex-col justify-between items-start border-l-2 border-[#1E1E21] pl-10 lg:pl-20 py-2">
+         <div className="md:w-[45%] lg:w-[40%] flex flex-col justify-between items-start border-l-2 border-[#1E1E21] pl-6 md:pl-10 lg:pl-20 py-2">
            <h3 className="text-lg lg:text-[20px] font-medium text-[#1E1E21] tracking-tight">(What defines us)</h3>
            
-           <div className="flex flex-col gap-8 mt-24">
+           <div className="flex flex-col gap-8 mt-8 md:mt-auto">
              <p className="text-[#3D3D3D] text-xs lg:text-[14px] font-normal leading-[1.8]">
                Our work sits at the intersection of branding, design, development,<br className="hidden lg:block" />
                and marketing. By combining creativity with data-driven thinking, we<br className="hidden lg:block" />
@@ -1939,13 +1939,20 @@ function LandingPage() {
       </section>
 
       {/* Secondary Image */}
-      <section className="w-full pt-8">
-        <div className="w-full h-[400px] md:h-[650px] overflow-hidden bg-zinc-900">
+      <section className="w-full pt-4 md:pt-8">
+        <div className="w-full h-[400px] md:h-[650px] overflow-hidden bg-zinc-900 relative">
            <img 
              src="/bento-grid/Rectangle%20113.svg" 
              alt="Creative Agency Workspace" 
              className="w-full h-full object-cover"
            />
+           {/* Mobile Only Button */}
+           <button 
+             onClick={() => navigate('/contact#enquiry')}
+             className="md:hidden absolute bottom-8 left-1/2 -translate-x-1/2 bg-white text-[#1E1E21] border-2 border-white px-8 py-3.5 rounded-full font-semibold text-[15px] shadow-2xl whitespace-nowrap"
+           >
+             Get Started Now
+           </button>
         </div>
       </section>
 
@@ -1974,21 +1981,32 @@ function LandingPage() {
                  {
                    title: <>Software<br/>Development</>,
                    desc: "Custom software tailored to streamline operations and scale your business securely.",
-                   link: "/services/software"
+                   link: "/services/software-development"
                  },
                  {
                    title: <>Social Media<br/>Management</>,
                    desc: "Building engaged communities and impactful narratives across all major social platforms.",
-                   link: "/services/social-media"
+                   link: "/services/social-media-management"
                  }
                ].map((service, i) => (
-                 <div key={`service-${groupIndex}-${i}`} onClick={() => navigate(service.link)} className="cursor-pointer w-[280px] sm:w-[320px] md:w-[520px] shrink-0 border-r border-[#1E1E21]/10 flex flex-col items-center justify-center p-6 md:p-12 transition-colors duration-500 hover:bg-[#39FF14] group overflow-hidden snap-center">
-                     <div className="flex flex-col items-center justify-center transition-transform duration-500 group-hover:-translate-y-4 w-full">
-                       <h3 className="text-4xl md:text-[56px] font-semibold text-[#1E1E21]/20 group-hover:text-white transition-colors duration-500 text-center tracking-tight leading-[1.1]">
+                 <div key={`service-${groupIndex}-${i}`} onClick={() => navigate(service.link)} className="cursor-pointer w-[100vw] sm:w-[320px] md:w-[520px] shrink-0 border-r border-[#1E1E21]/10 flex flex-col items-center justify-center p-6 md:p-12 transition-colors duration-500 hover:bg-[#39FF14] group overflow-hidden snap-center">
+                     <div className="flex flex-col items-center justify-center transition-transform duration-500 md:group-hover:-translate-y-4 w-full">
+                       <h3 className="text-4xl md:text-[56px] font-semibold text-[#1E1E21]/20 md:group-hover:text-white transition-colors duration-500 text-center tracking-tight leading-[1.1]">
                          {service.title}
                        </h3>
                        
-                       <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 mt-0 group-hover:mt-6 w-full">
+                       {/* Mobile Only Button */}
+                       <div className="md:hidden mt-8 opacity-80">
+                         <button 
+                           onClick={(e) => { e.stopPropagation(); navigate(service.link); }}
+                           className="bg-[#1E1E21] text-white px-6 py-2.5 rounded-full font-semibold text-[13px] shadow-lg border border-white/10 flex items-center gap-2"
+                         >
+                           Explore <ArrowRight size={16} />
+                         </button>
+                       </div>
+                       
+                       {/* Desktop Hover Content */}
+                       <div className="hidden md:grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 mt-0 group-hover:mt-6 w-full">
                          <div className="overflow-hidden flex flex-col items-center">
                            <p className="text-center font-semibold text-[15px] md:text-[16px] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 max-w-sm px-4 leading-[1.5]">
                              {service.desc}
@@ -1998,7 +2016,7 @@ function LandingPage() {
                              <div className="bg-black text-white px-5 py-3 rounded-full text-sm font-semibold whitespace-nowrap -mr-4 relative z-0">
                                View More
                              </div>
-                             <button onClick={() => navigate(service.link)} className="flex h-14 w-14 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110 shadow-lg relative z-10">
+                             <button onClick={(e) => { e.stopPropagation(); navigate(service.link); }} className="flex h-14 w-14 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-110 shadow-lg relative z-10">
                                <ArrowRight size={24} className="text-[#1E1E21]" />
                              </button>
                            </div>
