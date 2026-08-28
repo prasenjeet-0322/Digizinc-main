@@ -2675,29 +2675,30 @@ function ContactPage() {
           </div>
 
           {/* Right Column - Contact Info */}
-          <div className="hidden lg:flex flex-col h-full bg-transparent text-[#1E1E21] pt-2">
-            <p className="text-[#F23030] text-[13px] font-bold tracking-[0.2em] uppercase mb-6" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>Contact</p>
-            <h2 className="text-4xl lg:text-[56px] font-bold mb-6 tracking-tight leading-[1.1]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+          <div className="hidden lg:flex flex-col h-full bg-transparent text-[#1E1E21] pt-2 font-sofia">
+            <p className="text-[#F23030] text-[13px] font-bold tracking-[0.2em] uppercase mb-6">Contact</p>
+            <h2 className="text-4xl lg:text-[56px] font-bold mb-6 tracking-tight leading-[1.1]">
               Let's discuss your<br />growth targets.
             </h2>
-            <p className="text-[#1E1E21]/70 text-lg leading-relaxed mb-8 max-w-md font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+            <p className="text-[#1E1E21]/70 text-[17px] leading-relaxed mb-10 max-w-md font-normal">
               Share your goals and we will map the highest-impact opportunities for your brand.
             </p>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-center gap-4">
-                <Mail className="text-[#F23030] w-5 h-5 shrink-0" />
-                <a href="mailto:hello@digizinc.com" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>hello@digizinc.com</a>
+                <Mail className="text-[#F23030] w-6 h-6 shrink-0" strokeWidth={1.5} />
+                <a href="mailto:hello@digizinc.com" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-normal">hello@digizinc.com</a>
               </div>
               <div className="flex items-center gap-4">
-                <Phone className="text-[#F23030] w-5 h-5 shrink-0" />
-                <a href="tel:+919701563362" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-medium" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>+91 97015 63362</a>
+                <Phone className="text-[#F23030] w-6 h-6 shrink-0" strokeWidth={1.5} />
+                <a href="tel:+919701563362" className="text-[#1E1E21]/80 hover:text-[#1E1E21] transition-colors text-[15px] font-normal">+91 97015 63362</a>
               </div>
               <div className="flex items-start gap-4">
-                <MapPin className="text-[#F23030] w-5 h-5 mt-1 shrink-0" />
-                <p className="text-[#1E1E21]/80 text-[15px] leading-relaxed max-w-[280px]" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+                <MapPin className="text-[#F23030] w-6 h-6 mt-1 shrink-0" strokeWidth={1.5} />
+                <p className="text-[#1E1E21]/80 text-[15px] leading-relaxed max-w-[320px] font-normal">
                   H. No. 1-98/9/3/32T, Plot No. 50, 4th Floor,<br />
-                  Sai Dham Building, Madhapur, Hyderabad,<br />
+                  Sai Dham Building, Madhapur,<br />
+                  Hyderabad,<br />
                   Telangana, 500081, India
                 </p>
               </div>
