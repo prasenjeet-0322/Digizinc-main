@@ -163,7 +163,7 @@ const PLANS = [
   },
 ];
 
-const brand = "Saavik Solutions";
+const brand = "Digizinc";
 const formEndpoint = "https://formsubmit.co/ajax/hello@digizinc.com";
 
 const parallaxImages = [
