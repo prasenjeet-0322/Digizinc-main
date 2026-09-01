@@ -1,4 +1,5 @@
 import { FormEvent, createContext, useCallback, useContext, useEffect, useMemo, useState, lazy, Suspense, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 const ZoomParallax = lazy(() => import("@/components/ui/zoom-parallax").then(m => ({ default: m.ZoomParallax })));
 import SplashLoader from "@/components/ui/SplashLoader";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
@@ -1853,6 +1854,16 @@ function LandingPage() {
 
   return (
     <div className="bg-white text-[#1E1E21] min-h-screen font-sofia relative z-10 w-full overflow-hidden">
+      <Helmet>
+        <title>Digizinc | Performance Driven Marketing Agency</title>
+        <meta name="description" content="Digizinc helps ambitious brands scale through AI-powered marketing, bold creative, and precision strategy. Trusted by 400+ founders." />
+        <link rel="canonical" href="https://digizinc.com/" />
+        <meta property="og:title" content="Digizinc | Performance Driven Marketing Agency" />
+        <meta property="og:description" content="Digizinc helps ambitious brands scale through AI-powered marketing, bold creative, and precision strategy." />
+        <meta property="og:url" content="https://digizinc.com/" />
+        <meta name="twitter:title" content="Digizinc | Performance Driven Marketing Agency" />
+        <meta name="twitter:description" content="Digizinc helps ambitious brands scale through AI-powered marketing, bold creative, and precision strategy." />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative w-full pt-28 md:pt-36 lg:pt-40 pb-8 md:pb-20 flex flex-col items-start px-4 md:px-16 max-w-[1920px] mx-auto">
         {/* Founders Pill */}
@@ -2060,7 +2071,7 @@ function LandingPage() {
                "aspire.png"
              ].map((img, i) => (
                <div key={`r1-${i}`} className="flex-shrink-0 w-40 md:w-64 mx-4 md:mx-8 flex items-center justify-center">
-                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-12 md:max-h-16 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" />
+                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-12 md:max-h-16 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" loading="lazy" />
                </div>
              ))}
            </div>
@@ -2089,7 +2100,7 @@ function LandingPage() {
                "Asset_2magnus.png"
              ].map((img, i) => (
                <div key={`r2-${i}`} className="flex-shrink-0 w-48 md:w-64 mx-6 md:mx-8 flex items-center justify-center">
-                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-8 md:max-h-12 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" />
+                 <img src={`/logos/partners/${img}`} alt={`Partner ${i}`} className="max-h-8 md:max-h-12 w-auto object-contain filter brightness-0 hover:opacity-80 transition-opacity" loading="lazy" />
                </div>
              ))}
            </div>
@@ -2124,6 +2135,16 @@ function ServiceDetailPage() {
 
   return (
     <main className="bg-white w-full min-h-screen font-['Sofia_Pro',sans-serif] pt-32 pb-24 md:pt-40 md:pb-32 text-[#1E1E21]">
+      <Helmet>
+        <title>{service.title} Services | Digizinc</title>
+        <meta name="description" content={service.short} />
+        <link rel="canonical" href={`https://digizinc.com/services/${service.slug}`} />
+        <meta property="og:title" content={`${service.title} Services | Digizinc`} />
+        <meta property="og:description" content={service.short} />
+        <meta property="og:url" content={`https://digizinc.com/services/${service.slug}`} />
+        <meta name="twitter:title" content={`${service.title} Services | Digizinc`} />
+        <meta name="twitter:description" content={service.short} />
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* TITLE */}
@@ -2214,6 +2235,17 @@ function ProjectDetailPage() {
 
   return (
     <main className="bg-white w-full min-h-screen pt-32 pb-24 md:pt-48 md:pb-32 font-['Sofia_Pro',sans-serif]">
+      <Helmet>
+        <title>{project.company} Case Study | Digizinc Portfolio</title>
+        <meta name="description" content={(project as any).subtext || project.tagline} />
+        <link rel="canonical" href={`https://digizinc.com/portfolio/${project.slug}`} />
+        <meta property="og:title" content={`${project.company} Case Study | Digizinc`} />
+        <meta property="og:description" content={(project as any).subtext || project.tagline} />
+        <meta property="og:url" content={`https://digizinc.com/portfolio/${project.slug}`} />
+        <meta property="og:image" content={`https://digizinc.com${(project as any).portfolioImage || project.image}`} />
+        <meta name="twitter:title" content={`${project.company} Case Study | Digizinc`} />
+        <meta name="twitter:description" content={(project as any).subtext || project.tagline} />
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         <div className="grid gap-12 md:gap-16 lg:grid-cols-[1.2fr_0.8fr]">
           <section>
@@ -2302,6 +2334,16 @@ function ProjectDetailPage() {
 function PortfolioPage() {
   return (
     <main className="bg-white w-full min-h-screen pt-28 pb-24 md:pt-36 md:pb-32 font-['Sofia_Pro',sans-serif]">
+      <Helmet>
+        <title>Our Work & Portfolio | Digizinc</title>
+        <meta name="description" content="Explore Digizinc's portfolio of branding, digital marketing, and creative projects across real estate, finance, wellness, and more." />
+        <link rel="canonical" href="https://digizinc.com/portfolio" />
+        <meta property="og:title" content="Our Work & Portfolio | Digizinc" />
+        <meta property="og:description" content="Explore Digizinc's portfolio of branding, digital marketing, and creative projects across real estate, finance, wellness, and more." />
+        <meta property="og:url" content="https://digizinc.com/portfolio" />
+        <meta name="twitter:title" content="Our Work & Portfolio | Digizinc" />
+        <meta name="twitter:description" content="Explore Digizinc's portfolio of branding, digital marketing, and creative projects." />
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header Section */}
@@ -2369,6 +2411,16 @@ function PortfolioPage() {
 function BlogPage() {
   return (
     <main className="min-h-screen bg-white pt-32 pb-20">
+      <Helmet>
+        <title>Marketing Blog & Insights | Digizinc</title>
+        <meta name="description" content="Read Digizinc's expert blog on performance marketing, creative strategy, brand building, and scaling brands in 2026 and beyond." />
+        <link rel="canonical" href="https://digizinc.com/blog" />
+        <meta property="og:title" content="Marketing Blog & Insights | Digizinc" />
+        <meta property="og:description" content="Expert insights on performance marketing, creative strategy, and brand building from the Digizinc team." />
+        <meta property="og:url" content="https://digizinc.com/blog" />
+        <meta name="twitter:title" content="Marketing Blog & Insights | Digizinc" />
+        <meta name="twitter:description" content="Expert insights on performance marketing, creative strategy, and brand building." />
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header */}
@@ -2403,6 +2455,7 @@ function BlogPage() {
                   src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 text-[#1E1E21] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full backdrop-blur-md shadow-sm">
@@ -2461,6 +2514,44 @@ function BlogSinglePage() {
 
   return (
     <main className="min-h-screen bg-white pt-32 pb-20" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+      <Helmet>
+        <title>{post.title} | Digizinc Blog</title>
+        <meta name="description" content={post.metaDescription || post.excerpt} />
+        <link rel="canonical" href={`https://digizinc.com/blog/${post.slug}`} />
+        <meta property="og:title" content={`${post.title} | Digizinc Blog`} />
+        <meta property="og:description" content={post.metaDescription || post.excerpt} />
+        <meta property="og:url" content={`https://digizinc.com/blog/${post.slug}`} />
+        <meta property="og:image" content={post.image} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${post.title} | Digizinc Blog`} />
+        <meta name="twitter:description" content={post.metaDescription || post.excerpt} />
+        <meta name="twitter:image" content={post.image} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "description": post.metaDescription || post.excerpt,
+          "image": post.image,
+          "datePublished": post.date,
+          "author": {
+            "@type": "Person",
+            "name": post.author || "Digizinc"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Digizinc",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://digizinc.com/favicon/favicon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://digizinc.com/blog/${post.slug}`
+          }
+        })}</script>
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header / Title */}
@@ -2580,6 +2671,16 @@ function ContactPage() {
 
   return (
     <main className="min-h-screen bg-white pt-32 pb-20" style={{ fontFamily: "'Sofia Pro', sans-serif" }}>
+      <Helmet>
+        <title>Contact Us | Digizinc</title>
+        <meta name="description" content="Get in touch with Digizinc to scale your brand through AI-powered marketing and precision strategy." />
+        <link rel="canonical" href="https://digizinc.com/contact" />
+        <meta property="og:title" content="Contact Us | Digizinc" />
+        <meta property="og:description" content="Get in touch with Digizinc to scale your brand through AI-powered marketing and precision strategy." />
+        <meta property="og:url" content="https://digizinc.com/contact" />
+        <meta name="twitter:title" content="Contact Us | Digizinc" />
+        <meta name="twitter:description" content="Get in touch with Digizinc." />
+      </Helmet>
       <div className="mx-auto max-w-[1920px] px-6 md:px-16">
         
         {/* Header */}
@@ -2811,6 +2912,16 @@ function HowWeWorkPage() {
 
   return (
     <div className="w-full bg-white relative">
+      <Helmet>
+        <title>How We Work | Digizinc</title>
+        <meta name="description" content="Learn about Digizinc's methodology, from forensic audits to cinematic creative and targeted deployment." />
+        <link rel="canonical" href="https://digizinc.com/how-we-work" />
+        <meta property="og:title" content="How We Work | Digizinc" />
+        <meta property="og:description" content="Learn about Digizinc's methodology, from forensic audits to cinematic creative and targeted deployment." />
+        <meta property="og:url" content="https://digizinc.com/how-we-work" />
+        <meta name="twitter:title" content="How We Work | Digizinc" />
+        <meta name="twitter:description" content="Learn about Digizinc's methodology." />
+      </Helmet>
       {/* Light Section */}
       <div className="pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
@@ -2948,6 +3059,16 @@ function PartnershipsPage() {
 
   return (
     <div className="w-full bg-white min-h-screen relative text-[#1E1E21]">
+      <Helmet>
+        <title>Our Partnerships | Digizinc</title>
+        <meta name="description" content="Explore Digizinc's strategic partnerships with industry-leading platforms and tools." />
+        <link rel="canonical" href="https://digizinc.com/partnerships" />
+        <meta property="og:title" content="Our Partnerships | Digizinc" />
+        <meta property="og:description" content="Explore Digizinc's strategic partnerships with industry-leading platforms and tools." />
+        <meta property="og:url" content="https://digizinc.com/partnerships" />
+        <meta name="twitter:title" content="Our Partnerships | Digizinc" />
+        <meta name="twitter:description" content="Explore Digizinc's strategic partnerships." />
+      </Helmet>
       <div className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
           <h1 
@@ -2965,7 +3086,8 @@ function PartnershipsPage() {
                     <img 
                       src={partner.logo} 
                       alt={partner.name} 
-                      className="max-h-12 md:max-h-14 max-w-[190px] w-auto object-contain filter brightness-0 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" 
+                      className="max-h-12 md:max-h-14 max-w-[190px] w-auto object-contain filter brightness-0 opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                      loading="lazy" 
                     />
                   </div>
                   <h3 
@@ -2999,6 +3121,16 @@ function TeamPage() {
 
   return (
     <div className="w-full bg-white min-h-screen relative text-[#1E1E21]">
+      <Helmet>
+        <title>Meet The Team | Digizinc</title>
+        <meta name="description" content="Get to know the experts and creative minds behind Digizinc." />
+        <link rel="canonical" href="https://digizinc.com/team" />
+        <meta property="og:title" content="Meet The Team | Digizinc" />
+        <meta property="og:description" content="Get to know the experts and creative minds behind Digizinc." />
+        <meta property="og:url" content="https://digizinc.com/team" />
+        <meta name="twitter:title" content="Meet The Team | Digizinc" />
+        <meta name="twitter:description" content="Get to know the team behind Digizinc." />
+      </Helmet>
       <div className="pt-32 pb-24 md:pt-40 md:pb-32">
         <div className="mx-auto max-w-[1920px] px-6 md:px-16">
           <h1 
@@ -3016,7 +3148,8 @@ function TeamPage() {
                     <img 
                       src={member.image} 
                       alt={member.name} 
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy" 
                     />
                   </div>
                   <h3 
@@ -3067,6 +3200,7 @@ function TeamPage() {
                   src={selectedMember.image} 
                   alt={selectedMember.name} 
                   className="w-full h-full object-cover object-top"
+                  loading="lazy"
                 />
               </div>
               
